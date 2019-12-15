@@ -19,13 +19,16 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('level');
             $table->string('experience');
             $table->bigInteger('cups');
             $table->double('cash');
             $table->bigInteger('credits');
             $table->string('abilities');
+            $table->bigInteger('role');
+            $table->bigInteger('club_id')->unsigned()->nullable();
+            $table->foreign('club_id')->references('id')->on('clubs');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username','level','experience','cups', 'abilities','cash','credits'
+        'name', 'email', 'password', 'username','level','experience','cups', 'abilities','cash','credits','role','club_id'
     ];
 
     /**
@@ -49,11 +49,13 @@ class User extends Authenticatable
             'cash' => 0,
             'credits' => 0,
             'cups' => 0,
-            'abilities' => ''
+            'abilities' => '',
+            'role' => 1,
+            'club_id' => null
         ];
 
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        return $user->createToken('AppName')->accessToken;
+        return $user;
     }
 }

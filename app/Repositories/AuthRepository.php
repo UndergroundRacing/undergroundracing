@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\User;
+use App\Garage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -32,7 +33,10 @@ class AuthRepository implements AuthRepositoryInterface
             return response()->json(['error'=>$validator->errors()], 401);
         }
         $user = new User();
-        $success['token'] = $user->createUser($request);
+        $created_user = $user->createUser($request);
+        $garage = new Garage();
+        $garage->createGarage($created_user->id);
+        $success['token'] = $created_user->createToken('AppName')->accessToken;
         return response()->json(['success'=>$success], $this->successStatus);
     }
 
