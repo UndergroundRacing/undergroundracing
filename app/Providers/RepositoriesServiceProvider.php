@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\AuthRepository;
 use App\Repositories\AuthRepositoryInterface;
+use App\Repositories\GarageRepository;
+use App\Repositories\GarageRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoriesServiceProvider extends ServiceProvider
@@ -26,5 +28,6 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(AuthRepositoryInterface::class,AuthRepository::class);
+        $this->app->bind(GarageRepositoryInterface::class,GarageRepository::class);
     }
 }
