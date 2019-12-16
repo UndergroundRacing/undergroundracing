@@ -6,6 +6,8 @@ use App\Garage_Engine;
 use App\Garage_Nos;
 use App\Garage_Stop;
 use App\Garage_Turbo;
+use App\Garage_Vechile;
+use App\Garage_Wheels;
 use App\Stop;
 use App\Turbo;
 use App\Vechile;
@@ -31,6 +33,7 @@ class GarageRepository implements GarageRepositoryInterface
                 'level' => 'required',
                 'weight' => 'required',
                 'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -51,7 +54,8 @@ class GarageRepository implements GarageRepositoryInterface
                 'level' => 'required',
                 'weight' => 'required',
                 'stop_time' => 'required',
-                'part_id' => 'required'
+                'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -69,10 +73,12 @@ class GarageRepository implements GarageRepositoryInterface
     public function AddWheels(Request $request){
         $validator = Validator::make($request->all(),
             [
+                'title' => 'required',
                 'level' => 'required',
                 'weight' => 'required',
-                'ac_time' => 'required',
-                'part_id' => 'required'
+                'power' => 'required',
+                'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -92,8 +98,9 @@ class GarageRepository implements GarageRepositoryInterface
             [
                 'level' => 'required',
                 'weight' => 'required',
-                'ac_time' => 'required',
-                'part_id' => 'required'
+                'power' => 'required',
+                'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -113,8 +120,9 @@ class GarageRepository implements GarageRepositoryInterface
             [
                 'level' => 'required',
                 'weight' => 'required',
-                'ac_time' => 'required',
-                'part_id' => 'required'
+                'power' => 'required',
+                'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -155,7 +163,8 @@ class GarageRepository implements GarageRepositoryInterface
                 'weight' => 'required',
                 'power' => 'required',
                 'capacity' => 'required',
-                'part_id' => 'required'
+                'part_id' => 'required',
+                'image_url' => 'required'
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
@@ -240,5 +249,117 @@ class GarageRepository implements GarageRepositoryInterface
         $garage = new Garage_Turbo();
         $garage_turbo = $garage->AddTurboToGarage($request);
         return response()->json(['success' => $garage_turbo],$this->successStatus);
+    }
+
+    public function ChangeCarInUse($request){
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'car_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage();
+        $gar = $garage->ChangeCarInUse($request['user_id'],$request['car_id']);
+        return response()->json(['success' => $gar],$this->successStatus);
+    }
+
+    public function GetAllVechilesInGarage($id)
+    {
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->GetAllVechilesByUserId($id)],$this->successStatus);
+    }
+
+    public function AddEngineToVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required',
+                'garage_engine_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->AddEngineForVechile($request)],$this->successStatus);
+    }
+
+    public function AddWheelsToGarage(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'garage_id' => 'required',
+                'wheels_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+        $garage = new Garage_Wheels();
+        $garage_wheels = $garage->AddWheelsToGarage($request);
+        return response()->json(['success' => $garage_wheels],$this->successStatus);
+    }
+
+    public function AddWheelsToVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required',
+                'garage_wheel_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->AddWheelsForVechile($request)],$this->successStatus);
+    }
+
+    public function AddNosToVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required',
+                'garage_nos_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->AddNosToVechile($request)],$this->successStatus);
+    }
+
+    public function AddStopsToVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required',
+                'garage_stops_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->AddStopsToVechile($request)],$this->successStatus);
+    }
+
+    public function AddTurboToVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required',
+                'garage_turbo_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->AddTurboToVechile($request)],$this->successStatus);
     }
 }

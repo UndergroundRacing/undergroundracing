@@ -21,4 +21,10 @@ class Garage_Nos extends Model
 
         return $garage_nos;
     }
+
+    public function GetNosSpecsById($id){
+        $nos = Garage_Nos::find($id);
+        $new_wheels = Nos::find($nos->nos_id);
+        return $new_wheels;
+    }
 }

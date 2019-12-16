@@ -64,4 +64,37 @@ class GarageController extends Controller
     public function AddTurboToGarage(Request $request){
         return $this->garageRepository->AddTurboToGarage($request);
     }
+
+    public function ChangeCarInUse(Request $request){
+        return $this->garageRepository->ChangeCarInUse($request);
+    }
+
+    public function GetAllCars($id){
+        return $this->garageRepository->GetAllVechilesInGarage($id);
+    }
+
+    public function AddEngineToVechile(Request $request){
+        return $this->garageRepository->AddEngineToVechile($request);
+    }
+
+    public function AddWheelsToGarage(Request $request){
+        return $this->garageRepository->AddWheelsToGarage($request);
+    }
+
+    public function AddWheelsToVechile(Request $request){
+        return $this->garageRepository->AddWheelsToVechile($request);
+    }
+
+    public function AddNosToVechile(Request $request){
+        return $this->garageRepository->AddNosToVechile($request);
+    }
+
+    public function AddStopToVechile(Request $request){
+        return $this->garageRepository->AddStopsToVechile($request);
+    }
+
+    public function AddTurboToVechile(Request $request){
+        return $this->garageRepository->AddTurboToVechile($request);
+    }
+
 }

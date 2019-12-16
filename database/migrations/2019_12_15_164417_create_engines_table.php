@@ -20,6 +20,7 @@ class CreateEnginesTable extends Migration
             $table->double('weight');
             $table->bigInteger('power');
             $table->double('capacity');
+            $table->string('image_url');
             $table->bigInteger('part_id')->unsigned();
             $table->foreign('part_id')->references('id')->on('parts');
             $table->timestamps();

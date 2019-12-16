@@ -37,9 +37,8 @@ class Garage_Vechile extends Model
         $vechile_obj = new Vechile();
         $vechile = $vechile_obj->getVechileById($request['vechile_id']);
         return [
-            'ac_speed' => 0,
             'stop_time' => 0,
-            'capacity' => 0,
+            'power' => 0,
             'liter'=> 0,
             'weight' => $vechile->weight,
         ];
@@ -57,5 +56,158 @@ class Garage_Vechile extends Model
           'nos' => null,
           'turbo' => null
         ];
+    }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public function GetAllVechilesByUserId($user_id){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($user_id);
+        return Garage_Vechile::where('garage_id',$garage->id)->get()->all();
+    }
+
+    /**
+     * @param $request
+     * @return |null
+     */
+    public function AddEngineForVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $eng = new Garage_Engine();
+        $engine_specs = $eng->GetEngineSpecsById($request['garage_engine_id']);
+
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+        //adding new engine to vechile
+        if($engine_specs['level'] <= $vechile_specs['level']){
+            $parts = unserialize($vechile->parts);
+            $specs = unserialize($vechile->specification);
+            //if vechile has engine recalcualte specs
+            if($parts['engine'] != null){
+                $old_engine_specs = $eng->GetEngineSpecsById($parts['engine']);
+                $specs['weight'] -=  $old_engine_specs["weight"];
+                $specs['power'] -= $old_engine_specs["power"];
+            }
+            // Adding new specifications and part in car
+            $parts['engine'] = $request['garage_engine_id'];
+            $specs['weight'] += $engine_specs['weight'];
+            $specs['power'] += $engine_specs['power'];
+            $specs['capacity'] = $engine_specs['capacity'];
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function AddWheelsForVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $wheel = new Garage_Wheels();
+        $wheels_spec = $wheel->GetWheelsSpecsById($request['garage_wheel_id']);
+
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+        //adding new engine to vechile
+        if($wheels_spec['level'] <= $vechile_specs['level']){
+            $parts = unserialize($vechile->parts);
+            $specs = unserialize($vechile->specification);
+            //if vechile has engine recalcualte specs
+            if($parts['wheels'] != null){
+                $old_engine_specs = $wheel->GetWheelsSpecsById($parts['wheels']);
+                $specs['weight'] -=  $old_engine_specs["weight"];
+                $specs['power'] -= $old_engine_specs["power"];
+            }
+            // Adding new specifications and part in car
+            $parts['wheels'] = $request['garage_wheel_id'];
+            $specs['weight'] += $wheels_spec['weight'];
+            $specs['power'] += $wheels_spec['power'];
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function AddNosToVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_nos_id'])->get()->first();
+        $nos = new Garage_Nos();
+        $wheels_spec = $nos->GetNosSpecsById($request['garage_nos_id']);
+
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+        //adding new engine to vechile
+        if($wheels_spec['level'] <= $vechile_specs['level']){
+            $parts = unserialize($vechile->parts);
+            $specs = unserialize($vechile->specification);
+            //if vechile has engine recalcualte specs
+            if($parts['nos'] != null){
+                $old_engine_specs = $nos->GetNosSpecsById($parts['nos']);
+                $specs['power'] -= $old_engine_specs["power"];
+            }
+            // Adding new specifications and part in car
+            $parts['nos'] = $request['garage_nos_id'];
+            $specs['power'] += $wheels_spec['power'];
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function AddStopsToVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $stops = new Garage_Stop();
+        $wheels_spec = $stops->GetStopsSpecsById($request['garage_stops_id']);
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+        //adding new engine to vechile
+        if($wheels_spec['level'] <= $vechile_specs['level']){
+            $parts = unserialize($vechile->parts);
+            $specs = unserialize($vechile->specification);
+            //if vechile has engine recalcualte specs
+            // Adding new specifications and part in car
+            $parts['stops'] = $request['garage_stops_id'];
+            $specs['stop_time'] = $wheels_spec['stop_time'];
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function AddTurboToVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $turbo = new Garage_Turbo();
+        $wheels_spec = $turbo->GetTurboSpecsById($request['garage_turbo_id']);
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+        //adding new engine to vechile
+        if($wheels_spec['level'] <= $vechile_specs['level']){
+            $parts = unserialize($vechile->parts);
+            $specs = unserialize($vechile->specification);
+            //if vechile has engine recalcualte specs
+            if($parts['turbo'] != null){
+                $old_engine_specs = $turbo->GetTurboSpecsById($parts['turbo']);
+                $specs['power'] -= $old_engine_specs["power"];
+            }
+            // Adding new specifications and part in car
+            $parts['turbo'] = $request['garage_turbo_id'];
+            $specs['power'] += $wheels_spec['power'];
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function GetVechileSpecs($id){
+        $new_vechile = Vechile::find($id);
+        return $new_vechile;
     }
 }

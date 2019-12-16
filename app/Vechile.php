@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Vechile extends Model
 {
     protected $fillable = [
-        'title', 'level', 'weight', 'part_id'
+        'title', 'level', 'weight', 'part_id','image_url'
     ];
 
     public function createVechile($input)
@@ -17,6 +17,7 @@ class Vechile extends Model
             'title' => $input['title'],
             'level' => $input['level'],
             'weight' => $input['weight'],
+            'image_url' => $input['image_url'],
             'part_id' => $input['part_id']
         ];
 

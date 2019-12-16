@@ -21,4 +21,10 @@ class Garage_Turbo extends Model
 
         return $garage_turbo;
     }
+
+    public function GetTurboSpecsById($id){
+        $turbo = Garage_Turbo::find($id);
+        $new_turbo = Turbo::find($turbo->turbo_id);
+        return $new_turbo;
+    }
 }

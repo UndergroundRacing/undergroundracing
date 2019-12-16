@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNosTable extends Migration
+class CreateGarageWheelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateNosTable extends Migration
      */
     public function up()
     {
-        Schema::create('nos', function (Blueprint $table) {
+        Schema::create('garage__wheels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('level');
-            $table->double('power');
-            $table->string('image_url');
-            $table->bigInteger('part_id')->unsigned();
-            $table->foreign('part_id')->references('id')->on('parts');
+            $table->bigInteger('garage_id')->unsigned();
+            $table->bigInteger('wheels_id')->unsigned();
+            $table->foreign('garage_id')->references('id')->on('garages');
+            $table->foreign('wheels_id')->references('id')->on('wheels');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateNosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nos');
+        Schema::dropIfExists('garage__wheels');
     }
 }

@@ -24,10 +24,25 @@ interface GarageRepositoryInterface
 
     public function AddEngineToGarage(Request $request);
 
+    public function AddWheelsToGarage(Request $request);
+
     public function AddNosToGarage(Request $request);
 
     public function AddStopToGarage(Request $request);
 
     public function AddTurboToGarage(Request $request);
 
+    public function ChangeCarInUse($request);
+
+    public function GetAllVechilesInGarage($id);
+
+    public function AddEngineToVechile(Request $request);
+
+    public function AddWheelsToVechile(Request $request);
+
+    public function AddNosToVechile(Request $request);
+
+    public function AddStopsToVechile(Request $request);
+
+    public function AddTurboToVechile(Request $request);
 }

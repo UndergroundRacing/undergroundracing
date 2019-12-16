@@ -21,4 +21,10 @@ class Garage_Engine extends Model
 
         return $garage_engine;
     }
+
+    public function GetEngineSpecsById($id){
+        $engine = Garage_Engine::find($id);
+        $new_nos = Engine::find($engine->engine_id);
+        return $new_nos;
+    }
 }
