@@ -45,4 +45,15 @@ interface GarageRepositoryInterface
     public function AddStopsToVechile(Request $request);
 
     public function AddTurboToVechile(Request $request);
+
+    public function RemoveEngineFromVechile(Request $request);
+
+    public function RemoveWheelsFromVechile(Request $request);
+
+    public function RemoveStopsFromVechile(Request $request);
+
+    public function RemoveTurboFromVechile(Request $request);
+
+    public function RemoveNosFromVechile(Request $request);
+
 }

@@ -3,27 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="40b6e382-0b7d-4740-bdc7-cfd5da36444b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Engine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Engine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Garage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Garage_Engine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage_Engine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Garage_Nos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage_Nos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Garage_Stop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage_Stop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Garage_Turbo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage_Turbo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Garage_Vechile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Garage_Vechile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/GarageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/GarageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/GarageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/GarageRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/GarageRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/GarageRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Stop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Stop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Turbo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Turbo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Vechile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vechile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Wheels.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wheels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164323_create_vechiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164323_create_vechiles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164417_create_engines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164417_create_engines_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164435_create_wheels_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164435_create_wheels_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164453_create_stops_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164453_create_stops_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164507_create_turbos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164507_create_turbos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_15_164523_create_nos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_15_164523_create_nos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,19 +21,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Garage_Engine.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Repositories/GarageRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2840">
-              <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+            <state relative-caret-position="439">
+              <caret line="436" column="75" selection-start-line="436" selection-start-column="75" selection-end-line="436" selection-end-column="75" />
               <folding>
                 <element signature="e#34#49#0#PHP" expanded="true" />
               </folding>
@@ -59,10 +33,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Garage_Vechile.php">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/AuthRepositoryInterface.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Garage_Vechile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="303" column="27" selection-start-line="303" selection-start-column="27" selection-end-line="303" selection-end-column="27" />
               <folding>
                 <element signature="e#22#38#0#PHP" expanded="true" />
               </folding>
@@ -71,19 +54,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Garage_Wheels.php">
+        <entry file="file://$PROJECT_DIR$/app/Garage_Engine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Garage_Turbo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+            <state relative-caret-position="425">
+              <caret line="25" column="41" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -100,17 +74,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Garage_Stop.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="28" column="5" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="476">
+              <caret line="28" column="5" selection-start-line="24" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+            <state relative-caret-position="439">
+              <caret line="50" column="86" selection-start-line="50" selection-start-column="86" selection-end-line="50" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -118,17 +92,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/GarageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="95" column="37" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="37" />
+            <state relative-caret-position="371">
+              <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/channels.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Repositories/GarageRepositoryInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-292">
-              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="405">
+              <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -191,12 +170,12 @@
         <option value="$PROJECT_DIR$/app/Garage_Engine.php" />
         <option value="$PROJECT_DIR$/app/Garage_Nos.php" />
         <option value="$PROJECT_DIR$/app/Garage_Stop.php" />
+        <option value="$PROJECT_DIR$/app/Garage_Turbo.php" />
         <option value="$PROJECT_DIR$/app/Repositories/GarageRepositoryInterface.php" />
         <option value="$PROJECT_DIR$/app/Repositories/GarageRepository.php" />
-        <option value="$PROJECT_DIR$/app/Garage_Vechile.php" />
-        <option value="$PROJECT_DIR$/app/Garage_Turbo.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/API/GarageController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Garage_Vechile.php" />
       </list>
     </option>
   </component>
@@ -420,18 +399,19 @@
       <workItem from="1575314266739" duration="4168000" />
       <workItem from="1576414053389" duration="451000" />
       <workItem from="1576424681044" duration="15640000" />
-      <workItem from="1576508103780" duration="18463000" />
+      <workItem from="1576508103780" duration="19093000" />
+      <workItem from="1576612133548" duration="2736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42529000" />
+    <option name="totallyTimeSpent" value="45895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27114093" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -545,9 +525,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_15_164554_create_garage__engines_table.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -701,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/AuthRepositoryInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/AuthRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-272">
@@ -753,10 +723,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Garage_Engine.php">
+    <entry file="file://$PROJECT_DIR$/app/Garage_Wheels.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Garage_Turbo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -767,48 +744,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Garage_Wheels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Garage_Vechile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding>
-            <element signature="e#22#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Garage_Stop.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="476">
+          <caret line="28" column="5" selection-start-line="24" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Garage_Turbo.php">
+    <entry file="file://$PROJECT_DIR$/app/Garage_Engine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+        <state relative-caret-position="425">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/channels.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/AuthRepositoryInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/GarageRepositoryInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        <state relative-caret-position="405">
+          <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/GarageRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2840">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        <state relative-caret-position="439">
+          <caret line="436" column="75" selection-start-line="436" selection-start-column="75" selection-end-line="436" selection-end-column="75" />
           <folding>
             <element signature="e#34#49#0#PHP" expanded="true" />
           </folding>
@@ -817,15 +787,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/GarageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="95" column="37" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="37" />
+        <state relative-caret-position="371">
+          <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+        <state relative-caret-position="439">
+          <caret line="50" column="86" selection-start-line="50" selection-start-column="86" selection-end-line="50" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Garage_Vechile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="303" column="27" selection-start-line="303" selection-start-column="27" selection-end-line="303" selection-end-column="27" />
+          <folding>
+            <element signature="e#22#38#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

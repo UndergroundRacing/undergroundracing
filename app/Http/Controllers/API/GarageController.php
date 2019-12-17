@@ -97,4 +97,23 @@ class GarageController extends Controller
         return $this->garageRepository->AddTurboToVechile($request);
     }
 
+    public function RemoveEngineFromVechile(Request $request){
+        return $this->garageRepository->RemoveEngineFromVechile($request);
+    }
+
+    public function RemoveWheelsFromVechile(Request $request){
+        return $this->garageRepository->RemoveWheelsFromVechile($request);
+    }
+
+    public function RemoveStopsFromVechile(Request $request){
+        return $this->garageRepository->RemoveStopsFromVechile($request);
+    }
+
+    public function RemoveTurboFromVechile(Request $request){
+        return $this->garageRepository->RemoveTurboFromVechile($request);
+    }
+
+    public function RemoveNosFromVechile(Request $request){
+        return $this->garageRepository->RemoveNosFromVechile($request);
+    }
 }

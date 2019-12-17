@@ -206,6 +206,107 @@ class Garage_Vechile extends Model
         return null;
     }
 
+    public function RemoveEngineFromVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $eng = new Garage_Engine();
+        $vechile_specs = $this->GetVechileSpecs($vechile['vechile_id']);
+
+        $parts = unserialize($vechile->parts);
+        if($parts['engine'] != null) {
+            $engine_specs = $eng->GetEngineSpecsById($parts['engine']);
+            $specs = unserialize($vechile->specification);
+            $specs['weight'] -=  $engine_specs["weight"];
+            $specs['power'] -= $engine_specs["power"];
+            $specs['capacity'] = 0;
+            $parts['engine'] = null;
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+
+        return null;
+    }
+
+    public function RemoveWheelsFromVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $wheels = new Garage_Wheels();
+
+        $parts = unserialize($vechile->parts);
+        if($parts['wheels'] != null) {
+            $wheels_spec = $wheels->GetWheelsSpecsById($parts['wheels']);
+            $specs = unserialize($vechile->specification);
+            $specs['weight'] -= $wheels_spec['weight'];
+            $specs['power'] -= $wheels_spec['power'];
+            $parts['wheels'] = null;
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function RemoveStopsFromVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $stops = new Garage_Stop();
+
+        $parts = unserialize($vechile->parts);
+        if($parts['stops'] != null) {
+            $stops_spec = $stops->GetStopsSpecsById($parts['stops']);
+            $specs = unserialize($vechile->specification);
+            $specs['stop_time'] -= $stops_spec['stop_time'];
+            $parts['stops'] = null;
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function RemoveTurboFromVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $turbo = new Garage_Turbo();
+
+        $parts = unserialize($vechile->parts);
+        if($parts['turbo'] != null) {
+            $turbo_specs = $turbo->GetTurboSpecsById($parts['turbo']);
+            $specs = unserialize($vechile->specification);
+            $specs['power'] -= $turbo_specs['power'];
+            $parts['turbo'] = null;
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+    public function RemoveNosFromVechile($request){
+        $garage_obj = new Garage();
+        $garage = $garage_obj->GetGarageByUserId($request['user_id']);
+        $vechile = Garage_Vechile::where('garage_id',$garage->id)->where('id',$request['garage_vechile_id'])->get()->first();
+        $nos = new Garage_Nos();
+
+        $parts = unserialize($vechile->parts);
+        if($parts['nos'] != null) {
+            $turbo_specs = $nos->GetNosSpecsById($parts['nos']);
+            $specs = unserialize($vechile->specification);
+            $specs['power'] -= $turbo_specs['power'];
+            $parts['nos'] = null;
+            $vechile->update(['specification' => serialize($specs)]);
+            $vechile->update(['parts' => serialize($parts)]);
+            return $vechile;
+        }
+        return null;
+    }
+
+
     public function GetVechileSpecs($id){
         $new_vechile = Vechile::find($id);
         return $new_vechile;

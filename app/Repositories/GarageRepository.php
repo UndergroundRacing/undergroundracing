@@ -15,7 +15,6 @@ use App\Parts;
 use App\Wheels;
 use App\Nos;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class GarageRepository implements GarageRepositoryInterface
@@ -362,4 +361,81 @@ class GarageRepository implements GarageRepositoryInterface
         $garage = new Garage_Vechile();
         return response()->json(['success' => $garage->AddTurboToVechile($request)],$this->successStatus);
     }
+
+    public function RemoveEngineFromVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->RemoveEngineFromVechile($request)],$this->successStatus);
+    }
+
+    public function RemoveWheelsFromVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->RemoveWheelsFromVechile($request)],$this->successStatus);
+    }
+
+    public function RemoveStopsFromVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->RemoveStopsFromVechile($request)],$this->successStatus);
+    }
+
+    public function RemoveTurboFromVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->RemoveTurboFromVechile($request)],$this->successStatus);
+    }
+
+    public function RemoveNosFromVechile(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'garage_vechile_id' => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $garage = new Garage_Vechile();
+        return response()->json(['success' => $garage->RemoveNosFromVechile($request)],$this->successStatus);
+    }
+
+
 }

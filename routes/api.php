@@ -44,5 +44,10 @@ Route::prefix('v1')->group(function () {
         Route::post('addNosToVechile', 'Api\GarageController@AddNosToVechile');
         Route::post('addStopToVechile', 'Api\GarageController@AddStopToVechile');
         Route::post('addTurboToVechile', 'Api\GarageController@AddTurboToVechile');
+        Route::post('removeEngineFromVechile', 'Api\GarageController@RemoveEngineFromVechile');
+        Route::post('removeWheelsFromVechile', 'Api\GarageController@RemoveWheelsFromVechile');
+        Route::post('removeStopsFromVechile', 'Api\GarageController@RemoveStopsFromVechile');
+        Route::post('removeTurboFromVechile', 'Api\GarageController@RemoveTurboFromVechile');
+        Route::post('removeNosFromVechile', 'Api\GarageController@RemoveNosFromVechile');
     });
 });
