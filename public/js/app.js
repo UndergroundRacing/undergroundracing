@@ -76111,13 +76111,15 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/styles.css */ "./resources/js/components/css/styles.css");
-/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_styles_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _css_login_register_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/login_register.css */ "./resources/js/components/css/login_register.css");
-/* harmony import */ var _css_login_register_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_login_register_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main */ "./resources/js/components/pages/Main.js");
-/* harmony import */ var _ForgotPass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ForgotPass */ "./resources/js/components/pages/ForgotPass.js");
-/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Register */ "./resources/js/components/pages/Register.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/styles.css */ "./resources/js/components/css/styles.css");
+/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_styles_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _css_login_register_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/login_register.css */ "./resources/js/components/css/login_register.css");
+/* harmony import */ var _css_login_register_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_login_register_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Main */ "./resources/js/components/pages/Main.js");
+/* harmony import */ var _ForgotPass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ForgotPass */ "./resources/js/components/pages/ForgotPass.js");
+/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Register */ "./resources/js/components/pages/Register.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76135,6 +76137,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -76207,25 +76210,21 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      fetch('http://127.0.0.1:8000/api/v1/login', {
-        method: 'post',
+      var _this2 = this;
+
+      var data = JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/api/v1/login', data, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password
-        })
-      }).then(function (Response) {
-        return Response.json();
-      }).then(function (Result) {
-        if (Result.Status == 'success') {
-          console.log(Response);
-        } else {
-          console.log(Result);
-          alert('hi');
         }
+      }).then(function (response) {
+        _this2.props.history.push('/Home');
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }, {

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import '../css/styles.css';
 import '../css/login_register.css';
 
@@ -8,6 +9,8 @@ import ForgotPass from "./ForgotPass";
 import Register from "./Register";
 
 class Login extends React.Component {
+
+
     constructor(props) {
         super(props);
 
@@ -53,31 +56,24 @@ class Login extends React.Component {
                 break;
         }
     }
+    
 
     handleSubmit(event) {
-        fetch('http://127.0.0.1:8000/api/v1/login', {
-            method: 'post',
+        var data = JSON.stringify({
+                    email: this.state.email,
+                    password: this.state.password,
+        });
+         axios.post('http://127.0.0.1:8000/api/v1/login', data ,{  
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-
-                email: this.state.email,
-                password: this.state.password,
-            })
-
-
-        }).then((Response) => Response.json()).then((Result) => {
-            if (Result.Status == 'success')
-            {
-                console.log(Response);
             }
-            else
-            {
-                console.log(Result);
-                alert('hi');
-            } 
+        })      
+        .then((response) => {
+            this.props.history.push('/Home');
+        })
+        .catch((error) => {
+            console.log(error);
         });
     }
 
