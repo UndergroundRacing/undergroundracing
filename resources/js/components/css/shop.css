@@ -1,0 +1,146 @@
+/* SHOP PAGE */
+
+.shop {
+    position: absolute;
+    top: 110px;
+    bottom: 0;
+    text-align: center;
+    color: white;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.shop-menu {
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+}
+
+.shop-menu span {
+    padding: 20px;
+    font-size: x-large;
+    text-transform: uppercase;
+}
+
+.shop-menu span:hover {
+    color: #60191B;
+    cursor: pointer;
+}
+
+
+.shop::-webkit-scrollbar {
+    display: none;
+}
+
+.shop-content {
+    width: 80%;
+    margin: auto;
+}
+
+.item {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    );
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    border: white;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.item span {
+    display: block;
+    width: 100%;
+    font-size: x-large;
+    padding: 10px;
+}
+
+#car-shop-img {
+    height: 150px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item button {
+    display: block;
+    background-color: #60191B;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 10px !important;
+    border: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 50px;
+    margin: auto;
+}
+
+.item button:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.item-price {
+    color: #60191B;
+    font-weight: bold;
+}
+
+/* ITEM INFO */
+
+.item-info {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    );
+    margin: auto;
+    width: 70%;
+    padding: 15px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+}
+
+.item-title {
+    font-size: x-large;
+    display: block;
+}
+
+#item-img {
+    height: 300px;
+    width: auto;
+}
+
+.item-info table {
+    width: 100%;
+}
+
+.item-info td {
+    font-size: x-large;
+}
+
+.item-price {
+    display: block;
+    font-size: xx-large;
+    padding: 15px;
+}
+
+.item-info button {
+    background-color: #60191B;
+    display: block;
+    color: white;
+    font-size: large;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    width: 50%;
+}
+
+.item-info button:hover {
+    cursor: pointer;
+    background-color: red;
+}

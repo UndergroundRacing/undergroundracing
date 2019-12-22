@@ -1,0 +1,276 @@
+/* USER HOME PAGE */
+
+.user {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    );
+    border-bottom-color: white;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    padding: 15px;
+}
+
+.user-info {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    color: white;
+}
+
+.user-info img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.user-info span {
+    display: block;
+    font-size: large;
+}
+
+.user-info span:last-child {
+    color: #60191B;
+    font-size: x-large;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.user-stats {
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.user-stats table {
+    width: 100%;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+.xp-bar {
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 15px;
+}
+
+.xp-bar div {
+    background-color: #60191B;
+    border-radius: 15px;
+}
+
+.user-task {
+    width: 40%;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.user-task span {
+    display: block;
+    padding: 5px;
+}
+
+.task-progress {
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.task-progress div {
+    background-color: #60191B;
+    border-radius: 15px;
+}
+
+.task-btn {
+    background-color: #60191B;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 15px;
+    width: 30%;
+}
+
+.task-btn-disabled {
+    background-color: #60191B;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 15px;
+    width: 30%;
+    opacity: 0.5;
+}
+
+.task-btn:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.go-race {
+    /* tinted background image */
+    background: linear-gradient(
+            rgba(35, 35, 50, 0.8),
+            rgba(35, 35, 50, 0.8)
+    ),
+    url("../img/race_flag.jpg");
+
+    border-bottom-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding: 15px;
+    text-align: center;
+}
+
+.go-race div {
+    color: white;
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+
+.go-race button {
+    background-color: #60191B;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    height: 50px;
+}
+
+.go-race button:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.race-options {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select-car {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.select-car img {
+    height: 250px;
+    width: auto;
+
+}
+
+.select-car img:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.select-car div {
+    font-size: large;
+}
+
+.car-swap {
+    overflow-x: scroll;
+    border-top: solid 1px white;
+}
+
+.car-swap table {
+    font-size: medium;
+}
+
+.car-swap button {
+    color: red;
+    background: none;
+    border: none;
+    display: block;
+    float: left;
+    font-size: x-large;
+}
+
+.car-swap button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    background: none;
+}
+
+.car-swap img {
+    width: 200px;
+    height: auto;
+}
+
+.car-swap img:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.select-race {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.select-race div {
+    font-size: large;
+}
+
+.select-race span {
+    padding: 15px
+}
+
+.select-race span:hover {
+    cursor: pointer;
+    color: #60191B;
+}
+
+.select-race button {
+    display: block;
+    margin: 10px;
+    width: 100%;
+}
+
+/* USER ABILITIES */
+.user-abilities {
+    display: table;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: center;
+    font-size: x-large;
+    border-bottom: solid 1px white;
+}
+
+.user-abilities span:first-child {
+    color: red;
+    font-size: xx-large;
+}
+
+.user-abilities span {
+    display: table-cell;
+    padding: 25px;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.user-abilities table {
+    text-align: left;
+}
+
+.user-abilities table td {
+    padding: 0 10px;
+}
+
+.user-abilities table td:nth-child(even) {
+    color: red;
+}
+
+#add-skill:hover {
+    color: red;
+    cursor: pointer;
+}

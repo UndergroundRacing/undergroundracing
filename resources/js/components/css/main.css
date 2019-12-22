@@ -1,0 +1,40 @@
+/* MAIN PAGE */
+.logo {
+    color: white;
+    text-align: center;
+    padding: 5%;
+    font-size: 50px;
+}
+
+.logo span {
+    font-size: 25px;
+    display: block;
+}
+
+.main-menu {
+    padding: 10%;
+    display: block;
+    text-align: center;
+}
+
+.main-menu button {
+    text-transform: uppercase;
+    margin-top: 15px;
+    background: #60191B;
+    font-size: x-large;
+    color: white;
+    border-radius: 10px;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    height: 15%;
+    display: inline-block;
+    padding: 15px;
+    border-color: white;
+    border-width: 2px;
+}
+
+.main-menu button:hover {
+    cursor: pointer;
+    background-color: red;
+}

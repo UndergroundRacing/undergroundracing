@@ -1,0 +1,43 @@
+#root {
+    /* tinted background image */
+    background: linear-gradient(
+            rgba(35, 35, 50, 0.8),
+            rgba(35, 35, 50, 0.8)
+    ),
+    url("../img/background.jpg");
+
+    /* Full height */
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-color: black;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #60191B;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #60191B;
+}
+
+
+body, html {
+    height: 100%;
+}

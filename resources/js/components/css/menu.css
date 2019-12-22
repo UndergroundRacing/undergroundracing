@@ -1,0 +1,48 @@
+/* MENU TOP BAR */
+
+.top-menu {
+    background-color: #171b21;
+    display: block;
+    text-align: right;
+    font-size: x-large;
+    border-bottom: solid 1px white;
+    margin: 0;
+}
+
+.top-menu li {
+    color: white;
+    display: inline-block;
+    padding: 10px;
+}
+
+.menu-logo {
+    display: inline-block;
+    float: left;
+    color: white;
+    padding: 10px;
+}
+
+.top-menu li:hover {
+    cursor: pointer;
+    background-color: #60191B;
+}
+
+/* USER MINI INFO BAR */
+
+.user-mini-info {
+    text-align: center;
+    color: white;
+    padding: 15px;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    );
+    border-bottom: solid 1px white;
+    font-size: large;
+}
+
+.user-mini-info i {
+    color: red;
+    padding-left: 15px;
+    padding-right: 15px;
+}

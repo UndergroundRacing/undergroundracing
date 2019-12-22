@@ -1,0 +1,90 @@
+/* LOGIN/REGISTER FORMS */
+
+.log-reg {
+    margin: auto;
+    width: 50%;
+    padding: 50px 0;
+}
+
+.form-title {
+    color: white;
+    text-transform: uppercase;
+    font-size: xx-large;
+    padding: 15px;
+}
+
+.user-form {
+    text-align: center;
+    border-radius: 15px;
+    padding: 5%;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    )
+}
+
+.user-form label {
+    color: white;
+    text-transform: uppercase;
+}
+
+.user-form input {
+    display: block;
+    width: 75%;
+    line-height: 35px;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+
+.user-form input:focus {
+    border-color: red;
+    outline-style: none;
+    box-shadow: none;
+
+}
+
+.user-form button {
+    background-color: #60191B;
+    display: block;
+    color: white;
+    font-size: large;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    width: 75%;
+}
+
+.user-form button:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.form-warn {
+    padding: 5px;
+    color: red;
+}
+
+.form-menu span {
+    color: white;
+    text-transform: uppercase;
+    padding: 5px;
+    font-size: large;
+    margin-top: 10px;
+    display: block;
+}
+
+.form-menu i {
+    color: white;
+    padding: 5px;
+    font-size: x-large;
+    margin-top: 10px;
+}
+
+.form-menu span:hover, .form-menu i:hover {
+    color: red;
+    cursor: pointer;
+}

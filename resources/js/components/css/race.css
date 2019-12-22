@@ -1,0 +1,118 @@
+/* RACE PAGE */
+
+.race {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 25px;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding: 15px;
+}
+
+.racer {
+    vertical-align: middle;
+    display: table-cell;
+    border: solid 1px white;
+    border-radius: 15px;
+    width: 45%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    height: 100%;
+}
+
+.racer-info {
+    display: table;
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+}
+
+.racer-info img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: table-cell;
+}
+
+.racer-info span {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: x-large;
+}
+
+.racer-info i {
+    color: red;
+}
+
+.racer-car {
+    display: table;
+    margin: auto;
+    text-align: left;
+    padding: 15px;
+}
+
+.racer-car span img {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.racer-car img {
+    width: auto;
+    height: 200px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.car-stats {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: large;
+    padding: 10px;
+}
+
+.race-results {
+    padding: 15px;
+    margin: auto;
+    text-align: left;
+    font-size: x-large;
+}
+
+.race-results span {
+    color: red;
+    margin-right: 15px;
+}
+
+.winner{
+    border: 2px red solid;
+    -moz-box-shadow: 0 0 10px red;
+    -webkit-box-shadow: 0 0 10px red;
+    box-shadow: 0 0 10px red;
+}
+
+.winner-tag{
+    text-transform: uppercase;
+    color: red;
+    font-size: x-large;
+}
+
+.winner-tag i{
+    padding: 0 10px;
+}
+
+.race-btn{
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    background: red;
+    border: none;
+    border-radius: 15px;
+    font-size: x-large;
+    text-align: center;
+    padding: 15px 50px;
+    margin: auto;
+}

@@ -1,0 +1,25 @@
+.summary{
+    background-color: rgba(0,0,0, 0.5);
+    border: solid 1px white;
+    border-radius: 25px;
+    color: white;
+    text-transform: uppercase;
+    padding: 25px;
+    margin: 25px 250px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.summary div:first-child{
+    color: red;
+}
+
+.content{
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+li span{
+    color: red;
+    display: block;
+}

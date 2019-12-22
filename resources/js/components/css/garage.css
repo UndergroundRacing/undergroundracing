@@ -1,0 +1,128 @@
+/* GARAGE PAGE */
+
+.garage {
+    position: absolute;
+    top: 110px;
+    bottom: 0;
+    text-align: center;
+    color: white;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.garage-content {
+    width: 80%;
+    margin: auto;
+}
+
+.garage::-webkit-scrollbar {
+    display: none;
+}
+
+.garage-item {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+    );
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    border: solid white;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.garage-item td {
+    width: 65%;
+}
+
+.garage-item span {
+    display: block;
+    width: 100%;
+    font-size: x-large;
+}
+
+.garage-item img {
+    height: 150px;
+    width: auto;
+}
+
+.garage-item:hover {
+    border-color: red;
+    cursor: pointer;
+}
+
+.car-upgrade {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    margin: 15px auto auto;
+    width: 70%;
+    padding: 15px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    color: white;
+    text-align: center;
+}
+
+.car-info {
+    display: table;
+}
+
+.car-info img {
+    display: table-cell;
+    padding: 5px;
+}
+
+.car-info table {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.car-parts {
+    display: block;
+}
+
+.car-parts span {
+    display: block;
+    font-size: x-large;
+}
+
+.car-parts table {
+    width: 100%;
+}
+
+.car-parts img, .parts-swap img {
+    width: 150px;
+    height: auto;
+}
+
+.car-parts img:hover, .parts-swap img:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.parts-swap {
+    overflow-x: scroll;
+    border-top: solid 1px white;
+}
+
+.parts-swap table {
+    font-size: medium;
+}
+
+.parts-swap button {
+    color: red;
+    background: none;
+    border: none;
+    display: block;
+    float: left;
+    font-size: x-large;
+}
+
+.parts-swap button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    background: none;
+}
