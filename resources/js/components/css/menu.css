@@ -34,15 +34,14 @@
     color: white;
     padding: 15px;
     background: linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
     );
     border-bottom: solid 1px white;
     font-size: large;
 }
 
-.user-mini-info i {
+.user-mini-info svg {
     color: red;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0 15px;
 }

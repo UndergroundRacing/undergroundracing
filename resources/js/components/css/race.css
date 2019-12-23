@@ -44,7 +44,7 @@
     font-size: x-large;
 }
 
-.racer-info i {
+.racer-info svg {
     color: red;
 }
 
@@ -100,8 +100,8 @@
     font-size: x-large;
 }
 
-.winner-tag i{
-    padding: 0 10px;
+.winner-tag svg{
+    margin: 0 10px;
 }
 
 .race-btn{

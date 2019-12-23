@@ -2,6 +2,8 @@ import React from "react";
 import '../css/styles.css';
 import '../css/chat.css';
 import UserPic from '../img/default_user.jpg';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 
 class Chat extends React.Component {
     constructor(props) {
@@ -37,7 +39,7 @@ class Chat extends React.Component {
                 </div>
                 <div className={"send-message"}>
                     <input type={"text"} placeholder={"Žinutė"}/>
-                    <i className="fa fa-paper-plane"/>
+                    <FontAwesomeIcon icon={faPaperPlane}/>
                 </div>
             </span>
         </div>);

@@ -2,8 +2,8 @@
 
 .user {
     background: linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
     );
     border-bottom-color: white;
     border-style: solid;
@@ -116,8 +116,8 @@
 .go-race {
     /* tinted background image */
     background: linear-gradient(
-            rgba(35, 35, 50, 0.8),
-            rgba(35, 35, 50, 0.8)
+        rgba(35, 35, 50, 0.8),
+        rgba(35, 35, 50, 0.8)
     ),
     url("../img/race_flag.jpg");
 
@@ -141,7 +141,6 @@
     padding: 15px;
     border-radius: 10px;
     display: inline-block;
-    height: 50px;
 }
 
 .go-race button:hover {
@@ -270,7 +269,7 @@
     color: red;
 }
 
-#add-skill:hover {
+.user-abilities svg:hover {
     color: red;
     cursor: pointer;
 }

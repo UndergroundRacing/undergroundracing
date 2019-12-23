@@ -18,13 +18,14 @@
     border-radius: 15px;
     padding: 5%;
     background: linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
     )
 }
 
 .user-form label {
     color: white;
+    display: block;
     text-transform: uppercase;
 }
 
@@ -77,14 +78,15 @@
     display: block;
 }
 
-.form-menu i {
+.form-menu svg {
     color: white;
-    padding: 5px;
+    margin: 5px;
     font-size: x-large;
     margin-top: 10px;
 }
 
-.form-menu span:hover, .form-menu i:hover {
+
+.form-menu span:hover, .form-menu svg:hover {
     color: red;
     cursor: pointer;
 }

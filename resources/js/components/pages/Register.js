@@ -1,9 +1,9 @@
 import React from 'react';
 import '../css/styles.css';
 import '../css/login_register.css';
-
-//import '../css/mobile.css';
-import Main from "./Main";
+import axios from 'axios';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHome} from "@fortawesome/free-solid-svg-icons";
 
 class Register extends React.Component {
     constructor(props) {
@@ -69,26 +69,25 @@ class Register extends React.Component {
             console.log("Passwords match, submitting registration form");
             this.setState({pass_match: true});
 
-            fetch('http://127.0.0.1:8000/api/v1/register', {
-                method: 'post',
+            var data = JSON.stringify({
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                c_password: this.state.repeat_pass,
+                username: this.state.user_name
+            });
+            axios.post('http://127.0.0.1:8000/api/v1/register', data, {
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'  
-                },
-                body: JSON.stringify({
-                    name: this.state.name,
-                    email: this.state.email,
-                    password: this.state.password,
-                    c_password: this.state.repeat_pass,
-                    username: this.state.user_name
-                })
-
-
-            }).then((Response) => Response.json()).then((Result) => {
-                if (Result.Status == 'success')
-                    console.log('Registration complete');
-                else console.log(Result);
+                    'Content-Type': 'application/json'
+                }
             })
+                .then((response) => {
+                    this.props.history.push('/Home');
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         } else {
             this.setState({pass_match: false});
         }
@@ -100,51 +99,51 @@ class Register extends React.Component {
         let warning_msg = this.state.pass_match === false ?
             <span className={"form-warn"}>Slaptažodžiai turi sutapti</span> : null;
 
-            return (<div className={"log-reg"}>
+        return (<div className={"log-reg"}>
 
-                <div className={"user-form"}>
-                    <div className={"logo"}>Underground Streets</div>
+            <div className={"user-form"}>
+                <div className={"logo"}>Underground Streets</div>
 
-                    <form onSubmit={this.handleSubmit}>
-                        <div className={"form-title"}>Registracija</div>
-                        <label>
-                            El. paštas
-                            <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
-                        </label>
+                <form onSubmit={this.handleSubmit}>
+                    <div className={"form-title"}>Registracija</div>
+                    <label>
+                        El. paštas
+                        <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
+                    </label>
 
-                        <label>
-                            Vardas
-                            <input type="text" id={"name"} value={this.state.name} onChange={this.handleChange}/>
-                        </label>
+                    <label>
+                        Vardas
+                        <input type="text" id={"name"} value={this.state.name} onChange={this.handleChange}/>
+                    </label>
 
-                        <label>
-                            Vartotojo vardas
-                            <input type="text" id={"user_name"} value={this.state.user_name}
-                                   onChange={this.handleChange}/>
-                        </label>
+                    <label>
+                        Vartotojo vardas
+                        <input type="text" id={"user_name"} value={this.state.user_name}
+                               onChange={this.handleChange}/>
+                    </label>
 
-                        <label>
-                            Slaptažodis
-                            <input type="password" id={"pass"} value={this.state.password}
-                                   onChange={this.handleChange}/>
-                        </label>
+                    <label>
+                        Slaptažodis
+                        <input type="password" id={"pass"} value={this.state.password}
+                               onChange={this.handleChange}/>
+                    </label>
 
-                        <label>
-                            Pakartokite slaptažodį
-                            <input type="password" id={"repeat_pass"} value={this.state.repeat_pass}
-                                   onChange={this.handleChange}/>
-                        </label>
+                    <label>
+                        Pakartokite slaptažodį
+                        <input type="password" id={"repeat_pass"} value={this.state.repeat_pass}
+                               onChange={this.handleChange}/>
+                    </label>
 
-                        <button type="submit">Registruotis</button>
+                    <button type="submit">Registruotis</button>
 
-                        {warning_msg}
-                    </form>
-                    <div className={"form-menu"}>
-                        <i className={"fa fa-home"} id={"home"} onClick={this.handleClick}/>
-                    </div>
+                    {warning_msg}
+                </form>
+                <div className={"form-menu"}>
+                    <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
                 </div>
+            </div>
 
-            </div>);
+        </div>);
     }
 }
 

@@ -2,6 +2,8 @@ import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import '../css/styles.css';
 import '../css/home.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPlus, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 import UserPhoto from '../img/user_photo.jpg';
 import R34 from '../img/R34.png';
@@ -48,8 +50,7 @@ class HomePage extends React.Component {
     }
 
     selectCar(event) {
-        console.log(event.target.id);
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case "back":
                 this.setState({
                     select_car: false
@@ -85,7 +86,7 @@ class HomePage extends React.Component {
 
         function CarSelect(props, handler) {
             return (<div className={"car-swap"}>
-                <button id={"back"} onClick={props.handler}><i id={"back_arrow"} className="fa fa-arrow-circle-left"/>
+                <button id={"back"} onClick={props.handler}><FontAwesomeIcon icon={faArrowLeft}/>
                 </button>
                 <table>
                     <thead>
@@ -173,19 +174,19 @@ class HomePage extends React.Component {
                         <tr>
                             <td>Reakcija</td>
                             <td>+5</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>5000$</td>
                         </tr>
                         <tr>
                             <td>Auto žinios</td>
                             <td>+10</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>10000$</td>
                         </tr>
                         <tr>
                             <td>Pavarų perjungimas</td>
                             <td>+7</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>7500$</td>
                         </tr>
                         </thead>

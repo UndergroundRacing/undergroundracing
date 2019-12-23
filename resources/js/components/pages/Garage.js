@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/styles.css';
 import '../css/garage.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 import R34 from "../img/R34.png";
 import Evo9 from "../img/Evo9.png";
@@ -54,7 +56,7 @@ class Garage extends React.Component {
     }
 
     selectPart(event) {
-        if (event.target.id === "back" || event.target.id === "back_arrow") {
+        if (event.currentTarget.id === "back" || event.currentTarget.id === "back_arrow") {
             this.setState({
                 part_swap: false,
                 part_category: ""
@@ -67,7 +69,7 @@ class Garage extends React.Component {
         function PartUpgrade(props, handler) {
             console.log(props);
             return (<div className={"parts-swap"}>
-                <button id={"back"} onClick={props.handler}><i id={"back_arrow"} className="fa fa-arrow-circle-left"/>
+                <button id={"back"} onClick={props.handler}><FontAwesomeIcon icon={faArrowLeft}/>
                 </button>
                 <table>
                     <thead>
