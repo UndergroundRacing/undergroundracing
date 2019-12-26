@@ -49,5 +49,17 @@ Route::prefix('v1')->group(function () {
         Route::post('removeStopsFromVechile', 'Api\GarageController@RemoveStopsFromVechile');
         Route::post('removeTurboFromVechile', 'Api\GarageController@RemoveTurboFromVechile');
         Route::post('removeNosFromVechile', 'Api\GarageController@RemoveNosFromVechile');
+        Route::get('getUserAbilities/{user_id}','Api\UserController@GetUserAbilities');
+        Route::post('updateUserAbilities','Api\UserController@UpdateUserAbilities');
+        Route::post('addPartToMarket','Api\MarketController@AddPartToMarket');
+        Route::post('addMarket','Api\MarketController@AddMarket');
+        Route::post('buyPartFromMarket','Api\MarketController@BuyPartFromMarket');
+        Route::post('cancelSellingPart','Api\MarketController@CancelSellingPart');
+        Route::post('createClub','Api\ClubController@CreateClub');
+        Route::post('addUserToClub','Api\ClubController@AddUserToClub');
+        Route::post('leaveClub','Api\ClubController@LeaveClub');
+        Route::post('destroyClub','Api\ClubController@DestroyClub');
+        Route::post('sendMessage','Api\MessagesController@SendMessage');
+        Route::post('getMessages','Api\MessagesController@GetMessages');
     });
 });

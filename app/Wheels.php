@@ -22,4 +22,6 @@ class Wheels extends Model
 
         return Wheels::create($input);
     }
+
+
 }

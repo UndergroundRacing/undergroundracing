@@ -15,6 +15,7 @@ class CreateGarageWheelsTable extends Migration
     {
         Schema::create('garage__wheels', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('in_use');
             $table->bigInteger('garage_id')->unsigned();
             $table->bigInteger('wheels_id')->unsigned();
             $table->foreign('garage_id')->references('id')->on('garages');

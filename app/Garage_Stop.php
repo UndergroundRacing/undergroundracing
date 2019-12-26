@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Garage_Stop extends Model
 {
     protected $fillable = [
-        'garage_id', 'stops_id'
+        'garage_id', 'stops_id','in_use'
     ];
 
     public function AddStopToGarage($request)
     {
         $input = [
+            'in_use' => 0,
             'garage_id' => $request['garage_id'],
             'stops_id' => $request['stops_id']
         ];
@@ -26,5 +27,12 @@ class Garage_Stop extends Model
         $stops = Garage_Stop::find($id);
         $new_stops = Stop::find($stops->stops_id);
         return $new_stops;
+    }
+
+    public function ChangeStopStatus($id,$status){
+        $stops = Garage_Stop::find($id);
+        $stops->in_use = $status;
+        $stops->save();
+        return $stops;
     }
 }

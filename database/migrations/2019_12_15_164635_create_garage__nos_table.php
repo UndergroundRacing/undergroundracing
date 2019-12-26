@@ -15,6 +15,7 @@ class CreateGarageNosTable extends Migration
     {
         Schema::create('garage__nos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('in_use');
             $table->bigInteger('garage_id')->unsigned();
             $table->bigInteger('nos_id')->unsigned();
             $table->foreign('garage_id')->references('id')->on('garages');

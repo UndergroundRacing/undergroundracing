@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 interface GarageRepositoryInterface
 {
+
     public function AddVechile(Request $request);
 
     public function AddEngine(Request $request);
