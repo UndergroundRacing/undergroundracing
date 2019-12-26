@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username','level','experience','cups', 'abilities','cash','credits','role','club_id'
+        'name', 'email', 'password', 'username', 'level', 'experience', 'cups', 'abilities', 'cash', 'credits', 'role', 'club_id'
     ];
 
     /**
@@ -38,7 +38,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createUser(Request $request){
+    /**
+     * register action
+     * @param Request $request
+     * @return mixed
+     */
+    public function createUser(Request $request)
+    {
+
+        $abilities = [
+            'acceleration' => 1,
+            'shifting' => 1,
+            'reaction' => 1,
+            'mobility' => 1,
+        ];
+
         $input = [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -49,7 +63,7 @@ class User extends Authenticatable
             'cash' => 0,
             'credits' => 0,
             'cups' => 0,
-            'abilities' => '',
+            'abilities' => serialize($abilities),
             'role' => 1,
             'club_id' => null
         ];
@@ -57,5 +71,108 @@ class User extends Authenticatable
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         return $user;
+    }
+
+    /**
+     * @param $userId
+     * @return int|mixed
+     */
+    public function getAbilities($userId)
+    {
+        $user = User::find($userId);
+        if ($user != null) {
+            return unserialize($user->abilities);
+        }
+        return -1;
+    }
+
+    public function GetUser($id)
+    {
+        return User::find($id);
+    }
+
+    /**
+     * @param $request
+     */
+    public function updateAbilities($request)
+    {
+        switch ($request['action']) {
+            case 1:
+                return $this->AddUserAbility($request['userId'],'acceleration');
+                break;
+            case 2:
+                return $this->AddUserAbility($request['userId'],'shifting');
+                break;
+            case 3:
+                return $this->AddUserAbility($request['userId'],'reaction');
+                break;
+            case 4:
+                return $this->AddUserAbility($request['userId'],'mobility');
+                break;
+            default:
+                return 'null';
+                break;
+        }
+    }
+
+    /**
+     * @param $userId
+     * @param $ability
+     * @return float|int
+     */
+    private function AddUserAbility($userId,$ability)
+    {
+        $user = $this->GetUser($userId);
+        $abilities = unserialize($user->abilities);
+        // TODO PRICE CALC
+        $money_needed = 1024 + (1024 * $abilities[$ability]);
+        if($this->CheckIfUserHasEnoughMoney($userId,$money_needed)){
+            $abilities[$ability] += 1;
+            $user->abilities = serialize($abilities);
+            $user->save();
+            $this->MinusUserCash($userId,$money_needed);
+            return $user;
+        }
+        return $money_needed;
+    }
+
+    /**
+     * @param $userId
+     * @param $money_needed
+     * @return bool
+     */
+    public function CheckIfUserHasEnoughMoney($userId,$money_needed){
+        $user = $this->GetUser($userId);
+        if($user->cash >= $money_needed){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $userId
+     * @param $cash
+     * @return mixed
+     */
+    public function AddCashForUser($userId,$cash){
+        $user = $this->getUser($userId);
+        $user->cash += $cash;
+        $user->save();
+        return $user;
+    }
+
+    /**
+     * @param $userId
+     * @param $cash
+     * @return int
+     */
+    public function MinusUserCash($userId,$cash){
+        if($this->CheckIfUserHasEnoughMoney($userId,$cash)){
+            $user = $this->getUser($userId);
+            $user->cash -= $cash;
+            $user->save();
+            return $user;
+        }
+        return -1;
     }
 }

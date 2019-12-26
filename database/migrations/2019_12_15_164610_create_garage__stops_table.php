@@ -15,6 +15,7 @@ class CreateGarageStopsTable extends Migration
     {
         Schema::create('garage__stops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('in_use');
             $table->bigInteger('garage_id')->unsigned();
             $table->bigInteger('stops_id')->unsigned();
             $table->foreign('garage_id')->references('id')->on('garages');
