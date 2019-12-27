@@ -86,12 +86,14 @@ class Garage_Vechile extends Model
             $specs = unserialize($vechile->specification);
             //if vechile has engine recalcualte specs
             if($parts['engine'] != null){
+                $eng->ChangeNosStatus($parts['engine'],0);
                 $old_engine_specs = $eng->GetEngineSpecsById($parts['engine']);
                 $specs['weight'] -=  $old_engine_specs["weight"];
                 $specs['power'] -= $old_engine_specs["power"];
             }
             // Adding new specifications and part in car
             $parts['engine'] = $request['garage_engine_id'];
+            $eng->ChangeEngineStatus($request['garage_engine_id'],1);
             $specs['weight'] += $engine_specs['weight'];
             $specs['power'] += $engine_specs['power'];
             $specs['capacity'] = $engine_specs['capacity'];
@@ -116,12 +118,14 @@ class Garage_Vechile extends Model
             $specs = unserialize($vechile->specification);
             //if vechile has engine recalcualte specs
             if($parts['wheels'] != null){
+                $wheel->ChangeWheelStatus($parts['wheels'],0);
                 $old_engine_specs = $wheel->GetWheelsSpecsById($parts['wheels']);
                 $specs['weight'] -=  $old_engine_specs["weight"];
                 $specs['power'] -= $old_engine_specs["power"];
             }
             // Adding new specifications and part in car
             $parts['wheels'] = $request['garage_wheel_id'];
+            $wheel->ChangeWheelStatus($request['garage_wheel_id'],1);
             $specs['weight'] += $wheels_spec['weight'];
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
@@ -145,11 +149,13 @@ class Garage_Vechile extends Model
             $specs = unserialize($vechile->specification);
             //if vechile has engine recalcualte specs
             if($parts['nos'] != null){
+                $nos->ChangeNosStatus($parts['nos'],0);
                 $old_engine_specs = $nos->GetNosSpecsById($parts['nos']);
                 $specs['power'] -= $old_engine_specs["power"];
             }
             // Adding new specifications and part in car
             $parts['nos'] = $request['garage_nos_id'];
+            $nos->ChangeNosStatus($request['garage_nos_id'],1);
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
@@ -168,11 +174,15 @@ class Garage_Vechile extends Model
         //adding new engine to vechile
         if($wheels_spec['level'] <= $vechile_specs['level']){
             $parts = unserialize($vechile->parts);
+            if($parts['stops'] != null){
+                $stops->ChangeStopStatus($parts['stops'],0);
+            }
             $specs = unserialize($vechile->specification);
             //if vechile has engine recalcualte specs
             // Adding new specifications and part in car
             $parts['stops'] = $request['garage_stops_id'];
             $specs['stop_time'] = $wheels_spec['stop_time'];
+            $stops->ChangeStopStatus($parts['stops'],1);
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
             return $vechile;
@@ -193,11 +203,13 @@ class Garage_Vechile extends Model
             $specs = unserialize($vechile->specification);
             //if vechile has engine recalcualte specs
             if($parts['turbo'] != null){
+                $turbo->ChangeTurboStatus($parts['turbo'],0);
                 $old_engine_specs = $turbo->GetTurboSpecsById($parts['turbo']);
                 $specs['power'] -= $old_engine_specs["power"];
             }
             // Adding new specifications and part in car
             $parts['turbo'] = $request['garage_turbo_id'];
+            $turbo->ChangeTurboStatus($parts['turbo'],1);
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
@@ -216,6 +228,7 @@ class Garage_Vechile extends Model
         $parts = unserialize($vechile->parts);
         if($parts['engine'] != null) {
             $engine_specs = $eng->GetEngineSpecsById($parts['engine']);
+            $eng->ChangeEngineStatus($parts['engine'],0);
             $specs = unserialize($vechile->specification);
             $specs['weight'] -=  $engine_specs["weight"];
             $specs['power'] -= $engine_specs["power"];
@@ -238,6 +251,7 @@ class Garage_Vechile extends Model
         $parts = unserialize($vechile->parts);
         if($parts['wheels'] != null) {
             $wheels_spec = $wheels->GetWheelsSpecsById($parts['wheels']);
+            $wheels->ChangeWheelStatus($parts['wheels'],0);
             $specs = unserialize($vechile->specification);
             $specs['weight'] -= $wheels_spec['weight'];
             $specs['power'] -= $wheels_spec['power'];
@@ -258,6 +272,7 @@ class Garage_Vechile extends Model
         $parts = unserialize($vechile->parts);
         if($parts['stops'] != null) {
             $stops_spec = $stops->GetStopsSpecsById($parts['stops']);
+            $stops->ChangeStopStatus($parts['stops'],0);
             $specs = unserialize($vechile->specification);
             $specs['stop_time'] -= $stops_spec['stop_time'];
             $parts['stops'] = null;
@@ -277,6 +292,7 @@ class Garage_Vechile extends Model
         $parts = unserialize($vechile->parts);
         if($parts['turbo'] != null) {
             $turbo_specs = $turbo->GetTurboSpecsById($parts['turbo']);
+            $turbo->ChangeTurboStatus($parts['turbo'],0);
             $specs = unserialize($vechile->specification);
             $specs['power'] -= $turbo_specs['power'];
             $parts['turbo'] = null;
@@ -296,6 +312,7 @@ class Garage_Vechile extends Model
         $parts = unserialize($vechile->parts);
         if($parts['nos'] != null) {
             $turbo_specs = $nos->GetNosSpecsById($parts['nos']);
+            $nos->ChangeNosStatus($parts['nos'],0);
             $specs = unserialize($vechile->specification);
             $specs['power'] -= $turbo_specs['power'];
             $parts['nos'] = null;

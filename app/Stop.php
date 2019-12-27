@@ -19,7 +19,6 @@ class Stop extends Model
             'part_id' => $request['part_id'],
             'image_url' => $request['image_url']
         ];
-
         return Stop::create($input);
     }
 }

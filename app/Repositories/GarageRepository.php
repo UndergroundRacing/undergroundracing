@@ -40,7 +40,7 @@ class GarageRepository implements GarageRepositoryInterface
 
         $vechile = new Vechile();
         $createdVechile = $vechile->createVechile($request);
-        return response()->json(['success' => $createdVechile],$this->successStatus);
+        return response()->json($createdVechile,$this->successStatus);
     }
 
     /**
@@ -175,6 +175,10 @@ class GarageRepository implements GarageRepositoryInterface
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddVechileToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -190,6 +194,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_vechile],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddEngineToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -205,6 +213,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_engine],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddNosToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -220,6 +232,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_nos],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddStopToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -235,6 +251,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_stop],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddTurboToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -250,6 +270,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_turbo],$this->successStatus);
     }
 
+    /**
+     * @param $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function ChangeCarInUse($request){
         $validator = Validator::make($request->all(),
             [
@@ -264,12 +288,20 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $gar],$this->successStatus);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function GetAllVechilesInGarage($id)
     {
         $garage = new Garage_Vechile();
         return response()->json(['success' => $garage->GetAllVechilesByUserId($id)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddEngineToVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -286,6 +318,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->AddEngineForVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddWheelsToGarage(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -302,6 +338,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage_wheels],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddWheelsToVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -317,6 +357,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->AddWheelsForVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddNosToVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -332,6 +376,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->AddNosToVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddStopsToVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -347,6 +395,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->AddStopsToVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function AddTurboToVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -362,6 +414,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->AddTurboToVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function RemoveEngineFromVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -377,6 +433,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->RemoveEngineFromVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function RemoveWheelsFromVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -392,6 +452,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->RemoveWheelsFromVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function RemoveStopsFromVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -407,6 +471,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->RemoveStopsFromVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function RemoveTurboFromVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -422,6 +490,10 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->RemoveTurboFromVechile($request)],$this->successStatus);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function RemoveNosFromVechile(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -436,6 +508,4 @@ class GarageRepository implements GarageRepositoryInterface
         $garage = new Garage_Vechile();
         return response()->json(['success' => $garage->RemoveNosFromVechile($request)],$this->successStatus);
     }
-
-
 }
