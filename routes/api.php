@@ -61,5 +61,7 @@ Route::prefix('v1')->group(function () {
         Route::post('destroyClub','Api\ClubController@DestroyClub');
         Route::post('sendMessage','Api\MessagesController@SendMessage');
         Route::post('getMessages','Api\MessagesController@GetMessages');
+        Route::post('doRaceAction','Api\RacesController@DoRaceAction');
+        Route::get('searchOpponent/{user_id}','Api\RacesController@SearchOpponent');
     });
 });
