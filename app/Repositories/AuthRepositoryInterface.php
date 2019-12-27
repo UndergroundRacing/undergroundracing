@@ -13,4 +13,7 @@ interface AuthRepositoryInterface
     public function logout(Request $request);
 
     public function getUser();
+
+    public function AdminLogin();
+
 }
