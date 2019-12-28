@@ -136,6 +136,8 @@ class User extends Authenticatable
         return $money_needed;
     }
 
+
+
     /**
      * @param $userId
      * @param $money_needed

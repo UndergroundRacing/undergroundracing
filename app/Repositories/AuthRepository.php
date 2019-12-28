@@ -49,4 +49,20 @@ class AuthRepository implements AuthRepositoryInterface
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
     }
+
+    public function AdminLogin()
+    {
+        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+            $user = Auth::user();
+            if($user->role === 2){
+                $success['token'] =  $user->createToken('AppName')->accessToken;
+                return response()->json(['success' => $success], $this->successStatus);
+            }
+            else{
+                return response()->json(['error'=>'You are not admin user!'], 401);
+            }
+        } else{
+            return response()->json(['error'=>'Unauthorised'], 401);
+        }
+    }
 }

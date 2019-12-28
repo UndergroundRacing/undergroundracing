@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::post('login', 'Api\AuthController@login');
+    Route::post('adminLogin', 'Api\AuthController@AdminLogin');
     Route::post('register', 'Api\AuthController@register');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getUser', 'Api\AuthController@getUser');
@@ -61,5 +62,9 @@ Route::prefix('v1')->group(function () {
         Route::post('destroyClub','Api\ClubController@DestroyClub');
         Route::post('sendMessage','Api\MessagesController@SendMessage');
         Route::post('getMessages','Api\MessagesController@GetMessages');
+        Route::post('doRaceAction','Api\RacesController@DoRaceAction');
+        Route::get('searchOpponent/{user_id}','Api\RacesController@SearchOpponent');
+        Route::get('getLastRace/{user_id}','Api\RacesController@GetLastRace');
+        Route::post('registerToTournament','Api\TournamentController@RegisterToTournament');
     });
 });

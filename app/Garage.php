@@ -11,9 +11,10 @@ class Garage extends Model
     ];
 
     public function createGarage($user_id){
+        //TODO: Change default car in use
         $input = [
             'user_id' => $user_id,
-            'car_in_use_id' => null
+            'car_in_use_id' => 1
         ];
 
         $garage = Garage::create($input);
@@ -32,5 +33,6 @@ class Garage extends Model
     public function GetGarageByUserId($user_id){
         return Garage::where('user_id',$user_id)->get()->first();
     }
+
 
 }
