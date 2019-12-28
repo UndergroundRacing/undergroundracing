@@ -22,7 +22,6 @@ import Speed from '../icons/Speed.svg';
 import Acceleration from '../icons/Acceleration.svg';
 import Weight from '../icons/Weight.svg';
 
-;
 
 class Shop extends React.Component {
     constructor(props) {
