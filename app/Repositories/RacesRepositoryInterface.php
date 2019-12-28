@@ -9,4 +9,6 @@ interface RacesRepositoryInterface
     public function DoRaceAction(Request $request);
 
     public function SearchOponent($id);
+
+    public function GetLastRace($user_id);
 }

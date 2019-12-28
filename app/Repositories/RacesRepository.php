@@ -39,4 +39,9 @@ class RacesRepository implements RacesRepositoryInterface
     {
         return response()->json(['success' => $this->races->SearchOponent($id)],$this->successStatus);
     }
+
+    public function GetLastRace($user_id)
+    {
+        return response()->json(['success' => $this->races->GetLastRace($user_id)],$this->successStatus);
+    }
 }

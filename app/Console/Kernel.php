@@ -24,8 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('createtournament')
+                  ->cron('00 00 * * *');
+
+        $schedule->command('giveTournamentRewards')
+            ->cron('55 23 * * *');
     }
 
     /**

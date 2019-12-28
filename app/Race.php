@@ -44,6 +44,10 @@ class Race extends Model
         return $race;
     }
 
+    public function GetLastRace($user_id){
+        return Race::where('first_racer',$user_id)->get()->last();
+    }
+
     public function SearchOponent($id){
         $user = $this->user->GetUser($id);
         $minLevel = $user->level - 7;
@@ -77,21 +81,21 @@ class Race extends Model
     }
 
     public function DoRaceAction($request){
-        $firstUserAbilities = $this->user->getAbilities($request['first_racer']);
-        $firstUserGarage = $this->garage->GetGarageByUserId($request['first_racer']);
-        $firstUserCarSpecs = $this->vehicle->GetUserVechileSpecs($firstUserGarage->car_in_use_id);
-        $secondUserAbilities = $this->user->getAbilities($request['second_racer']);
-        $secondUserGarage = $this->garage->GetGarageByUserId($request['second_racer']);
-        $secondUserCarSpecs = $this->vehicle->GetUserVechileSpecs($secondUserGarage->car_in_use_id);
-        $firsUserCalculation = $this->CalculateUserTime($firstUserCarSpecs,$firstUserAbilities);
-        $secondUserCalculation = $this->CalculateUserTime($secondUserCarSpecs,$secondUserAbilities);
+        $firsUserCalculation = $this->CalculateUserTimesWrapper($request['first_racer']);
+        $secondUserCalculation = $this->CalculateUserTimesWrapper($request['second_racer']);
         if($firsUserCalculation <= $secondUserCalculation){
             return $request['first_racer'];
         }
         else{
             return $request['second_racer'];
         }
-        return $secondUserCalculation;
+    }
+
+    public function CalculateUserTimesWrapper($user_id){
+        $userAbilities = $this->user->getAbilities($user_id);
+        $userGarage = $this->garage->GetGarageByUserId($user_id);
+        $userCarSpecs = $this->vehicle->GetUserVechileSpecs($userGarage->car_in_use_id);
+        return $this->CalculateUserTime($userCarSpecs,$userAbilities);
     }
 
     public function CalculateUserTime($userCarSpecs,$userAbilities){

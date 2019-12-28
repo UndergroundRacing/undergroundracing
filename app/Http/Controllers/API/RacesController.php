@@ -13,8 +13,7 @@ class RacesController extends Controller
 {
     private $raceRepository;
 
-    public function __construct(RacesRepositoryInterface $raceRepository)
-    {
+    public function __construct(RacesRepositoryInterface $raceRepository){
         $this->raceRepository = $raceRepository;
     }
 
@@ -24,5 +23,9 @@ class RacesController extends Controller
 
     public function SearchOpponent($id){
         return $this->raceRepository->SearchOponent($id);
+    }
+
+    public function GetLastRace($user_id){
+        return $this->raceRepository->GetLastRace($user_id);
     }
 }
