@@ -18,6 +18,7 @@ class CreateVechilesTable extends Migration
             $table->string('title');
             $table->string('level');
             $table->double('weight');
+            $table->integer('is_default');
             $table->string('image_url');
             $table->bigInteger('part_id')->unsigned();
             $table->foreign('part_id')->references('id')->on('parts');

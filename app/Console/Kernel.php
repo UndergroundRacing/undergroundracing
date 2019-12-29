@@ -29,6 +29,12 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('giveTournamentRewards')
             ->cron('55 23 * * *');
+
+        $schedule->command('createclubtournament')
+            ->cron('00 00 * * *');
+
+        $schedule->command('calculatetournamentresults')
+            ->cron('55 23 * * *');
     }
 
     /**

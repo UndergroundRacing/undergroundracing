@@ -79,6 +79,11 @@ class Club extends Model
         return $count;
     }
 
+    public function GetClubMembers($club_id){
+        $members = User::where(['club_id' => $club_id])->get();
+        return $members;
+    }
+
     public function GetClubOwner($club_id){
         $club = $this->GetClub($club_id);
         return $club->owner_id;

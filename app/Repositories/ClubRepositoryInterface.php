@@ -13,4 +13,6 @@ interface ClubRepositoryInterface
     public function LeaveClub(Request $request);
 
     public function DestroyClub(Request $request);
+
+    public function RegisterToTournament(Request $request);
 }

@@ -32,6 +32,7 @@ class GarageRepository implements GarageRepositoryInterface
                 'level' => 'required',
                 'weight' => 'required',
                 'part_id' => 'required',
+                'is_default' => 'required',
                 'image_url' => 'required'
             ]);
         if ($validator->fails()) {
@@ -54,6 +55,7 @@ class GarageRepository implements GarageRepositoryInterface
                 'weight' => 'required',
                 'stop_time' => 'required',
                 'part_id' => 'required',
+                'title' => 'required',
                 'image_url' => 'required'
             ]);
         if ($validator->fails()) {
@@ -99,6 +101,7 @@ class GarageRepository implements GarageRepositoryInterface
                 'weight' => 'required',
                 'power' => 'required',
                 'part_id' => 'required',
+                'title' => 'required',
                 'image_url' => 'required'
             ]);
         if ($validator->fails()) {
@@ -121,6 +124,7 @@ class GarageRepository implements GarageRepositoryInterface
                 'weight' => 'required',
                 'power' => 'required',
                 'part_id' => 'required',
+                'title' => 'required',
                 'image_url' => 'required'
             ]);
         if ($validator->fails()) {
@@ -163,6 +167,8 @@ class GarageRepository implements GarageRepositoryInterface
                 'power' => 'required',
                 'capacity' => 'required',
                 'part_id' => 'required',
+                'is_default' => 'required',
+                'title' => 'required',
                 'image_url' => 'required'
             ]);
         if ($validator->fails()) {

@@ -22,6 +22,10 @@ class AuthController extends Controller
         return $this->authRepository->register($request);
     }
 
+    public function AdminRegister(Request $request) {
+        return $this->authRepository->AdminRegister($request);
+    }
+
     public function AdminLogin(){
         return $this->authRepository->AdminLogin();
     }

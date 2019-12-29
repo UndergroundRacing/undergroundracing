@@ -11,10 +11,9 @@ class Garage extends Model
     ];
 
     public function createGarage($user_id){
-        //TODO: Change default car in use
         $input = [
             'user_id' => $user_id,
-            'car_in_use_id' => 1
+            'car_in_use_id' => null
         ];
 
         $garage = Garage::create($input);
