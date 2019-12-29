@@ -322,7 +322,10 @@ class Garage_Vechile extends Model
         }
         return null;
     }
-
+    public function GetUserVechileSpecs($id){
+        $new_vechile = Garage_Vechile::find($id);
+        return unserialize($new_vechile->specification);
+    }
 
     public function GetVechileSpecs($id){
         $new_vechile = Vechile::find($id);
