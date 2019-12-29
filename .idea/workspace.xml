@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40b6e382-0b7d-4740-bdc7-cfd5da36444b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/store/action_types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/store/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/store/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/store/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/store/action_types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/action_types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/store/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,6 +199,7 @@
       <workItem from="1577618872383" duration="13000" />
       <workItem from="1577618912708" duration="139000" />
       <workItem from="1577619851267" duration="4634000" />
+      <workItem from="1577628757706" duration="5349000" />
     </task>
     <task id="LOCAL−00001" summary="Responsive design implementation">
       <created>1577543201390</created>

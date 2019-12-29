@@ -223,11 +223,6 @@
         padding: 15px
     }
 
-    .select-race span:hover {
-        cursor: pointer;
-        color: #60191B;
-    }
-
     .select-race button {
         display: block;
         margin: 10px;
@@ -497,11 +492,6 @@
 
     .select-race span {
         padding: 15px
-    }
-
-    .select-race span:hover {
-        cursor: pointer;
-        color: #60191B;
     }
 
     .select-race button {

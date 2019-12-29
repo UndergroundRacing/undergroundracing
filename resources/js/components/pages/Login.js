@@ -21,7 +21,6 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
             email: "",
             password: "",
@@ -33,10 +32,6 @@ class Login extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
-    }
-
-    componentDidMount() {
-        console.log("Login page mounted", this.props);
     }
 
     handleClick(event) {
@@ -84,11 +79,17 @@ class Login extends React.Component {
             }
         })
             .then((response) => {
+
+                const token = JSON.parse(response.request.response).success.token;
+                this.props.addToken({token});
                 this.props.history.push('/Home');
+
             })
             .catch((error) => {
-                console.log(error);
+                console.log(error.message);
             });
+
+        event.preventDefault();
     }
 
     render() {

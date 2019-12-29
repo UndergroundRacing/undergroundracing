@@ -1,15 +1,19 @@
-import {ADD_TOKEN} from "./action_types";
+import {ADD_TOKEN, ADD_USER} from "./action_types";
 
 const initialState = {
-    token: ""
+    token: "",
+    user_info: null
 };
 
 function rootReducer(state = initialState, action) {
+
     if (action.type === ADD_TOKEN) {
-        return Object.assign({}, state, {
-            token: action.payload
-        });
+        return {...state, token: action.payload.token};
     }
+    else if(action.type === ADD_USER){
+        return {...state, user_info: action.payload};
+    }
+
     return state;
 }
 

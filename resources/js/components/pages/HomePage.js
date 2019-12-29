@@ -4,7 +4,7 @@ import '../css/styles.css';
 import '../css/home.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-
+import axios from "axios";
 import UserPhoto from '../img/user_photo.jpg';
 import R34 from '../img/R34.png';
 import Evo9 from '../img/Evo9.png';
@@ -12,8 +12,12 @@ import S13Hatch from '../img/S13Hatch.png';
 import S15 from '../img/S15.png';
 
 import Race from '../pages/Race';
+import {connect} from "react-redux";
 
-//import '../css/mobile.css';
+const mapStateToProps = state => {
+    return {token: state.token};
+};
+
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -28,6 +32,32 @@ class HomePage extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.selectCar = this.selectCar.bind(this);
+    }
+
+    componentDidMount() {
+
+        console.log(this.props.token);
+        axios.defaults.headers.common = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+
+
+        axios.post('http://127.0.0.1:8000/api/v1/getUser', {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + this.props.token
+            }
+        })
+            .then((response) => {
+
+                console.log("User response", response);
+
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
     }
 
     handleClick(event) {
@@ -198,4 +228,5 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+const Home = connect(mapStateToProps, null)(HomePage);
+export default Home;

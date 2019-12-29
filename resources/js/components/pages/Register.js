@@ -4,18 +4,6 @@ import '../css/login_register.css';
 import axios from 'axios';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from "@fortawesome/free-solid-svg-icons";
-import {addToken} from "../store/actions";
-import {connect} from "react-redux";
-
-const mapStateToProps = state => {
-    return {token: state.token};
-};
-
-function mapDispatchToProps(dispatch) {
-    return {
-        addToken: article => dispatch(addToken(article))
-    };
-}
 
 class Register extends React.Component {
     constructor(props) {
@@ -95,13 +83,14 @@ class Register extends React.Component {
                 }
             })
                 .then((response) => {
+                    const token = JSON.parse(response.request.response).success.token;
+                    this.props.addToken({token});
                     this.props.history.push('/Home');
+
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.log(error.message);
                 });
-        } else {
-            this.setState({pass_match: false});
         }
         event.preventDefault();
     }
@@ -159,6 +148,5 @@ class Register extends React.Component {
     }
 }
 
-const RegisterComponent = connect(mapStateToProps, mapDispatchToProps)(Register);
-export default RegisterComponent;
+export default Register;
 
