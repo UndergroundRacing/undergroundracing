@@ -36,28 +36,26 @@ class HomePage extends React.Component {
 
     componentDidMount() {
 
-        console.log(this.props.token);
         axios.defaults.headers.common = {
             'X-Requested-With': 'XMLHttpRequest',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         };
 
+        let auth = 'Bearer ';
+        let token = this.props.token.toString();
 
-        axios.post('http://127.0.0.1:8000/api/v1/getUser', {
+        console.log(token);
+
+        axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
             headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + this.props.token
+                'Authorization': auth + token
             }
-        })
-            .then((response) => {
+        }).then(response => {
 
-                console.log("User response", response);
-
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-
+            console.log(response.data)
+        });
+        
     }
 
     handleClick(event) {

@@ -88121,20 +88121,20 @@ function (_React$Component) {
   _createClass(HomePage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props.token);
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.defaults.headers.common = {
         'X-Requested-With': 'XMLHttpRequest',
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       };
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('http://127.0.0.1:8000/api/v1/getUser', {
+      var auth = 'Bearer ';
+      var token = this.props.token.toString();
+      console.log(token);
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("http://127.0.0.1:8000/api/v1/getUser", [], {
         headers: {
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + this.props.token
+          'Authorization': auth + token
         }
       }).then(function (response) {
-        console.log("User response", response);
-      })["catch"](function (error) {
-        console.log(error.message);
+        console.log(response.data);
       });
     }
   }, {
