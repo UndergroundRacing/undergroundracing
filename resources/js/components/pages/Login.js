@@ -1,23 +1,33 @@
 import React from 'react';
-import axios from 'axios';
-import '../css/styles.css';
+import {connect} from "react-redux";
+import '../css/main.css';
 import '../css/login_register.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHome, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import {addToken} from "../store/actions";
 
-//import '../css/mobile.css';
-import Main from "./Main";
-import ForgotPass from "./ForgotPass";
-import Register from "./Register";
+const mapStateToProps = state => {
+    return {token: state.token};
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToken: article => dispatch(addToken(article))
+    };
+}
 
 class Login extends React.Component {
-
-
     constructor(props) {
         super(props);
-
 
         this.state = {
             email: "",
             password: "",
+            login: true,
+            forgot_pass: false,
+            return: false,
+            register: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +35,7 @@ class Login extends React.Component {
     }
 
     handleClick(event) {
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case "forgot_pass":
 
                 break;
@@ -36,7 +46,7 @@ class Login extends React.Component {
                 this.props.history.push('/Register');
                 break;
             default:
-                this.props.history.push('/Login');
+
         }
     }
 
@@ -56,61 +66,68 @@ class Login extends React.Component {
                 break;
         }
     }
-    
 
     handleSubmit(event) {
         var data = JSON.stringify({
-                    email: this.state.email,
-                    password: this.state.password,
+            email: this.state.email,
+            password: this.state.password
         });
-         axios.post('http://127.0.0.1:8000/api/v1/login', data ,{  
+        axios.post('http://127.0.0.1:8000/api/v1/login', data, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })      
-        .then((response) => {
-            this.props.history.push('/Home');
         })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((response) => {
+
+                const token = JSON.parse(response.request.response).success.token;
+                this.props.addToken({token});
+                this.props.history.push('/Home');
+
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
+        event.preventDefault();
     }
 
-
     render() {
-        return (<div className={"log-reg"}>
 
-            <div className={"user-form"}>
-                <div className={"logo"}>Underground Streets</div>
+        if (window.location.pathname === 'Login?') {
+            this.props.history.push('/Home');
+        } else {
+            return (<div className={"log-reg"}>
 
-                <form onSubmit={this.handleSubmit}>
-                    <div className={"form-title"}>Prisijungimas</div>
-                    <label>
-                        El. paštas
-                        <input type="email" id={"email"} value={this.state.email}
-                               onChange={this.handleChange}/>
-                    </label>
+                <div className={"user-form"}>
+                    <div className={"logo"}>Underground Streets</div>
 
-                    <label>
-                        Slaptažodis
-                        <input type="password" id={"password"} value={this.state.password}
-                               onChange={this.handleChange}/>
-                    </label>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className={"form-title"}>Prisijungimas</div>
+                        <label>
+                            El. paštas
+                            <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
+                        </label>
 
-                    <button type="submit">Prisijungti</button>
-                </form>
-                <div className={"form-menu"}>
-                    <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio priminimas</span>
-                    <i className="fa fa-home" id={"home"} onClick={this.handleClick}/>
-                    <i className="fa fa-user-plus" id={"register"} onClick={this.handleClick}/>
+                        <label>
+                            Slaptažodis
+                            <input type="password" id={"password"} value={this.state.password}
+                                   onChange={this.handleChange}/>
+                        </label>
+
+                        <button type="submit">Prisijungti</button>
+                    </form>
+                    <div className={"form-menu"}>
+                        <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio priminimas</span>
+                        <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
+                        <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
+                    </div>
                 </div>
-            </div>
 
-        </div>);
-
+            </div>);
+        }
     }
 }
 
-export default Login;
-
+const LoginComponent = connect(mapStateToProps, mapDispatchToProps)(Login);
+export default LoginComponent;

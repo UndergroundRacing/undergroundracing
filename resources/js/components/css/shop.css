@@ -39,8 +39,8 @@
 
 .item {
     background: linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
     );
     display: inline-block;
     width: 30%;
@@ -92,8 +92,8 @@
 
 .item-info {
     background: linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
     );
     margin: auto;
     width: 70%;

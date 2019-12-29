@@ -1,40 +1,135 @@
-/* MAIN PAGE */
-.logo {
-    color: white;
-    text-align: center;
-    padding: 5%;
-    font-size: 50px;
+/* Extra small devices (phones, 320px and down) */
+@media only screen and (max-width: 320px) {
+    /* MAIN PAGE */
+    .logo {
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 35px;
+    }
+
+    .logo span {
+        font-size: 15px;
+        display: block;
+    }
+
+    .main-menu {
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .main-menu button {
+        text-transform: uppercase;
+        margin-top: 15px !important;
+        background: #60191B;
+        font-size: large;
+        color: white;
+        border-radius: 10px;
+        margin: auto;
+        height: 15%;
+        padding: 15px;
+        border-color: white;
+        border-width: 2px;
+        display: block;
+        width: 80%;
+    }
+
+    .main-menu button:hover {
+        cursor: pointer;
+        background-color: red;
+    }
 }
 
-.logo span {
-    font-size: 25px;
-    display: block;
+/* Smaller devices (320px and up) */
+@media only screen and (min-width: 320px) {
+    /* MAIN PAGE */
+    .logo {
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 35px;
+    }
+
+    .logo span {
+        font-size: 15px;
+        display: block;
+    }
+
+    .main-menu {
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .main-menu button {
+        text-transform: uppercase;
+        margin-top: 15px !important;
+        background: #60191B;
+        font-size: large;
+        color: white;
+        border-radius: 10px;
+        margin: auto;
+        height: 15%;
+        padding: 15px;
+        border-color: white;
+        border-width: 2px;
+        display: block;
+        width: 80%;
+    }
+
+    .main-menu button:hover {
+        cursor: pointer;
+        background-color: red;
+    }
 }
 
-.main-menu {
-    padding: 10%;
-    display: block;
-    text-align: center;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .logo {
+        font-size: 50px;
+    }
+
+    .logo span {
+        font-size: 25px;
+    }
+
+    .main-menu{
+        padding: 50px 10px;
+    }
+
+    .main-menu button {
+        font-size: x-large;
+        width: 60%;
+    }
 }
 
-.main-menu button {
-    text-transform: uppercase;
-    margin-top: 15px;
-    background: #60191B;
-    font-size: x-large;
-    color: white;
-    border-radius: 10px;
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
-    height: 15%;
-    display: inline-block;
-    padding: 15px;
-    border-color: white;
-    border-width: 2px;
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .main-menu{
+        padding: 75px 10px;
+    }
+
+    .main-menu button {
+        width: 50%;
+    }
 }
 
-.main-menu button:hover {
-    cursor: pointer;
-    background-color: red;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .main-menu{
+        padding: 125px 10px;
+    }
+
+    .main-menu button {
+        width: 40%;
+    }
 }
+
+/* Large devices (laptops/desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}
+
+

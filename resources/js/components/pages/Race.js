@@ -1,6 +1,8 @@
 import React from "react";
 import '../css/styles.css';
 import '../css/race.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFlagCheckered, faLevelUpAlt} from "@fortawesome/free-solid-svg-icons";
 
 import UserPhoto from '../img/user_photo.jpg';
 import DefaultUser from '../img/default_user.jpg';
@@ -15,11 +17,17 @@ class Race extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({});
+
+        this.handleRaceEnd = this.handleRaceEnd.bind(this);
+    }
+
+    handleRaceEnd(event){
+        window.location.reload();
     }
 
     render() {
 
-        let winner = <span className={"winner-tag"}><i className="fa fa-trophy"/>Laimėtojas<i className="fa fa-trophy"/></span>;
+        let winner = <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>Laimėtojas<FontAwesomeIcon icon={faFlagCheckered}/></span>;
 
         return (<div>
             <div className={"race"}>
@@ -28,7 +36,7 @@ class Race extends React.Component {
                 <div className={"racer-info"}>
                     <img src={UserPhoto} alt={"user-photo"}/>
                     <span>The Stig</span>
-                    <span><i className="fa fa-level-up"/> 99</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> 99</span>
                 </div>
 
                 <div className={"racer-car"}>
@@ -58,11 +66,11 @@ class Race extends React.Component {
 
             </span>
 
-            <span className={"racer"}>
+                <span className={"racer"}>
                 <div className={"racer-info"}>
                     <img src={DefaultUser} alt={"user-photo"}/>
                     <span>Racer</span>
-                    <span><i className="fa fa-level-up"/> 45</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> 45</span>
                 </div>
 
                 <div className={"racer-car"}>
@@ -92,8 +100,8 @@ class Race extends React.Component {
 
             </span>
 
-        </div>
-            <button className={"race-btn"}>Tęsti</button>
+            </div>
+            <button className={"race-btn"} onClick={this.handleRaceEnd}>Tęsti</button>
         </div>);
     }
 

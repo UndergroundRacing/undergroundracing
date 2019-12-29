@@ -2,7 +2,9 @@ import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import '../css/styles.css';
 import '../css/home.css';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPlus, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import UserPhoto from '../img/user_photo.jpg';
 import R34 from '../img/R34.png';
 import Evo9 from '../img/Evo9.png';
@@ -10,8 +12,12 @@ import S13Hatch from '../img/S13Hatch.png';
 import S15 from '../img/S15.png';
 
 import Race from '../pages/Race';
+import {connect} from "react-redux";
 
-//import '../css/mobile.css';
+const mapStateToProps = state => {
+    return {token: state.token};
+};
+
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -26,6 +32,32 @@ class HomePage extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.selectCar = this.selectCar.bind(this);
+    }
+
+    componentDidMount() {
+
+        console.log(this.props.token);
+        axios.defaults.headers.common = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+
+
+        axios.post('http://127.0.0.1:8000/api/v1/getUser', {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + this.props.token
+            }
+        })
+            .then((response) => {
+
+                console.log("User response", response);
+
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+
     }
 
     handleClick(event) {
@@ -48,8 +80,7 @@ class HomePage extends React.Component {
     }
 
     selectCar(event) {
-        console.log(event.target.id);
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case "back":
                 this.setState({
                     select_car: false
@@ -85,7 +116,7 @@ class HomePage extends React.Component {
 
         function CarSelect(props, handler) {
             return (<div className={"car-swap"}>
-                <button id={"back"} onClick={props.handler}><i id={"back_arrow"} className="fa fa-arrow-circle-left"/>
+                <button id={"back"} onClick={props.handler}><FontAwesomeIcon icon={faArrowLeft}/>
                 </button>
                 <table>
                     <thead>
@@ -173,19 +204,19 @@ class HomePage extends React.Component {
                         <tr>
                             <td>Reakcija</td>
                             <td>+5</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>5000$</td>
                         </tr>
                         <tr>
                             <td>Auto žinios</td>
                             <td>+10</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>10000$</td>
                         </tr>
                         <tr>
                             <td>Pavarų perjungimas</td>
                             <td>+7</td>
-                            <td><i id={"add-skill"} className="fa fa-plus-square"/></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
                             <td>7500$</td>
                         </tr>
                         </thead>
@@ -197,4 +228,5 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+const Home = connect(mapStateToProps, null)(HomePage);
+export default Home;

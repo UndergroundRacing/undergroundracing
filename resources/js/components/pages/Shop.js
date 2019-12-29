@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/styles.css';
 import '../css/shop.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCar, faWrench} from "@fortawesome/free-solid-svg-icons";
 
 import R34 from '../img/R34.png';
 import Evo9 from '../img/Evo9.png';
@@ -20,7 +22,6 @@ import Speed from '../icons/Speed.svg';
 import Acceleration from '../icons/Acceleration.svg';
 import Weight from '../icons/Weight.svg';
 
-;
 
 class Shop extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class Shop extends React.Component {
     }
 
     handleClick(event) {
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case "cars":
                 this.setState({
                     cars: true,
@@ -66,12 +67,11 @@ class Shop extends React.Component {
     render() {
 
         let cars = this.state.cars ?
-            <span id={"cars"} style={{color: "red"}} onClick={this.handleClick}><i className="fa fa-car"/> Automobiliai</span> :
-            <span id={"cars"} onClick={this.handleClick}><i className="fa fa-car"/> Automobiliai</span>;
+            <span id={"cars"} style={{color: "red"}} onClick={this.handleClick}><FontAwesomeIcon icon={faCar}/> Automobiliai</span> :
+            <span id={"cars"} onClick={this.handleClick}><FontAwesomeIcon icon={faCar}/> Automobiliai</span>;
         let parts = this.state.parts ?
-            <span id={"parts"} style={{color: "red"}} onClick={this.handleClick}><i
-                className="fa fa-wrench"/> Dalys</span> :
-            <span id={"parts"} onClick={this.handleClick}><i className="fa fa-wrench"/> Dalys</span>;
+            <span id={"parts"} style={{color: "red"}} onClick={this.handleClick}><FontAwesomeIcon icon={faWrench}/> Dalys</span> :
+            <span id={"parts"} onClick={this.handleClick}><FontAwesomeIcon icon={faWrench}/> Dalys</span>;
 
         if (this.state.cars) {
             return (<div className={"shop"}>

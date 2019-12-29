@@ -1,6 +1,17 @@
 import React from "react";
 import './css/styles.css';
 import './css/menu.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {
+    faFlagCheckered,
+    faHome,
+    faUser,
+    faLevelUpAlt,
+    faMoneyBill,
+    faCreditCard,
+    faEnvelope,
+    faList, faCog, faSignOutAlt
+} from '@fortawesome/free-solid-svg-icons'
 
 import HomePage from "./pages/HomePage";
 import Shop from "./pages/Shop";
@@ -20,7 +31,7 @@ class Menu extends React.Component {
     }
 
     handleClick(event) {
-        switch (event.target.id) {
+        switch (event.currentTarget.id) {
             case "shop":
                 this.props.history.push('/Shop');
                 break;
@@ -73,17 +84,17 @@ class Menu extends React.Component {
 
         function UserMiniInfo(props) {
             return (<div className={"user-mini-info"}>
-                    <span><i className="fa fa-user"/>The Stig</span>
-                    <span><i className="fa fa-level-up"/>99</span>
-                    <span><i className="fa fa-money"/>100000000$</span>
-                    <span><i className="fa fa-credit-card"/>150000</span>
+                    <span><FontAwesomeIcon icon={faUser}/>The Stig</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/>99</span>
+                    <span><FontAwesomeIcon icon={faMoneyBill}/>$100000000</span>
+                    <span><FontAwesomeIcon icon={faCreditCard}/>150000</span>
                 </div>
             );
         }
 
         let homeBtn = window.location.pathname === "/Home" ?
-            <li id={"home"} onClick={this.handleClick} style={{color: "red"}}><i className="fa fa-home"/></li> :
-            <li id={"home"} onClick={this.handleClick}><i className="fa fa-home"/></li>;
+            <li id={"home"} onClick={this.handleClick} style={{color: "red"}}><FontAwesomeIcon icon={faHome}/></li> :
+            <li id={"home"} onClick={this.handleClick}><FontAwesomeIcon icon={faHome}/></li>;
 
         let shopBtn = window.location.pathname === "/Shop" ?
             <li id="shop" onClick={this.handleClick} style={{color: "red"}}>Parduotuvė</li> :
@@ -94,32 +105,33 @@ class Menu extends React.Component {
             <li id={"garage"} onClick={this.handleClick}>Garažas</li>;
 
         let chatBtn = window.location.pathname === "/Chat" ?
-            <li id={"chat"} onClick={this.handleClick} style={{color: "red"}}><i id={"chat-icon"}
-                                                                                 onClick={this.handleClick}
-                                                                                 className="fa fa-envelope"/></li> :
-            <li id={"chat"} onClick={this.handleClick}><i id={"chat-icon"} onClick={this.handleClick}
-                                                          className="fa fa-envelope"/></li>
+            <li id={"chat"} onClick={this.handleClick} style={{color: "red"}}><FontAwesomeIcon id={"chat-icon"}
+                                                                                               onClick={this.handleClick}
+                                                                                               icon={faEnvelope}/>
+            </li> :
+            <li id={"chat"} onClick={this.handleClick}><FontAwesomeIcon id={"chat-icon"} onClick={this.handleClick}
+                                                                        icon={faEnvelope}/></li>
 
         let summaryBtn = window.location.pathname === "/Summary" ?
-            <li id={"summary"} onClick={this.handleClick} style={{color: "red"}}><i id={"summary-icon"}
-                                                                                    onClick={this.handleClick}
-                                                                                    className="fa fa-list-alt"/></li> :
-            <li id={"summary"} onClick={this.handleClick}><i id={"summary-icon"}
-                                                             onClick={this.handleClick}
-                                                             className="fa fa-list-alt"/></li>
+            <li id={"summary"} onClick={this.handleClick} style={{color: "red"}}><FontAwesomeIcon id={"summary-icon"}
+                                                                                                  onClick={this.handleClick}
+                                                                                                  icon={faList}/></li> :
+            <li id={"summary"} onClick={this.handleClick}><FontAwesomeIcon id={"summary-icon"}
+                                                                           onClick={this.handleClick}
+                                                                           icon={faList}/></li>
 
         let userInfo = window.location.pathname !== "/Home" ? <UserMiniInfo/> : null;
 
         return (<div>
             <ul className={"top-menu"}>
-                <div className={"menu-logo"}><i className="fa fa-flag-checkered"/> Underground Racing</div>
+                <div className={"menu-logo"}><FontAwesomeIcon icon={faFlagCheckered}/> Underground Racing</div>
                 {homeBtn}
                 {shopBtn}
                 {garageBtn}
                 {chatBtn}
                 {summaryBtn}
-                <li id={"settings"} onClick={this.handleClick}><i className="fa fa-cog"/></li>
-                <li id={"logout"} onClick={this.handleClick}><i className="fa fa-sign-out"/></li>
+                <li id={"settings"} onClick={this.handleClick}><FontAwesomeIcon icon={faCog}/></li>
+                <li id={"logout"} onClick={this.handleClick}><FontAwesomeIcon icon={faSignOutAlt}/></li>
             </ul>
             {userInfo}
             <LoadPage props={this.state}/>
