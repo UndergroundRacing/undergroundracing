@@ -9,25 +9,31 @@ import About from "./pages/About";
 
 import Menu from "./Menu";
 
+import store from './store/store';
+import {Provider} from "react-redux";
 
 function App() {
     return (
-        <Router>
-            <div>
-                <Switch>
-                    <Route exact path={'/'} component={Main}/>
-                    <Route path={'/Login'} component={Login}/>
-                    <Route path={'/Register'} component={Register}/>
-                    <Route path={'/About'} component={About}/>
 
-                    <Route path={'/Home'} component={Menu}/>
-                    <Route path={'/Shop'} component={Menu}/>
-                    <Route path={'/Garage'} component={Menu}/>
-                    <Route path={'/Chat'} component={Menu}/>
-                    <Route path={'/Summary'} component={Menu}/>
-                </Switch>
-            </div>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path={'/'} component={Main}/>
+                        <Route path={'/Login'} component={Login}/>
+
+                        <Route path={'/Register'} component={Register}/>
+                        <Route path={'/About'} component={About}/>
+
+                        <Route path={'/Home'} component={Menu}/>
+                        <Route path={'/Shop'} component={Menu}/>
+                        <Route path={'/Garage'} component={Menu}/>
+                        <Route path={'/Chat'} component={Menu}/>
+                        <Route path={'/Summary'} component={Menu}/>
+                    </Switch>
+                </div>
+            </Router>
+        </Provider>
     );
 }
 

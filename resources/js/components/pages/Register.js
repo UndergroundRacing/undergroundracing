@@ -4,6 +4,18 @@ import '../css/login_register.css';
 import axios from 'axios';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from "@fortawesome/free-solid-svg-icons";
+import {addToken} from "../store/actions";
+import {connect} from "react-redux";
+
+const mapStateToProps = state => {
+    return {token: state.token};
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToken: article => dispatch(addToken(article))
+    };
+}
 
 class Register extends React.Component {
     constructor(props) {
@@ -147,5 +159,6 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+const RegisterComponent = connect(mapStateToProps, mapDispatchToProps)(Register);
+export default RegisterComponent;
 

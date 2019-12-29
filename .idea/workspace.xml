@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="40b6e382-0b7d-4740-bdc7-cfd5da36444b" name="Default Changelist" comment="Fixed icon issue after merge with Laravel, minor design bug fixes">
+    <list default="true" id="40b6e382-0b7d-4740-bdc7-cfd5da36444b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/store/action_types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/store/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/store/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/store/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/about.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/login_register.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/login_register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Register.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,16 +24,12 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>$</find>
-      <find>Wheels</find>
-      <find>wHEELS</find>
-      <find>AddWheelsToGarage</find>
-      <find>AddStopToGarageToVechile</find>
-      <find>AddStopToVechile</find>
-      <find>getAllVe</find>
-    </findStrings>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,10 +144,16 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Interaktyvios Interneto Technologijos/Projektas/UndergroundRacing" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\renal\Desktop\undergroundracing\resources\js\components\redux" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -191,10 +196,39 @@
       <workItem from="1577192718054" duration="2841000" />
       <workItem from="1577272750290" duration="15756000" />
       <workItem from="1577386830247" duration="4001000" />
+      <workItem from="1577543116833" duration="3404000" />
+      <workItem from="1577557971657" duration="262000" />
+      <workItem from="1577618872383" duration="13000" />
+      <workItem from="1577618912708" duration="139000" />
+      <workItem from="1577619851267" duration="4634000" />
     </task>
+    <task id="LOCAL−00001" summary="Responsive design implementation">
+      <created>1577543201390</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1577543201390</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Responsive design implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Responsive design implementation" />
   </component>
 </project>
