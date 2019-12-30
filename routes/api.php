@@ -72,6 +72,6 @@ Route::prefix('v1')->group(function () {
         Route::get('getAllPartsByType/{part_type}','Api\GarageController@GetAllPartsByType');
         Route::post('getPartSpecificationInGarage','Api\GarageController@GetPartSpecificationInGarage');
         Route::post('getAllPartsInGarage','Api\GarageController@GetAllPartsInGarage');
-
+        Route::post('buyFromSystemMarket','Api\MarketController@BuyFromSystemMarket');
     });
 });

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Wheels extends Model
 {
     protected $fillable = [
-        'title', 'level', 'power', 'part_id','weight','image_url'
+        'title', 'level', 'power', 'part_id','weight','image_url','price'
     ];
 
     public function AddWheels($request){
@@ -16,6 +16,7 @@ class Wheels extends Model
             'level' => $request['level'],
             'power' => $request['power'],
             'weight' => $request['weight'],
+            'price' => $request['price'],
             'part_id' => $request['part_id'],
             'image_url' => $request['image_url']
         ];
