@@ -16224,7 +16224,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "/* Extra small devices (phones, 320px and down) */\n@media only screen and (max-width: 320px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: block;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 100%;\n        display: block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 100%;\n        display: block;\n        text-align: left;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        color: white;\n        width: 100%;\n        display: block;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: block;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: block;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 150px;\n        width: auto;\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: block;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: large;\n    }\n\n    .user-abilities span {\n        display: block;\n        padding: 5px;\n    }\n\n    .user-abilities table {\n        text-align: left;\n        font-size: small;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Smaller devices (320px and up) */\n@media only screen and (min-width: 320px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: block;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 100%;\n        display: block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 100%;\n        display: block;\n        text-align: left;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        color: white;\n        width: 100%;\n        display: block;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: block;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: block;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 150px;\n        width: auto;\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: block;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: large;\n    }\n\n    .user-abilities span {\n        display: block;\n        padding: 5px;\n    }\n\n    .user-abilities table {\n        text-align: left;\n        font-size: small;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Small devices (portrait tablets and large phones, 600px and up) */\n@media only screen and (min-width: 600px) {\n    .race-options {\n        display: table;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .user-abilities span:first-child {\n        font-size: xx-large;\n    }\n\n    .user-abilities table {\n        font-size: large;\n        width: 100%;\n    }\n}\n\n/* Medium devices (landscape tablets, 768px and up) */\n@media only screen and (min-width: 768px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: -webkit-box;\n        display: flex;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 20%;\n        display: inline-block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 40%;\n        display: inline-block;\n        text-align: center;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        width: 40%;\n        color: white;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: table;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 250px;\n        width: auto;\n\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race span:hover {\n        cursor: pointer;\n        color: #60191B;\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: table;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: xx-large;\n    }\n\n    .user-abilities span {\n        display: table-cell;\n        padding: 25px;\n        width: 50%;\n        vertical-align: middle;\n    }\n\n    .user-abilities table {\n        text-align: left;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Large devices (laptops/desktops, 992px and up) */\n@media only screen and (min-width: 992px) {\n}\n\n/* Large devices (laptops/desktops, 1200px and up) */\n@media only screen and (min-width: 1200px) {\n}\n\n", ""]);
+exports.push([module.i, "/* Extra small devices (phones, 320px and down) */\n@media only screen and (max-width: 320px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: block;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 100%;\n        display: block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 100%;\n        display: block;\n        text-align: left;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        color: white;\n        width: 100%;\n        display: block;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: block;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: block;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 150px;\n        width: auto;\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: block;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: large;\n    }\n\n    .user-abilities span {\n        display: block;\n        padding: 5px;\n    }\n\n    .user-abilities table {\n        text-align: left;\n        font-size: small;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Smaller devices (320px and up) */\n@media only screen and (min-width: 320px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: block;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 100%;\n        display: block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 100%;\n        display: block;\n        text-align: left;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        color: white;\n        width: 100%;\n        display: block;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: block;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: block;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 150px;\n        width: auto;\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: block;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: large;\n    }\n\n    .user-abilities span {\n        display: block;\n        padding: 5px;\n    }\n\n    .user-abilities table {\n        text-align: left;\n        font-size: small;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Small devices (portrait tablets and large phones, 600px and up) */\n@media only screen and (min-width: 600px) {\n    .race-options {\n        display: table;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .user-abilities span:first-child {\n        font-size: xx-large;\n    }\n\n    .user-abilities table {\n        font-size: large;\n        width: 100%;\n    }\n}\n\n/* Medium devices (landscape tablets, 768px and up) */\n@media only screen and (min-width: 768px) {\n    /* USER HOME PAGE */\n    .user {\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(0, 0, 0, 0.6)),\n            to(rgba(0, 0, 0, 0.6))\n        );\n        background: linear-gradient(\n            rgba(0, 0, 0, 0.6),\n            rgba(0, 0, 0, 0.6)\n        );\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        display: -webkit-box;\n        display: flex;\n        padding: 15px;\n    }\n\n    .user-info {\n        width: 20%;\n        display: inline-block;\n        text-align: center;\n        color: white;\n    }\n\n    .user-info img {\n        height: 100px;\n        width: 100px;\n        border-radius: 50%;\n    }\n\n    .user-info span {\n        display: block;\n        font-size: large;\n    }\n\n    .user-info span:last-child {\n        color: #60191B;\n        font-size: x-large;\n        font-weight: bold;\n        text-transform: uppercase;\n    }\n\n    .user-stats {\n        width: 40%;\n        display: inline-block;\n        text-align: center;\n        color: white;\n        padding: 10px;\n    }\n\n    .user-stats table {\n        width: 100%;\n        font-size: large;\n        text-transform: uppercase;\n    }\n\n    .xp-bar {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n    }\n\n    .xp-bar div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .user-task {\n        width: 40%;\n        color: white;\n        text-transform: uppercase;\n        text-align: center;\n    }\n\n    .user-task span {\n        display: block;\n        padding: 5px;\n    }\n\n    .task-progress {\n        border-style: solid;\n        border-width: 1px;\n        border-color: white;\n        border-radius: 15px;\n        margin-left: 20%;\n        margin-right: 20%;\n    }\n\n    .task-progress div {\n        background-color: #60191B;\n        border-radius: 15px;\n    }\n\n    .task-btn {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n    }\n\n    .task-btn-disabled {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 15px;\n        width: 30%;\n        opacity: 0.5;\n    }\n\n    .task-btn:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .go-race {\n        /* tinted background image */\n        background: -webkit-gradient(\n            linear,\n            left top, left bottom,\n            from(rgba(35, 35, 50, 0.8)),\n            to(rgba(35, 35, 50, 0.8))\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n        background: linear-gradient(\n            rgba(35, 35, 50, 0.8),\n            rgba(35, 35, 50, 0.8)\n        ),\n        url(" + escape(__webpack_require__(/*! ../img/race_flag.jpg */ "./resources/js/components/img/race_flag.jpg")) + ");\n\n        border-bottom-color: white;\n        border-style: solid;\n        border-width: 1px;\n        padding: 15px;\n        text-align: center;\n    }\n\n    .go-race div {\n        color: white;\n        font-size: xx-large;\n        text-transform: uppercase;\n    }\n\n    .go-race button {\n        background-color: #60191B;\n        color: white;\n        text-transform: uppercase;\n        padding: 15px;\n        border-radius: 10px;\n        display: inline-block;\n    }\n\n    .go-race button:hover {\n        background-color: red;\n        cursor: pointer;\n    }\n\n    .race-options {\n        display: table;\n        margin-left: auto;\n        margin-right: auto;\n    }\n\n    .select-car {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-car img {\n        height: 250px;\n        width: auto;\n\n    }\n\n    .select-car img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-car div {\n        font-size: large;\n    }\n\n    .car-swap {\n        overflow-x: scroll;\n        border-top: solid 1px white;\n    }\n\n    .car-swap table {\n        font-size: medium;\n    }\n\n    .car-swap button {\n        color: red;\n        background: none;\n        border: none;\n        display: block;\n        float: left;\n        font-size: x-large;\n    }\n\n    .car-swap button:hover {\n        cursor: pointer;\n        opacity: 0.5;\n        background: none;\n    }\n\n    .car-swap img {\n        width: 200px;\n        height: auto;\n    }\n\n    .car-swap img:hover {\n        cursor: pointer;\n        opacity: 0.5;\n    }\n\n    .select-race {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 5px;\n    }\n\n    .select-race div {\n        font-size: large;\n    }\n\n    .select-race span {\n        padding: 15px\n    }\n\n    .select-race button {\n        display: block;\n        margin: 10px;\n        width: 100%;\n    }\n\n    /* USER ABILITIES */\n    .user-abilities {\n        display: table;\n        color: white;\n        background-color: rgba(0, 0, 0, 0.5);\n        width: 100%;\n        text-align: center;\n        font-size: x-large;\n        border-bottom: solid 1px white;\n    }\n\n    .user-abilities span:first-child {\n        color: red;\n        font-size: xx-large;\n    }\n\n    .user-abilities span {\n        display: table-cell;\n        padding: 25px;\n        width: 50%;\n        vertical-align: middle;\n    }\n\n    .user-abilities table {\n        text-align: left;\n    }\n\n    .user-abilities table td {\n        padding: 0 10px;\n    }\n\n    .user-abilities table td:nth-child(even) {\n        color: red;\n    }\n\n    .user-abilities svg:hover {\n        color: red;\n        cursor: pointer;\n    }\n}\n\n/* Large devices (laptops/desktops, 992px and up) */\n@media only screen and (min-width: 992px) {\n}\n\n/* Large devices (laptops/desktops, 1200px and up) */\n@media only screen and (min-width: 1200px) {\n}\n\n", ""]);
 
 // exports
 
@@ -88045,8 +88045,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _img_user_photo_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/user_photo.jpg */ "./resources/js/components/img/user_photo.jpg");
-/* harmony import */ var _img_user_photo_jpg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_img_user_photo_jpg__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _img_default_user_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/default_user.jpg */ "./resources/js/components/img/default_user.jpg");
+/* harmony import */ var _img_default_user_jpg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_img_default_user_jpg__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _img_R34_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/R34.png */ "./resources/js/components/img/R34.png");
 /* harmony import */ var _img_R34_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_img_R34_png__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _img_Evo9_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/Evo9.png */ "./resources/js/components/img/Evo9.png");
@@ -88057,6 +88057,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_S15_png__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_img_S15_png__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _pages_Race__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/Race */ "./resources/js/components/pages/Race.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../store/actions */ "./resources/js/components/store/actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -88090,11 +88091,25 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    token: state.token
+    token: state.token,
+    user: state.user_info,
+    abilities: state.user_abilities
   };
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addUser: function addUser(user) {
+      return dispatch(Object(_store_actions__WEBPACK_IMPORTED_MODULE_14__["addUser"])(user));
+    },
+    addAbilities: function addAbilities(abilities) {
+      return dispatch(Object(_store_actions__WEBPACK_IMPORTED_MODULE_14__["addAbilities"])(abilities));
+    }
+  };
+}
 
 var HomePage =
 /*#__PURE__*/
@@ -88111,7 +88126,10 @@ function (_React$Component) {
       race: false,
       task_comp: false,
       race_type: "1/4",
-      select_car: false
+      select_car: false,
+      user_info: null,
+      user_abilities: null,
+      user_load: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.selectCar = _this.selectCar.bind(_assertThisInitialized(_this));
@@ -88121,21 +88139,60 @@ function (_React$Component) {
   _createClass(HomePage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.defaults.headers.common = {
         'X-Requested-With': 'XMLHttpRequest',
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       };
       var auth = 'Bearer ';
       var token = this.props.token.toString();
-      console.log(token);
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("http://127.0.0.1:8000/api/v1/getUser", [], {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': auth + token
-        }
-      }).then(function (response) {
-        console.log(response.data);
-      });
+
+      if (this.props.user == null) {
+        console.log("Fetching user info");
+        axios__WEBPACK_IMPORTED_MODULE_6___default.a.post("http://127.0.0.1:8000/api/v1/getUser", [], {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': auth + token
+          }
+        }).then(function (response) {
+          var user = response.data.success;
+
+          _this2.props.addUser({
+            user: user
+          });
+
+          _this2.setState({
+            user_info: user,
+            user_load: true
+          });
+
+          axios__WEBPACK_IMPORTED_MODULE_6___default.a.get("http://127.0.0.1:8000/api/v1/getUserAbilities/" + user.id, {
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': auth + token
+            }
+          }).then(function (response) {
+            var abilities = response.data.success;
+
+            _this2.props.addAbilities({
+              abilities: abilities
+            });
+
+            _this2.setState({
+              user_abilities: abilities
+            });
+          });
+        });
+      } else {
+        var user = this.props.user.user;
+        var abilities = this.props.abilities.abilities;
+        this.setState({
+          user_info: user,
+          user_abilities: abilities,
+          user_load: true
+        });
+      }
     }
   }, {
     key: "handleClick",
@@ -88158,6 +88215,11 @@ function (_React$Component) {
             race: true
           });
       }
+    }
+  }, {
+    key: "buyAbility",
+    value: function buyAbility(event) {
+      console.log("Buying ability", event.currentTarget.id);
     }
   }, {
     key: "selectCar",
@@ -88185,6 +88247,43 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      function UserAbilities(props) {
+        if (props.props != null) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Reakcija"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.props.reaction), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"],
+            id: "reaction",
+            onClick: props.handler
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5000$")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pavar\u0173 perjungimas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.props.shifting), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"],
+            id: "shifting",
+            onClick: props.handler
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5000$")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Greit\u0117jimas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.props.acceleration), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"],
+            id: "acceleration",
+            onClick: props.handler
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5000$")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Manevringumas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.props.mobility), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"],
+            id: "mobility",
+            onClick: props.handler
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5000$")))));
+        } else {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Reakcija"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pavar\u0173 perjungimas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Greit\u0117jimas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Manevringumas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null)))));
+        }
+      }
+
+      var user_name = this.state.user_load ? this.state.user_info.name : " ";
+      var user_level = this.state.user_load ? this.state.user_info.level + " lygis" : " ";
+      var user_cash = this.state.user_load ? this.state.user_info.cash + " $" : " ";
+      var user_credits = this.state.user_load ? this.state.user_info.credits : " ";
+      var user_xp = this.state.user_load ? this.state.user_info.experience : " ";
       var taskButton = this.state.task ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "task-btn",
         id: "task",
@@ -88194,15 +88293,13 @@ function (_React$Component) {
         id: "task",
         disabled: true
       }, "Atsiimti");
-      /*let raceType = this.state.race_type === "1/4" ?
-          [<span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>,
-              <span id={"1/2"} onClick={this.handleClick}>1/2 mylios</span>] :
-          [<span id={"1/4"} onClick={this.handleClick}>1/4 mylios</span>,
-              <span id={"1/2"} style={{color: "red"}} onClick={this.handleClick}>1/2 mylios</span>];*/
-
       var selectCar = this.state.select_car ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CarSelect, {
         handler: this.selectCar.bind(this)
       }) : null;
+      var abilities = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(UserAbilities, {
+        props: this.state.user_abilities,
+        handler: this.buyAbility
+      });
 
       function CarSelect(props, handler) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -88236,20 +88333,20 @@ function (_React$Component) {
           className: "user-stats"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Patirtis:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ProgressBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
           className: "xp-bar",
-          now: 70,
-          label: "7777777777/999999999 XP"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pinigai:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$100000000")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Kreditai:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "150000")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Klubas:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          now: 25,
+          label: user_xp
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pinigai:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user_cash)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Kreditai:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, user_credits)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Klubas:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "-"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: _img_user_photo_jpg__WEBPACK_IMPORTED_MODULE_7___default.a,
+          src: _img_default_user_jpg__WEBPACK_IMPORTED_MODULE_7___default.a,
           alt: "Smiley face",
           height: "42",
           width: "42"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "user-name"
-        }, "The Stig"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        }, user_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "user-level"
-        }, "99 lygis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, user_level)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-task"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "task-title"
@@ -88285,13 +88382,7 @@ function (_React$Component) {
           onClick: this.handleClick
         }, "Lenktyniauti"))), selectCar), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-abilities"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Special\u016Bs geb\u0117jimai"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Reakcija"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "+5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5000$")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Auto \u017Einios"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "+10"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "10000$")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pavar\u0173 perjungimas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "+7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlus"]
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "7500$")))))));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Special\u016Bs geb\u0117jimai"), abilities));
       }
     }
   }]);
@@ -88299,7 +88390,7 @@ function (_React$Component) {
   return HomePage;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var Home = Object(react_redux__WEBPACK_IMPORTED_MODULE_13__["connect"])(mapStateToProps, null)(HomePage);
+var Home = Object(react_redux__WEBPACK_IMPORTED_MODULE_13__["connect"])(mapStateToProps, mapDispatchToProps)(HomePage);
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
@@ -88360,8 +88451,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToken: function addToken(article) {
-      return dispatch(Object(_store_actions__WEBPACK_IMPORTED_MODULE_7__["addToken"])(article));
+    addToken: function addToken(token) {
+      return dispatch(Object(_store_actions__WEBPACK_IMPORTED_MODULE_7__["addToken"])(token));
     }
   };
 }
@@ -89457,15 +89548,17 @@ function (_React$Component) {
 /*!*******************************************************!*\
   !*** ./resources/js/components/store/action_types.js ***!
   \*******************************************************/
-/*! exports provided: ADD_TOKEN, ADD_USER */
+/*! exports provided: ADD_TOKEN, ADD_USER, ADD_ABILITIES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TOKEN", function() { return ADD_TOKEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_USER", function() { return ADD_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ABILITIES", function() { return ADD_ABILITIES; });
 var ADD_TOKEN = "ADD_TOKEN";
 var ADD_USER = "ADD_USER";
+var ADD_ABILITIES = "ADD_ABILITIES";
 
 /***/ }),
 
@@ -89473,13 +89566,14 @@ var ADD_USER = "ADD_USER";
 /*!**************************************************!*\
   !*** ./resources/js/components/store/actions.js ***!
   \**************************************************/
-/*! exports provided: addToken, addUser */
+/*! exports provided: addToken, addUser, addAbilities */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToken", function() { return addToken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addUser", function() { return addUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addAbilities", function() { return addAbilities; });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action_types */ "./resources/js/components/store/action_types.js");
 
 function addToken(payload) {
@@ -89491,6 +89585,12 @@ function addToken(payload) {
 function addUser(payload) {
   return {
     type: _action_types__WEBPACK_IMPORTED_MODULE_0__["ADD_USER"],
+    payload: payload
+  };
+}
+function addAbilities(payload) {
+  return {
+    type: _action_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ABILITIES"],
     payload: payload
   };
 }
@@ -89516,7 +89616,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   token: "",
-  user_info: null
+  user_info: null,
+  user_abilities: null
 };
 
 function rootReducer() {
@@ -89530,6 +89631,10 @@ function rootReducer() {
   } else if (action.type === _action_types__WEBPACK_IMPORTED_MODULE_0__["ADD_USER"]) {
     return _objectSpread({}, state, {
       user_info: action.payload
+    });
+  } else if (action.type === _action_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ABILITIES"]) {
+    return _objectSpread({}, state, {
+      user_abilities: action.payload
     });
   }
 

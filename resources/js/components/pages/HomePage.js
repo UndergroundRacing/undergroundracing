@@ -5,7 +5,7 @@ import '../css/home.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import UserPhoto from '../img/user_photo.jpg';
+import UserPhoto from '../img/default_user.jpg';
 import R34 from '../img/R34.png';
 import Evo9 from '../img/Evo9.png';
 import S13Hatch from '../img/S13Hatch.png';
@@ -13,10 +13,22 @@ import S15 from '../img/S15.png';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
+import {addUser, addAbilities} from "../store/actions";
 
 const mapStateToProps = state => {
-    return {token: state.token};
+    return {
+        token: state.token,
+        user: state.user_info,
+        abilities: state.user_abilities
+    };
 };
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addUser: user => dispatch(addUser(user)),
+        addAbilities: abilities => dispatch(addAbilities(abilities))
+    };
+}
 
 
 class HomePage extends React.Component {
@@ -27,7 +39,10 @@ class HomePage extends React.Component {
             race: false,
             task_comp: false,
             race_type: "1/4",
-            select_car: false
+            select_car: false,
+            user_info: null,
+            user_abilities: null,
+            user_load: false
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -43,19 +58,49 @@ class HomePage extends React.Component {
 
         let auth = 'Bearer ';
         let token = this.props.token.toString();
+        if (this.props.user == null) {
+            console.log("Fetching user info");
+            axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': auth + token
+                }
+            }).then(response => {
+                let user = response.data.success;
 
-        console.log(token);
+                this.props.addUser({user});
+                this.setState({
+                    user_info: user,
+                    user_load: true
+                });
+                
+                axios.get("http://127.0.0.1:8000/api/v1/getUserAbilities/" + user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then(response => {
+                    let abilities = response.data.success;
 
-        axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': auth + token
-            }
-        }).then(response => {
+                    this.props.addAbilities({abilities});
+                    this.setState({
+                        user_abilities: abilities
+                    });
 
-            console.log(response.data)
-        });
-        
+                });
+
+
+            });
+        } else {
+            let user = this.props.user.user;
+            let abilities = this.props.abilities.abilities;
+
+            this.setState({
+                user_info: user,
+                user_abilities: abilities,
+                user_load: true
+            });
+        }
     }
 
     handleClick(event) {
@@ -75,6 +120,10 @@ class HomePage extends React.Component {
                     race: true
                 });
         }
+    }
+
+    buyAbility(event) {
+        console.log("Buying ability", event.currentTarget.id);
     }
 
     selectCar(event) {
@@ -97,20 +146,91 @@ class HomePage extends React.Component {
         }
     }
 
-    render() {
 
+    render() {
+        function UserAbilities(props) {
+            if (props.props != null) {
+                return (
+                    <span>
+                        <table>
+                        <thead>
+                        <tr>
+                            <td>Reakcija</td>
+                            <td>{props.props.reaction}</td>
+                            <td><FontAwesomeIcon icon={faPlus} id={"reaction"} onClick={props.handler}/></td>
+                            <td>5000$</td>
+                        </tr>
+                        <tr>
+                            <td>Pavarų perjungimas</td>
+                            <td>{props.props.shifting}</td>
+                            <td><FontAwesomeIcon icon={faPlus} id={"shifting"} onClick={props.handler}/></td>
+                            <td>5000$</td>
+                        </tr>
+                        <tr>
+                            <td>Greitėjimas</td>
+                            <td>{props.props.acceleration}</td>
+                            <td><FontAwesomeIcon icon={faPlus} id={"acceleration"} onClick={props.handler}/></td>
+                            <td>5000$</td>
+                        </tr>
+                        <tr>
+                            <td>Manevringumas</td>
+                            <td>{props.props.mobility}</td>
+                             <td><FontAwesomeIcon icon={faPlus} id={"mobility"} onClick={props.handler}/></td>
+                            <td>5000$</td>
+                        </tr>
+                        </thead>
+                    </table>
+                    </span>
+                );
+            } else {
+                return (
+                    <span>
+                        <table>
+                        <thead>
+                        <tr>
+                            <td>Reakcija</td>
+                            <td></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pavarų perjungimas</td>
+                            <td></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Greitėjimas</td>
+                            <td></td>
+                            <td><FontAwesomeIcon icon={faPlus}/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Manevringumas</td>
+                            <td></td>
+                             <td><FontAwesomeIcon icon={faPlus}/></td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                    </table>
+                    </span>
+                );
+            }
+        }
+
+        let user_name = this.state.user_load ? this.state.user_info.name : " ";
+        let user_level = this.state.user_load ? this.state.user_info.level + " lygis" : " ";
+        let user_cash = this.state.user_load ? this.state.user_info.cash + " $" : " ";
+        let user_credits = this.state.user_load ? this.state.user_info.credits : " ";
+        let user_xp = this.state.user_load ? this.state.user_info.experience : " ";
 
         let taskButton = this.state.task ?
             <button className={"task-btn"} id={"task"} onClick={this.handleClick}>Atsiimti</button> :
             <button className={"task-btn-disabled"} id={"task"} disabled={true}>Atsiimti</button>;
 
-        /*let raceType = this.state.race_type === "1/4" ?
-            [<span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>,
-                <span id={"1/2"} onClick={this.handleClick}>1/2 mylios</span>] :
-            [<span id={"1/4"} onClick={this.handleClick}>1/4 mylios</span>,
-                <span id={"1/2"} style={{color: "red"}} onClick={this.handleClick}>1/2 mylios</span>];*/
-
         let selectCar = this.state.select_car ? <CarSelect handler={this.selectCar.bind(this)}/> : null;
+
+        let abilities = <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/>;
 
         function CarSelect(props, handler) {
             return (<div className={"car-swap"}>
@@ -147,15 +267,16 @@ class HomePage extends React.Component {
                             <thead>
                             <tr>
                                 <td>Patirtis:</td>
-                                <td><ProgressBar className={"xp-bar"} now={70} label={`7777777777/999999999 XP`}/></td>
+                                <td><ProgressBar className={"xp-bar"} now={25} label={user_xp}/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Pinigai:</td>
-                                <td>$100000000</td>
+                                <td>{user_cash}</td>
                             </tr>
                             <tr>
                                 <td>Kreditai:</td>
-                                <td>150000</td>
+                                <td>{user_credits}</td>
                             </tr>
                             <tr>
                                 <td>Klubas:</td>
@@ -166,8 +287,8 @@ class HomePage extends React.Component {
                     </div>
                     <div className={"user-info"}>
                         <img src={UserPhoto} alt="Smiley face" height="42" width="42"/>
-                        <span id={"user-name"}>The Stig</span>
-                        <span id={"user-level"}>99 lygis</span>
+                        <span id={"user-name"}>{user_name}</span>
+                        <span id={"user-level"}>{user_level}</span>
                     </div>
                     <div className={"user-task"}>
                         <span className={"task-title"}>Užduoties pavadinimas</span>
@@ -196,35 +317,15 @@ class HomePage extends React.Component {
 
                 <div className={"user-abilities"}>
                     <span>Specialūs gebėjimai</span>
-                    <span>
-                        <table>
-                        <thead>
-                        <tr>
-                            <td>Reakcija</td>
-                            <td>+5</td>
-                            <td><FontAwesomeIcon icon={faPlus}/></td>
-                            <td>5000$</td>
-                        </tr>
-                        <tr>
-                            <td>Auto žinios</td>
-                            <td>+10</td>
-                            <td><FontAwesomeIcon icon={faPlus}/></td>
-                            <td>10000$</td>
-                        </tr>
-                        <tr>
-                            <td>Pavarų perjungimas</td>
-                            <td>+7</td>
-                            <td><FontAwesomeIcon icon={faPlus}/></td>
-                            <td>7500$</td>
-                        </tr>
-                        </thead>
-                    </table>
-                    </span>
+                    {abilities}
+
                 </div>
             </div>);
         }
+
     }
+
 }
 
-const Home = connect(mapStateToProps, null)(HomePage);
+const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);
 export default Home;
