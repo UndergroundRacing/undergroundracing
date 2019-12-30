@@ -116,4 +116,20 @@ class GarageController extends Controller
     public function RemoveNosFromVechile(Request $request){
         return $this->garageRepository->RemoveNosFromVechile($request);
     }
+
+    public function GetPartSpecificationById(Request $request){
+        return $this->garageRepository->GetPartSpecificationById($request);
+    }
+
+    public function GetAllPartsByType($part_type){
+        return $this->garageRepository->GetAllPartsByType($part_type);
+    }
+
+    public function GetPartSpecificationInGarage(Request $request){
+        return $this->garageRepository->GetPartSpecificationInGarage($request);
+    }
+
+    public function GetAllPartsInGarage(Request $request){
+        return $this->garageRepository->GetAllPartsInGarage($request);
+    }
 }

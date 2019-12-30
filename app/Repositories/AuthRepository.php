@@ -1,7 +1,11 @@
 <?php
 namespace App\Repositories;
+use App\Engine;
+use App\Garage_Engine;
+use App\Garage_Vechile;
 use App\User;
 use App\Garage;
+use App\Vechile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -35,7 +39,28 @@ class AuthRepository implements AuthRepositoryInterface
         $user = new User();
         $created_user = $user->createUser($request);
         $garage = new Garage();
-        $garage->createGarage($created_user->id);
+        $vechile = new Vechile();
+        $created_garage = $garage->createGarage($created_user->id);
+        $garage_vechile = new Garage_Vechile();
+        $garage_vechile_wrap = [
+          'garage_id' => $created_garage->id,
+          'vechile_id' =>$vechile->GetDefaultVechile()
+        ];
+        $created_garage_vechile =$garage_vechile->addVechileToGarage($garage_vechile_wrap);
+        $garage_engin = new Garage_Engine();
+        $engine = new Engine();
+        $request_engine = [
+          'garage_id' => $created_garage->id,
+          'engine_id' => $engine->GetDefaultEngine()
+        ];
+        $created_engine = $garage_engin->AddEngineToGarage($request_engine);
+        $request_add_engine_to_vechile =[
+            'user_id' => $created_user->id,
+            'garage_vechile_id' => $created_garage_vechile->id,
+            'garage_engine_id' => $created_engine->id
+            ];
+        $garage->ChangeCarInUse($created_user->id,$created_garage_vechile->id);
+        $garage_vechile->AddEngineForVechile($request_add_engine_to_vechile);
         $success['token'] = $created_user->createToken('AppName')->accessToken;
         return response()->json(['success'=>$success], $this->successStatus);
     }
@@ -64,5 +89,24 @@ class AuthRepository implements AuthRepositoryInterface
         } else{
             return response()->json(['error'=>'Unauthorised'], 401);
         }
+    }
+
+    public function AdminRegister(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                'c_password' => 'required|same:password',
+                'username' => 'required',
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $user = new User();
+        $created_user = $user->createAdminUser($request);
+        $success['token'] = $created_user->createToken('AppName')->accessToken;
+        return response()->json(['success' => $success], $this->successStatus);
+        return $created_user;
     }
 }

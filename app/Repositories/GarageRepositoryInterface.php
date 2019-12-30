@@ -57,4 +57,12 @@ interface GarageRepositoryInterface
 
     public function RemoveNosFromVechile(Request $request);
 
+    public function GetPartSpecificationById(Request $request);
+
+    public function GetAllPartsByType($part_type);
+
+    public function GetPartSpecificationInGarage(Request $request);
+
+    public function GetAllPartsInGarage(Request $request);
+
 }

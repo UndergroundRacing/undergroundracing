@@ -30,4 +30,8 @@ class ClubController extends Controller
     public function DestroyClub(Request $request){
         return $this->clubRepository->DestroyClub($request);
     }
+
+    public function RegisterClubToTournament(Request $request){
+        return $this->clubRepository->RegisterToTournament($request);
+    }
 }

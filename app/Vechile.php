@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Vechile extends Model
 {
     protected $fillable = [
-        'title', 'level', 'weight', 'part_id','image_url'
+        'title', 'level', 'weight', 'part_id','image_url','is_default'
     ];
 
     public function createVechile($input)
@@ -18,6 +18,7 @@ class Vechile extends Model
             'level' => $input['level'],
             'weight' => $input['weight'],
             'image_url' => $input['image_url'],
+            'is_default' => $input['is_default'],
             'part_id' => $input['part_id']
         ];
 
@@ -26,5 +27,10 @@ class Vechile extends Model
 
     public function getVechileById($id){
         return Vechile::find($id);
+    }
+
+    public function GetDefaultVechile(){
+        $vech = Vechile::where('is_default',1)->get()->first();
+        return $vech->id;
     }
 }

@@ -73,6 +73,36 @@ class User extends Authenticatable
         return $user;
     }
 
+    public function createAdminUser(Request $request)
+    {
+
+        $abilities = [
+            'acceleration' => 1,
+            'shifting' => 1,
+            'reaction' => 1,
+            'mobility' => 1,
+        ];
+
+        $input = [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'username' => $request->get('username'),
+            'level' => 0,
+            'experience' => 0,
+            'cash' => 0,
+            'credits' => 0,
+            'cups' => 0,
+            'abilities' => serialize($abilities),
+            'role' => 2,
+            'club_id' => null
+        ];
+
+        $input['password'] = bcrypt($input['password']);
+        $user = User::create($input);
+        return $user;
+    }
+
     /**
      * @param $userId
      * @return int|mixed
