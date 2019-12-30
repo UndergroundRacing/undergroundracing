@@ -331,4 +331,8 @@ class Garage_Vechile extends Model
         $new_vechile = Vechile::find($id);
         return $new_vechile;
     }
+
+    public function getGarageVechileById($id){
+        return Garage_Vechile::find($id);
+    }
 }
