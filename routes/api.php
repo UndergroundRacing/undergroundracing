@@ -68,6 +68,10 @@ Route::prefix('v1')->group(function () {
         Route::get('getLastRace/{user_id}','Api\RacesController@GetLastRace');
         Route::post('registerToTournament','Api\TournamentController@RegisterToTournament');
         Route::post('registerClubToTournament','Api\ClubController@RegisterClubToTournament');
+        Route::post('getPartSpecificationById','Api\GarageController@GetPartSpecificationById');
+        Route::get('getAllPartsByType/{part_type}','Api\GarageController@GetAllPartsByType');
+        Route::post('getPartSpecificationInGarage','Api\GarageController@GetPartSpecificationInGarage');
+        Route::post('getAllPartsInGarage','Api\GarageController@GetAllPartsInGarage');
 
     });
 });

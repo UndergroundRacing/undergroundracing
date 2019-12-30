@@ -33,5 +33,4 @@ class Garage extends Model
         return Garage::where('user_id',$user_id)->get()->first();
     }
 
-
 }
