@@ -14,4 +14,6 @@ interface MarketRepositoryInterface
     public function BuyPartFromMarket(Request $request);
 
     public function CancelSellingPart(Request $request);
+
+    public function BuyFromSystemMarket(Request $request);
 }

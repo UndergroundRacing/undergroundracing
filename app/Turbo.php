@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Turbo extends Model
 {
     protected $fillable = [
-        'title', 'level', 'power', 'part_id','image_url'
+        'title', 'level', 'power', 'part_id','image_url','price'
     ];
 
     public function AddTurbo($request)
@@ -17,6 +17,7 @@ class Turbo extends Model
             'level' => $request['level'],
             'power' => $request['power'],
             'part_id' => $request['part_id'],
+            'price' => $request['price'],
             'image_url' => $request['image_url']
         ];
 

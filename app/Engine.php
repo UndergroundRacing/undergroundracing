@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Engine extends Model
 {
     protected $fillable = [
-        'title', 'level', 'weight', 'power', 'capacity', 'part_id','image_url','is_default'
+        'title', 'level', 'weight', 'power', 'capacity', 'part_id','image_url','is_default','price'
     ];
 
     public function AddEngine($request)
@@ -18,6 +18,7 @@ class Engine extends Model
             'weight' => $request['weight'],
             'power' => $request['power'],
             'capacity' => $request['capacity'],
+            'price' => $request['price'],
             'part_id' => $request['part_id'],
             'is_default' => $request['is_default'],
             'image_url' => $request['image_url']

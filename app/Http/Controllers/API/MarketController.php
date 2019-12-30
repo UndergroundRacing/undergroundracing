@@ -35,4 +35,8 @@ class MarketController extends Controller
     public function CancelSellingPart(Request $request){
         return $this->marketRepository->CancelSellingPart($request);
     }
+    public function BuyFromSystemMarket(Request $request)
+    {
+        return $this->marketRepository->BuyFromSystemMarket($request);
+    }
 }
