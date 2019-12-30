@@ -13,20 +13,24 @@ import S15 from '../img/S15.png';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addUser, addAbilities} from "../store/actions";
+import {addUser, addAbilities, addCars, addCarInfo} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
         token: state.token,
         user: state.user_info,
-        abilities: state.user_abilities
+        abilities: state.user_abilities,
+        cars: state.user_cars,
+        car_info: state.user_car_info
     };
 };
 
 function mapDispatchToProps(dispatch) {
     return {
         addUser: user => dispatch(addUser(user)),
-        addAbilities: abilities => dispatch(addAbilities(abilities))
+        addAbilities: abilities => dispatch(addAbilities(abilities)),
+        addCars: cars => dispatch(addCars(cars)),
+        addCarInfo: car_info => dispatch(addCarInfo(car_info))
     };
 }
 
@@ -42,6 +46,8 @@ class HomePage extends React.Component {
             select_car: false,
             user_info: null,
             user_abilities: null,
+            user_cars: null,
+            user_car_info: null,
             user_load: false
         };
 
@@ -70,10 +76,10 @@ class HomePage extends React.Component {
 
                 this.props.addUser({user});
                 this.setState({
-                    user_info: user,
-                    user_load: true
+                    user_info: user
+
                 });
-                
+
                 axios.get("http://127.0.0.1:8000/api/v1/getUserAbilities/" + user.id, {
                     headers: {
                         'Accept': 'application/json',
@@ -87,6 +93,46 @@ class HomePage extends React.Component {
                         user_abilities: abilities
                     });
 
+                });
+
+                axios.get("http://127.0.0.1:8000/api/v1/getAllVechiles/" + user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then(response => {
+                    let cars = response.data.success;
+
+                    this.props.addCars({cars});
+                    this.setState({
+                        user_cars: cars,
+                        user_load: true
+                    });
+
+                    cars.map((car) => {
+
+                        console.log("car - ", car);
+
+                        axios.defaults.headers.common = {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        };
+
+                        var data = JSON.stringify({
+                            part_type: 6,
+                            part_id: car.vechile_id
+                        });
+                        axios.post("http://127.0.0.1:8000/api/v1/getPartSpecificationById", data, {
+                            headers: {
+                                'Accept': 'application/json',
+                                'Authorization': auth + token
+                            }
+                        }).then((response) => {
+                            console.log("Car info - ", response);
+                        });
+
+
+                    });
                 });
 
 
@@ -228,11 +274,17 @@ class HomePage extends React.Component {
             <button className={"task-btn"} id={"task"} onClick={this.handleClick}>Atsiimti</button> :
             <button className={"task-btn-disabled"} id={"task"} disabled={true}>Atsiimti</button>;
 
-        let selectCar = this.state.select_car ? <CarSelect handler={this.selectCar.bind(this)}/> : null;
+        let selectCar = this.state.select_car ?
+            <CarSelect props={this.state.user_cars} handler={this.selectCar.bind(this)}
+                       token={this.props.token}/> : null;
 
-        let abilities = <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/>;
+        let abilities = this.state.user_load ?
+            <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/> : null;
 
-        function CarSelect(props, handler) {
+        function CarSelect(props, handler, token) {
+
+            console.log("Select car", props);
+
             return (<div className={"car-swap"}>
                 <button id={"back"} onClick={props.handler}><FontAwesomeIcon icon={faArrowLeft}/>
                 </button>
