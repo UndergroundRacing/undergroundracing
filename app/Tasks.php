@@ -92,7 +92,7 @@ class Tasks extends Model
                 $user->save();
                 $task->status = 3;
                 $task->save();
-
+                $this->user->CheckForLevelUp($user);
                 return ['success' => $task];
             }
             else return ['error' => 'Task not ended!'];

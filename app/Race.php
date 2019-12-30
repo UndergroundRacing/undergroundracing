@@ -29,6 +29,8 @@ class Race extends Model
             if($this->task->GetUserInProgressTask($request["first_racer"]) != null){
                $this->task->AddRaceToTask($request['first_racer']);
             }
+            $user_obj = $this->user->GetUser($request['first_racer']);
+            $this->user->CheckForLevelUp($user_obj);
         }
         else{
             $prize = [
@@ -70,7 +72,7 @@ class Race extends Model
         $user = $this->user->GetUser($user_id);
         if($user->level > 0){
             $prize = (100 * $user->level) * 0.1;
-            $exp = 10 * $user->level;
+            $exp = 20 * $user->level;
         }
         else{
             $prize = 100;

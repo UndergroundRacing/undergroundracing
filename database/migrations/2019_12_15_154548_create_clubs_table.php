@@ -16,7 +16,6 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->unique()->nullable();
-            $table->bigInteger('level')->default(1);
             $table->bigInteger('points')->default(0);
             $table->double('cash')->default(0);
             $table->bigInteger('owner_id')->nullable()->default(null);
