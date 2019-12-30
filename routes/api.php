@@ -73,5 +73,8 @@ Route::prefix('v1')->group(function () {
         Route::post('getPartSpecificationInGarage','Api\GarageController@GetPartSpecificationInGarage');
         Route::post('getAllPartsInGarage','Api\GarageController@GetAllPartsInGarage');
         Route::post('buyFromSystemMarket','Api\MarketController@BuyFromSystemMarket');
+        Route::post('addTask','Api\TaskController@AddTask');
+        Route::post('getTaskReward','Api\TaskController@GetRewards');
+        Route::get('getTaskByUserId/{id}','Api\TaskController@GetTaskByUserId');
     });
 });
