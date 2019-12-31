@@ -91,4 +91,19 @@ class MarketRepository implements MarketRepositoryInterface
         $createdMarket = $market->CancelSellingPart($request);
         return response()->json(['success' => $createdMarket],$this->successStatus);
     }
+
+    public function BuyFromSystemMarket(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'user_id' => 'required',
+                'part_id' => 'required',
+                'part_type' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+        $market = new Market();
+        return response()->json( $market->BuyFromSystemMarket($request),$this->successStatus);
+    }
 }

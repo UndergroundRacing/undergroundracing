@@ -12,18 +12,25 @@ class Race extends Model
     private $user;
     private $garage;
     private $vehicle;
+    private $task;
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->user = new User();
         $this->garage = new Garage();
         $this->vehicle = new Garage_Vechile();
+        $this->task = new Tasks();
     }
 
     public function CreateRace($request){
         $winner = $this->DoRaceAction($request);
         if($winner === $request['first_racer']){
             $prize = $this->CalculatePrize($winner);
+            if($this->task->GetUserInProgressTask($request["first_racer"]) != null){
+               $this->task->AddRaceToTask($request['first_racer']);
+            }
+            $user_obj = $this->user->GetUser($request['first_racer']);
+            $this->user->CheckForLevelUp($user_obj);
         }
         else{
             $prize = [
@@ -64,8 +71,8 @@ class Race extends Model
     public function CalculatePrize($user_id){
         $user = $this->user->GetUser($user_id);
         if($user->level > 0){
-            $prize = (100 * $user->level) * 0.5;
-            $exp = 10 * $user->level;
+            $prize = (100 * $user->level) * 0.1;
+            $exp = 20 * $user->level;
         }
         else{
             $prize = 100;

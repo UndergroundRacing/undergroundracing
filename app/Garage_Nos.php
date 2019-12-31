@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+//labas
 use Illuminate\Database\Eloquent\Model;
 
 class Garage_Nos extends Model

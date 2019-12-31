@@ -18,6 +18,7 @@ class CreateTurbosTable extends Migration
             $table->string('title');
             $table->string('level');
             $table->double('power');
+            $table->double('price');
             $table->string('image_url');
             $table->bigInteger('part_id')->unsigned();
             $table->foreign('part_id')->references('id')->on('parts');

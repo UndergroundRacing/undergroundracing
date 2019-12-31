@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'level', 'experience', 'cups', 'abilities', 'cash', 'credits', 'role', 'club_id'
+        'name', 'email', 'password', 'username', 'level', 'experience', 'cups', 'abilities', 'cash', 'credits', 'role', 'next_level_exp', 'club_id'
     ];
 
     /**
@@ -58,10 +58,11 @@ class User extends Authenticatable
             'email' => $request->get('email'),
             'password' => $request->get('password'),
             'username' => $request->get('username'),
-            'level' => 0,
+            'level' => 1,
             'experience' => 0,
             'cash' => 0,
             'credits' => 0,
+            'next_level_exp' => $this->NextLevelExp(2),
             'cups' => 0,
             'abilities' => serialize($abilities),
             'role' => 1,
@@ -89,6 +90,7 @@ class User extends Authenticatable
             'password' => $request->get('password'),
             'username' => $request->get('username'),
             'level' => 0,
+            'next_level_exp' => 0,
             'experience' => 0,
             'cash' => 0,
             'credits' => 0,
@@ -206,5 +208,25 @@ class User extends Authenticatable
             return $user;
         }
         return -1;
+    }
+
+    public function NextLevelExp($level){
+        return (200 * pow($level,2)) - (200 * $level);
+    }
+
+    public function CheckForLevelUp($user){
+        if($user->experience >= $user->next_level_exp){
+            return $this->LevelUp($user);
+        }
+    }
+
+    public function LevelUp($user){
+        if($user != null){
+            $user->level += 1;
+            $nextLevel = $user->level + 1;
+            $user->next_level_exp = $this->NextLevelExp($nextLevel);
+            $user->save();
+            return $user;
+        }
     }
 }

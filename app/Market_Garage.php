@@ -82,4 +82,6 @@ class Market_Garage extends Model
         $part->delete();
         return true;
     }
+
+
 }

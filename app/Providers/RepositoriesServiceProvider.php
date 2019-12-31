@@ -13,6 +13,8 @@ use App\Repositories\MessagesRepository;
 use App\Repositories\MessagesRepositoryInterface;
 use App\Repositories\RacesRepository;
 use App\Repositories\RacesRepositoryInterface;
+use App\Repositories\TaskRepository;
+use App\Repositories\TaskRepositoryInterface;
 use App\Repositories\TournamentRepository;
 use App\Repositories\TournamentRepositoryInterface;
 use App\Repositories\UserRepository;
@@ -47,5 +49,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(MessagesRepositoryInterface::class, MessagesRepository::class);
         $this->app->bind(RacesRepositoryInterface::class, RacesRepository::class);
         $this->app->bind(TournamentRepositoryInterface::class, TournamentRepository::class);
+        $this->app->bind(TaskRepositoryInterface::class, TaskRepository::class);
     }
 }

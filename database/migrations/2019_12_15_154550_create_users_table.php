@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('level');
             $table->string('experience');
+            $table->string('next_level_exp');
             $table->bigInteger('cups');
             $table->double('cash');
             $table->bigInteger('credits');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Club extends Model
 {
     protected $fillable = [
-        'title', 'level', 'points', 'cash' , 'owner_id'
+        'title', 'points', 'cash' , 'owner_id'
     ];
 
     private $user;
@@ -22,7 +22,6 @@ class Club extends Model
     public function AddClub($request){
         $input = [
             'title' => $request['title'],
-            'level' => 1,
             'points' => 0,
             'cash' => 0,
             'owner_id' => $request['owner_id']
