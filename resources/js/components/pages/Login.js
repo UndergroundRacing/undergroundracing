@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addToken: article => dispatch(addToken(article))
+        addToken: token => dispatch(addToken(token))
     };
 }
 

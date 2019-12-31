@@ -180,8 +180,9 @@
         border-top: solid 1px white;
     }
 
-    .car-swap table {
-        font-size: medium;
+    .car-swap table div {
+        font-size: medium !important;
+        padding: 10px;
     }
 
     .car-swap button {
@@ -200,8 +201,8 @@
     }
 
     .car-swap img {
-        width: 200px;
-        height: auto;
+        width: auto;
+        height: 100px;
     }
 
     .car-swap img:hover {
@@ -451,8 +452,9 @@
         border-top: solid 1px white;
     }
 
-    .car-swap table {
-        font-size: medium;
+    .car-swap table div {
+        font-size: medium !important;
+        padding: 10px;
     }
 
     .car-swap button {
@@ -471,8 +473,8 @@
     }
 
     .car-swap img {
-        width: 200px;
-        height: auto;
+        width: auto;
+        height: 100px;
     }
 
     .car-swap img:hover {
@@ -747,8 +749,9 @@
         border-top: solid 1px white;
     }
 
-    .car-swap table {
-        font-size: medium;
+    .car-swap table div {
+        font-size: medium !important;
+        padding: 10px;
     }
 
     .car-swap button {
@@ -767,8 +770,8 @@
     }
 
     .car-swap img {
-        width: 200px;
-        height: auto;
+        width: auto;
+        height: 100px;
     }
 
     .car-swap img:hover {
@@ -788,11 +791,6 @@
 
     .select-race span {
         padding: 15px
-    }
-
-    .select-race span:hover {
-        cursor: pointer;
-        color: #60191B;
     }
 
     .select-race button {

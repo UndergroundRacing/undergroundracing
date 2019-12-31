@@ -21,7 +21,23 @@ import Drivetrain from '../icons/Drivetrain.svg';
 import Speed from '../icons/Speed.svg';
 import Acceleration from '../icons/Acceleration.svg';
 import Weight from '../icons/Weight.svg';
+import axios from "axios";
+import {addCarShop} from "../store/actions";
+import {connect} from "react-redux";
 
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+        user: state.user_info,
+        shop_cars: state.shop_cars
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addCarShop: car_shop => dispatch(addCarShop(car_shop)),
+    };
+}
 
 class Shop extends React.Component {
     constructor(props) {
@@ -32,10 +48,41 @@ class Shop extends React.Component {
             parts: false,
             view_item: false,
             item_id: "",
-            item: null
+            item: null,
+            shop_cars: null
         };
 
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.props.shop_cars == null) {
+            axios.defaults.headers.common = {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            };
+
+            let auth = 'Bearer ';
+            let token = this.props.token.toString();
+
+            axios.get("http://127.0.0.1:8000/api/v1/getAllPartsByType/6", {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': auth + token
+                }
+            }).then(response => {
+                let shop_cars = response.data.success;
+
+                this.props.addCarShop({shop_cars});
+                this.setState({
+                    shop_cars: shop_cars
+                });
+            });
+        } else {
+            this.setState({
+                shop_cars: this.props.shop_cars
+            });
+        }
     }
 
     handleClick(event) {
@@ -66,12 +113,23 @@ class Shop extends React.Component {
 
     render() {
 
+        function LoadCars(props) {
+            return (<div className={"item"}>
+                <span className={"item-title"}>{props.props.title}</span>
+                <img id={"car-shop-img"} src={props.props.image_url} alt={""}/>
+                <span className={"item-price"}>{props.props.price}$</span>
+                <button id={"R34"}>Plačiau</button>
+            </div>);
+        }
+
         let cars = this.state.cars ?
             <span id={"cars"} style={{color: "red"}} onClick={this.handleClick}><FontAwesomeIcon icon={faCar}/> Automobiliai</span> :
             <span id={"cars"} onClick={this.handleClick}><FontAwesomeIcon icon={faCar}/> Automobiliai</span>;
         let parts = this.state.parts ?
             <span id={"parts"} style={{color: "red"}} onClick={this.handleClick}><FontAwesomeIcon icon={faWrench}/> Dalys</span> :
             <span id={"parts"} onClick={this.handleClick}><FontAwesomeIcon icon={faWrench}/> Dalys</span>;
+
+        let car_shop = this.state.shop_cars != null ? this.state.shop_cars.map((car) => <LoadCars props={car}/>) : null;
 
         if (this.state.cars) {
             return (<div className={"shop"}>
@@ -80,61 +138,7 @@ class Shop extends React.Component {
                         {parts}
                     </div>
                     <div className={"shop-content"}>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Nissan Skyline R34 GT-R</span>
-                            <img id={"car-shop-img"} src={R34} alt={"Nissan Skyline GT-R R34"}/>
-                            <span className={"item-price"}> 60000$ </span>
-                            <button id={"R34"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Mitsubishi Lancer Evolution IX</span>
-                            <img id={"car-shop-img"} src={Evo9} alt={"Mitsubishi Lancer Evolution IX"}/>
-                            <span className={"item-price"}> 30000$ </span>
-                            <button id={"Evo9"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Toyota Supra MKIV</span>
-                            <img id={"car-shop-img"} src={Supra} alt={"Toyota Supra MKIV"}/>
-                            <span className={"item-price"}> 35000$ </span>
-                            <button id={"Supra"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Nissan S13 (Hatch)</span>
-                            <img id={"car-shop-img"} src={S13Hatch} alt={"Nissan S13 (Hatch)"}/>
-                            <span className={"item-price"}> 10000$ </span>
-                            <button id={"S13"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-
-                        <div className={"item"}>
-                            <span className={"item-title"}>Mitsubishi Lancer Evolution V</span>
-                            <img id={"car-shop-img"} src={Evo5} alt={"Mitsubishi Lancer Evolution V"}/>
-                            <span className={"item-price"}> 15000$ </span>
-                            <button id={"Evo5"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Nissan Silvia S15</span>
-                            <img id={"car-shop-img"} src={S15} alt={"Nissan Silvia S15"}/>
-                            <span className={"item-price"}> 20000$ </span>
-                            <button id={"S15"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>VW Golf VII R</span>
-                            <img id={"car-shop-img"} src={Golf7R} alt={"VW Golf VII R"}/>
-                            <span className={"item-price"}> 30000$ </span>
-                            <button id={"Golf7R"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>BMW M3 E92</span>
-                            <img id={"car-shop-img"} src={M3E92} alt={"BMW M3 E92"}/>
-                            <span className={"item-price"}> 30000$ </span>
-                            <button id={"M3E92"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Audi RS6 Avant</span>
-                            <img id={"car-shop-img"} src={RS6Avant} alt={"Audi RS6 Avant"}/>
-                            <span className={"item-price"}> 60000$ </span>
-                            <button id={"M3E92"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
+                        {car_shop}
                     </div>
                 </div>
             );
@@ -145,12 +149,7 @@ class Shop extends React.Component {
                         {parts}
                     </div>
                     <div className={"shop-content"}>
-                        <div className={"item"}>
-                            <span className={"item-title"}>Nissan Skyline R34 GT-R</span>
-                            <img id={"car-shop-img"} src={R34} alt={"Nissan Skyline GT-R R34"}/>
-                            <span className={"item-price"}> 60000$ </span>
-                            <button id={"R34"} onClick={this.handleClick}>Plačiau</button>
-                        </div>
+
 
                     </div>
                 </div>
@@ -194,4 +193,5 @@ class Shop extends React.Component {
     }
 }
 
-export default Shop;
+const ShopPage = connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default ShopPage;

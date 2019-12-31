@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40b6e382-0b7d-4740-bdc7-cfd5da36444b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/store/action_types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/action_types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/store/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/store/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -199,7 +191,9 @@
       <workItem from="1577618872383" duration="13000" />
       <workItem from="1577618912708" duration="139000" />
       <workItem from="1577619851267" duration="4634000" />
-      <workItem from="1577628757706" duration="5349000" />
+      <workItem from="1577628757706" duration="12687000" />
+      <workItem from="1577697536917" duration="5842000" />
+      <workItem from="1577716491219" duration="613000" />
     </task>
     <task id="LOCAL−00001" summary="Responsive design implementation">
       <created>1577543201390</created>
@@ -207,7 +201,25 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1577543201390</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Login/Register functionality with access token">
+      <created>1577634841985</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1577634841985</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Fixed axios post method 401 error">
+      <created>1577640573384</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1577640573384</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Home page user DB data rendering">
+      <created>1577703411422</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1577703411422</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +240,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Responsive design implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsive design implementation" />
+    <MESSAGE value="Login/Register functionality with access token" />
+    <MESSAGE value="Fixed axios post method 401 error" />
+    <MESSAGE value="Home page user DB data rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home page user DB data rendering" />
   </component>
 </project>
