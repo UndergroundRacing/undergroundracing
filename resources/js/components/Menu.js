@@ -18,6 +18,29 @@ import Shop from "./pages/Shop";
 import Garage from "./pages/Garage";
 import Chat from "./pages/Chat";
 import Summary from "./pages/Summary";
+import {addUser, addAbilities, addCars, addCarInfo} from "./store/actions";
+import {connect} from "react-redux";
+import axios from "axios";
+
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+        user: state.user_info,
+        abilities: state.user_abilities,
+        cars: state.user_cars,
+        car_info: state.user_car_info
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addUser: user => dispatch(addUser(user)),
+        addAbilities: abilities => dispatch(addAbilities(abilities)),
+        addCars: cars => dispatch(addCars(cars)),
+        addCarInfo: car_info => dispatch(addCarInfo(car_info))
+    };
+}
+
 
 class Menu extends React.Component {
 
@@ -29,6 +52,72 @@ class Menu extends React.Component {
         this.handleClick = this.handleClick.bind(this);
 
     }
+
+    componentDidMount() {
+
+        axios.defaults.headers.common = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        };
+
+        let auth = 'Bearer ';
+        let token = this.props.token.toString();
+        if (this.props.user == null) {
+            axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': auth + token
+                }
+            }).then(response => {
+                let user = response.data.success;
+                this.props.addUser({user});
+
+                axios.get("http://127.0.0.1:8000/api/v1/getUserAbilities/" + user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then(response => {
+                    let abilities = response.data.success;
+                    this.props.addAbilities({abilities});
+                });
+
+                axios.get("http://127.0.0.1:8000/api/v1/getAllVechiles/" + user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then(response => {
+                    let cars = response.data.success;
+                    this.props.addCars({cars});
+
+                    cars.map((car) => {
+
+                        axios.defaults.headers.common = {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        };
+
+                        var data = JSON.stringify({});
+                        axios.post("http://127.0.0.1:8000/api/v1/getPartSpecificationById", {
+                            part_id: car.vechile_id,
+                            part_type: 6
+                        }, {
+                            headers: {
+                                'Accept': 'application/json',
+                                'Authorization': auth + token
+                            }
+                        }).then((response) => {
+                            let car_info = response.data.success;
+                            this.props.addCarInfo({car_info});
+                        });
+                    });
+                });
+            });
+        } else {
+        }
+    }
+
 
     handleClick(event) {
         switch (event.currentTarget.id) {
@@ -62,9 +151,6 @@ class Menu extends React.Component {
 
     render() {
         function LoadPage(props) {
-
-            console.log('Page link', window.location.pathname);
-
             let location = window.location.pathname;
 
             if (location === "/Home") {
@@ -83,13 +169,22 @@ class Menu extends React.Component {
         }
 
         function UserMiniInfo(props) {
-            return (<div className={"user-mini-info"}>
-                    <span><FontAwesomeIcon icon={faUser}/>The Stig</span>
-                    <span><FontAwesomeIcon icon={faLevelUpAlt}/>99</span>
-                    <span><FontAwesomeIcon icon={faMoneyBill}/>$100000000</span>
-                    <span><FontAwesomeIcon icon={faCreditCard}/>150000</span>
-                </div>
-            );
+            if (props.props != null) {
+                return (<div className={"user-mini-info"}>
+                        <span><FontAwesomeIcon icon={faUser}/>{props.props.user.name}</span>
+                        <span><FontAwesomeIcon icon={faLevelUpAlt}/>{props.props.user.level}</span>
+                        <span><FontAwesomeIcon icon={faMoneyBill}/>{props.props.user.cash}$</span>
+                        <span><FontAwesomeIcon icon={faCreditCard}/>{props.props.user.credits}</span>
+                    </div>
+                );
+            } else {
+                return (<div className={"user-mini-info"}>
+                    <span><FontAwesomeIcon icon={faUser}/></span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/></span>
+                    <span><FontAwesomeIcon icon={faMoneyBill}/></span>
+                    <span><FontAwesomeIcon icon={faCreditCard}/></span>
+                </div>);
+            }
         }
 
         let homeBtn = window.location.pathname === "/Home" ?
@@ -120,7 +215,7 @@ class Menu extends React.Component {
                                                                            onClick={this.handleClick}
                                                                            icon={faList}/></li>
 
-        let userInfo = window.location.pathname !== "/Home" ? <UserMiniInfo/> : null;
+        let userInfo = window.location.pathname !== "/Home" ? <UserMiniInfo props={this.props.user}/> : null;
 
         return (<div>
             <ul className={"top-menu"}>
@@ -139,4 +234,5 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+const MenuComponent = connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default MenuComponent;

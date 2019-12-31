@@ -1,4 +1,4 @@
-import {ADD_TOKEN, ADD_USER, ADD_ABILITIES, ADD_CARS, ADD_CAR_SHOP} from "./action_types";
+import {ADD_TOKEN, ADD_USER, ADD_ABILITIES, ADD_CARS, ADD_CAR_INFO, ADD_CAR_SHOP} from "./action_types";
 
 export function addToken(payload) {
     return {type: ADD_TOKEN, payload};
@@ -23,3 +23,4 @@ export function addCarInfo(payload) {
 export function addCarShop(payload) {
     return {type: ADD_CAR_SHOP, payload};
 }
+
