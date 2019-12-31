@@ -391,7 +391,7 @@ class GarageRepository implements GarageRepositoryInterface
         }
 
         $garage = new Garage_Vechile();
-        return response()->json(['success' => $garage->AddEngineForVechile($request)], $this->successStatus);
+        return response()->json($garage->AddEngineForVechile($request), $this->successStatus);
     }
 
     /**
@@ -430,7 +430,7 @@ class GarageRepository implements GarageRepositoryInterface
             return response()->json(['error' => $validator->errors()], 401);
         }
         $garage = new Garage_Vechile();
-        return response()->json(['success' => $garage->AddWheelsForVechile($request)], $this->successStatus);
+        return response()->json($garage->AddWheelsForVechile($request), $this->successStatus);
     }
 
     /**
@@ -449,7 +449,7 @@ class GarageRepository implements GarageRepositoryInterface
             return response()->json(['error' => $validator->errors()], 401);
         }
         $garage = new Garage_Vechile();
-        return response()->json(['success' => $garage->AddNosToVechile($request)], $this->successStatus);
+        return response()->json($garage->AddNosToVechile($request), $this->successStatus);
     }
 
     /**
@@ -468,7 +468,7 @@ class GarageRepository implements GarageRepositoryInterface
             return response()->json(['error' => $validator->errors()], 401);
         }
         $garage = new Garage_Vechile();
-        return response()->json(['success' => $garage->AddStopsToVechile($request)], $this->successStatus);
+        return response()->json($garage->AddStopsToVechile($request), $this->successStatus);
     }
 
     /**
@@ -487,7 +487,7 @@ class GarageRepository implements GarageRepositoryInterface
             return response()->json(['error' => $validator->errors()], 401);
         }
         $garage = new Garage_Vechile();
-        return response()->json(['success' => $garage->AddTurboToVechile($request)], $this->successStatus);
+        return response()->json($garage->AddTurboToVechile($request), $this->successStatus);
     }
 
     /**
@@ -583,5 +583,13 @@ class GarageRepository implements GarageRepositoryInterface
         }
         $garage = new Garage_Vechile();
         return response()->json(['success' => $garage->RemoveNosFromVechile($request)], $this->successStatus);
+    }
+
+    public function GetCarInUseByUserId($user_id){
+        if($user_id != null){
+            $garage = new Garage();
+            return response()->json(['success' => $garage->GetCarInUseByUserId($user_id)], $this->successStatus);
+        }
+        return response()->json(['error'=> 'User id is required'],401);
     }
 }

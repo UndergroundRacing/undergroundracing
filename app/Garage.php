@@ -41,4 +41,13 @@ class Garage extends Model
         return Garage::where('user_id',$user_id)->get()->first();
     }
 
+    public function GetCarInUseByUserId($user_id)
+    {
+        $garage = $this->GetGarageByUserId($user_id);
+
+        return [
+          'car_in_use' => $garage["car_in_use_id"]
+        ];
+    }
+
 }

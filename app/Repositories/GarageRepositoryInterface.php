@@ -65,4 +65,6 @@ interface GarageRepositoryInterface
 
     public function GetAllPartsInGarage(Request $request);
 
+    public function GetCarInUseByUserId($user_id);
+
 }
