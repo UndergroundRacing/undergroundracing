@@ -30,6 +30,7 @@ class Tournament_User extends Model
                     'tournament_id' => $tournament['id'],
                     'time' => $time
                 ];
+                $this->user->MinusUserCash($request['user_id'],20000);
                 return ['success' => Tournament_User::create($input)];
             }
            else return ['error' => 'You already registered in this tournament!'];
