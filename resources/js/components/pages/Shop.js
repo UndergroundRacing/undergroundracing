@@ -114,16 +114,12 @@ class Shop extends React.Component {
     render() {
 
         function LoadCars(props) {
-            console.log("Car shop", props.props);
-
             return (<div className={"item"}>
                 <span className={"item-title"}>{props.props.title}</span>
                 <img id={"car-shop-img"} src={props.props.image_url} alt={""}/>
                 <span className={"item-price"}>{props.props.price}$</span>
                 <button id={"R34"}>Plačiau</button>
             </div>);
-
-
         }
 
         let cars = this.state.cars ?

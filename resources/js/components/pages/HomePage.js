@@ -9,6 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
+import {addAbilities, addUser} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -20,13 +21,19 @@ const mapStateToProps = state => {
     };
 };
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addUser: user => dispatch(addUser(user)),
+        addAbilities: abilities => dispatch(addAbilities(abilities))
+    };
+}
+
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             race: false,
-            task_comp: false,
             race_type: "1/4",
             select_car: false,
             user_data: null,
@@ -34,11 +41,14 @@ class HomePage extends React.Component {
             user_cars: null,
             user_car_info: null,
             used_car: "",
-            current_task: null
+            current_task: null,
+            task_prize_received: false
         };
 
         this.handleClick = this.handleClick.bind(this);
         this.selectCar = this.selectCar.bind(this);
+        this.buyAbility = this.buyAbility.bind(this);
+        this.handleTask = this.handleTask.bind(this);
     }
 
     componentDidMount() {
@@ -52,6 +62,9 @@ class HomePage extends React.Component {
         let auth = "Bearer ";
         let token = this.props.token;
 
+        let task = null;
+        let used_car_id = null;
+
         if (this.props.user != null) {
             axios.get("http://127.0.0.1:8000/api/v1/getCarInUseId/" + this.props.user.user.id, {
                 headers: {
@@ -59,9 +72,7 @@ class HomePage extends React.Component {
                     'Authorization': auth + token
                 }
             }).then((response) => {
-                this.setState({
-                    used_car: response.data.success.car_in_use
-                });
+                used_car_id = response.data.success.car_in_use;
             });
 
             axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
@@ -70,10 +81,14 @@ class HomePage extends React.Component {
                     'Authorization': auth + token
                 }
             }).then((response) => {
+                task = response.data.success;
                 this.setState({
-                    current_task: response.data.success
-                });
+                    used_car: used_car_id,
+                    current_task: task
+                })
             });
+
+
         }
     }
 
@@ -97,28 +112,135 @@ class HomePage extends React.Component {
     }
 
     buyAbility(event) {
-        console.log("Buying ability", event.currentTarget.id);
+        let ability = "";
+
+        switch (event.currentTarget.id) {
+            case "reaction":
+                ability = 3;
+                break;
+            case "shifting":
+                ability = 2;
+                break;
+            case "acceleration":
+                ability = 1;
+                break;
+            case "mobility":
+                ability = 4;
+                break;
+            default:
+                break;
+        }
+
+        let auth = 'Bearer ';
+        let token = this.props.token.toString();
+        let user = null;
+        let abilities = null;
+
+        axios.post("http://127.0.0.1:8000/api/v1/updateUserAbilities", {
+            userId: this.state.user_data.user.id,
+            action: ability
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': auth + token
+            }
+        }).then(response => {
+            axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': auth + token
+                }
+            }).then(response => {
+                user = response.data.success;
+                this.props.addUser({user});
+
+                axios.get("http://127.0.0.1:8000/api/v1/getUserAbilities/" + user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then(response => {
+                    abilities = response.data.success;
+                    this.props.addAbilities({abilities});
+
+                });
+            });
+        });
+        this.setState({
+            user_data: user,
+            user_abilities: abilities
+        });
+    }
+
+    handleTask(event) {
+        let auth = 'Bearer ';
+        let token = this.props.token.toString();
+
+        axios.post("http://127.0.0.1:8000/api/v1/getTaskReward", {
+            user_id: this.state.user_data.user.id,
+            task_id: this.state.current_task.id
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': auth + token
+            }
+        }).then(response => {
+            this.setState({task_prize_received: true});
+        });
+
+
     }
 
     selectCar(event) {
-        console.log("Selecting car", event.currentTarget.id);
 
-        switch (event.currentTarget.id) {
-            case "back":
-                this.setState({
-                    select_car: false
-                });
-                break;
-            case "back_arrow":
-                this.setState({
-                    select_car: false
-                });
-                break;
-            default:
-                this.setState({
-                    select_car: true
-                });
-                break;
+        if (isNaN(event.currentTarget.id)) {
+
+            switch (event.currentTarget.id) {
+                case "back":
+                    this.setState({
+                        select_car: false
+                    });
+                    break;
+                case "back_arrow":
+                    this.setState({
+                        select_car: false
+                    });
+                    break;
+                default:
+                    this.setState({
+                        select_car: true
+                    });
+                    break;
+            }
+        } else {
+            this.setState({
+                select_car: true
+            });
+
+
+            this.state.user_cars.cars.map((car) => {
+
+                if (car.vechile_id == event.currentTarget.id) {
+
+                    let auth = "Bearer ";
+                    let token = this.props.token;
+
+                    axios.post("http://127.0.0.1:8000/api/v1/changeCarInUse", {
+                        user_id: this.state.user_data.user.id,
+                        car_id: car.id
+                    }, {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Authorization': auth + token
+                        }
+                    });
+
+                    this.setState({
+                        select_car: false,
+                        used_car: car.id
+                    });
+                }
+            })
         }
     }
 
@@ -201,7 +323,7 @@ class HomePage extends React.Component {
 
         function ActiveCar(props) {
 
-            if (props.props != null && props.car_data != null) {
+            if (props.props != null && props.car_data != null && props.used_car != null) {
 
                 let used_car = props.used_car;
                 let cars = props.props.cars;
@@ -220,7 +342,7 @@ class HomePage extends React.Component {
                 });
                 return (
                     <div className={"select-car"}>
-                        <img id={used_car} src={used_car_info.image_url} onClick={props.handler}
+                        <img id={"active_car"} src={used_car_info.image_url} onClick={props.handler}
                              alt={""}/>
 
                         <div>Pasirinktas automobilis</div>
@@ -274,16 +396,18 @@ class HomePage extends React.Component {
 
         function UserTask(props) {
             let task = props.props;
-
-            return (
-                <div className={"user-task"}>
-                    <span className={"task-title"}>Lenktyniavimas</span>
-                    <span className={"task-info"}>Laimėk {task.required_races} k.</span>
-                    <ProgressBar className={"task-progress"} now={task.races_count/task.required_races*100} />{task.races_count + '/' + task.required_races}
-                    <span className={"task-prize"}>Prizas: {task.prize_cash}$ {task.prize_exp}XP</span>
-                    {taskButton}
-                </div>
-            );
+            if (task != null) {
+                return (
+                    <div className={"user-task"}>
+                        <span className={"task-title"}>Lenktyniavimas</span>
+                        <span className={"task-info"}>Laimėk {task.required_races} k.</span>
+                        <ProgressBar className={"task-progress"}
+                                     now={task.races_count / task.required_races * 100}/>{task.races_count + '/' + task.required_races}
+                        <span className={"task-prize"}>Prizas: {task.prize_cash}$ {task.prize_exp}XP</span>
+                        {taskButton}
+                    </div>
+                );
+            } else return null;
         }
 
         let user_name = this.state.user_data != null ? this.state.user_data.user.name : " ";
@@ -293,8 +417,10 @@ class HomePage extends React.Component {
         let user_xp = this.state.user_data != null ? this.state.user_data.user.experience : " ";
         let next_lvl = this.state.user_data != null ? this.state.user_data.user.next_level_exp : "";
 
-        let taskButton = this.state.task ?
-            <button className={"task-btn"} id={"task"} onClick={this.handleClick}>Atsiimti</button> :
+        let task_complete = this.state.current_task != null && this.state.current_task.races_count == this.state.current_task.required_races ? true : false;
+
+        let taskButton = task_complete && this.state.task_prize_received != true ?
+            <button className={"task-btn"} id={"task"} onClick={this.handleTask}>Atsiimti</button> :
             <button className={"task-btn-disabled"} id={"task"} disabled={true}>Atsiimti</button>;
 
         let selectCar = this.state.select_car ?
@@ -307,8 +433,7 @@ class HomePage extends React.Component {
         let abilities = this.state.user_abilities != null ?
             <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/> : null;
 
-        let user_task = this.state.current_task != null ? <UserTask props={this.state.current_task}/> : null;
-
+        let user_task = <UserTask props={this.state.current_task} state={this.state}/>;
 
         if (this.state.race) {
             return <Race/>;
@@ -366,14 +491,11 @@ class HomePage extends React.Component {
                 <div className={"user-abilities"}>
                     <span>Specialūs gebėjimai</span>
                     {abilities}
-
                 </div>
             </div>);
         }
-
     }
-
 }
 
-const Home = connect(mapStateToProps, null)(HomePage);
+const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);
 export default Home;
