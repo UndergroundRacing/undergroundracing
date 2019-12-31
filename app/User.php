@@ -156,7 +156,6 @@ class User extends Authenticatable
     {
         $user = $this->GetUser($userId);
         $abilities = unserialize($user->abilities);
-        // TODO PRICE CALC
         $money_needed = 1024 + (1024 * $abilities[$ability]);
         if($this->CheckIfUserHasEnoughMoney($userId,$money_needed)){
             $abilities[$ability] += 1;

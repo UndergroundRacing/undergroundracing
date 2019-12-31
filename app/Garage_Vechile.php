@@ -99,9 +99,9 @@ class Garage_Vechile extends Model
             $specs['capacity'] = $engine_specs['capacity'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
-            return $vechile;
+            return ['success' => $vechile];
         }
-        return null;
+        return ['error' => 'Vehicle level is too low'];
     }
 
     public function AddWheelsForVechile($request){
@@ -130,9 +130,9 @@ class Garage_Vechile extends Model
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
-            return $vechile;
+            return ['success' => $vechile];
         }
-        return null;
+        return ['error' => 'Vehicle level is too low'];
     }
 
     public function AddNosToVechile($request){
@@ -159,9 +159,9 @@ class Garage_Vechile extends Model
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
-            return $vechile;
+            return ['success' => $vechile];
         }
-        return null;
+        return ['error' => 'Vehicle level is too low'];
     }
 
     public function AddStopsToVechile($request){
@@ -185,9 +185,9 @@ class Garage_Vechile extends Model
             $stops->ChangeStopStatus($parts['stops'],1);
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
-            return $vechile;
+            return ['success' => $vechile];
         }
-        return null;
+        return ['error' => 'Vehicle level is too low'];
     }
 
     public function AddTurboToVechile($request){
@@ -213,9 +213,9 @@ class Garage_Vechile extends Model
             $specs['power'] += $wheels_spec['power'];
             $vechile->update(['specification' => serialize($specs)]);
             $vechile->update(['parts' => serialize($parts)]);
-            return $vechile;
+            return ['success' => $vechile];
         }
-        return null;
+        return ['error' => 'Vehicle level is too low'];
     }
 
     public function RemoveEngineFromVechile($request){
