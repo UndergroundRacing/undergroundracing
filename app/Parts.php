@@ -257,4 +257,8 @@ class Parts extends Model
                 break;
         }
     }
+
+    public function getAllParts(){
+        return Parts::all();
+    }
 }

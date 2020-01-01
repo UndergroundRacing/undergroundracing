@@ -136,4 +136,9 @@ class GarageController extends Controller
     public function GetCarInUseByUserId($user_id){
         return $this->garageRepository->GetCarInUseByUserId($user_id);
     }
+
+    public function GetAllParts(){
+        return $this->garageRepository->GetAllParts();
+    }
+
 }
