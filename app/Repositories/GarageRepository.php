@@ -592,4 +592,9 @@ class GarageRepository implements GarageRepositoryInterface
         }
         return response()->json(['error'=> 'User id is required'],401);
     }
+
+    public function GetAllParts(){
+        $parts = new  Parts();
+        return response()->json(['success' => $parts->getAllParts()], $this->successStatus);
+    }
 }

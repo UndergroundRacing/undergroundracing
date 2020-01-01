@@ -518,4 +518,5 @@ class HomePage extends React.Component {
 }
 
 const Home = connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
 export default Home;
