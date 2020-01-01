@@ -9,7 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addAbilities, addUser} from "../store/actions";
+import {addAbilities, addActiveCar, addTask, addUser} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -17,14 +17,18 @@ const mapStateToProps = state => {
         user: state.user_info,
         abilities: state.user_abilities,
         cars: state.user_cars,
-        car_info: state.user_car_info
+        car_info: state.user_car_info,
+        active_car: state.active_car,
+        user_task: state.user_task
     };
 };
 
 function mapDispatchToProps(dispatch) {
     return {
         addUser: user => dispatch(addUser(user)),
-        addAbilities: abilities => dispatch(addAbilities(abilities))
+        addAbilities: abilities => dispatch(addAbilities(abilities)),
+        addActiveCar: active_car => dispatch(addActiveCar(active_car)),
+        addTask: task => dispatch(addTask(task))
     };
 }
 
@@ -66,29 +70,43 @@ class HomePage extends React.Component {
         let used_car_id = null;
 
         if (this.props.user != null) {
-            axios.get("http://127.0.0.1:8000/api/v1/getCarInUseId/" + this.props.user.user.id, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': auth + token
-                }
-            }).then((response) => {
-                used_car_id = response.data.success.car_in_use;
-            });
-
-            axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': auth + token
-                }
-            }).then((response) => {
-                task = response.data.success;
+            if (this.props.user_task == null) {
+                axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then((response) => {
+                    task = response.data.success;
+                    this.props.addTask({task});
+                    this.setState({
+                        current_task: task
+                    })
+                });
+            } else {
                 this.setState({
-                    used_car: used_car_id,
-                    current_task: task
+                    current_task: this.props.user_task
+                });
+            }
+
+            if (this.props.active_car == null) {
+                axios.get("http://127.0.0.1:8000/api/v1/getCarInUseId/" + this.props.user.user.id, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then((response) => {
+                    used_car_id = response.data.success.car_in_use;
+                    this.props.addActiveCar({used_car_id});
+                    this.setState({
+                        used_car: used_car_id
+                    });
+                });
+            } else {
+                this.setState({
+                    used_car: this.props.active_car
                 })
-            });
-
-
+            }
         }
     }
 
@@ -323,31 +341,32 @@ class HomePage extends React.Component {
 
         function ActiveCar(props) {
 
-            if (props.props != null && props.car_data != null && props.used_car != null) {
+            if (props.props != null && props.car_data != null && props.used_car.used_car_id != null) {
 
-                let used_car = props.used_car;
+                let used_car = props.used_car.used_car_id;
                 let cars = props.props.cars;
                 let car_data = props.car_data;
                 let used_car_info = null;
 
                 cars.map((car) => {
                     if (car.id === used_car) {
-
                         car_data.map((data) => {
-                            if (data.car_info.id === car.vechile_id) {
+                            if (data.car_info.id == car.vechile_id) {
                                 used_car_info = data.car_info;
                             }
                         });
                     }
                 });
-                return (
-                    <div className={"select-car"}>
-                        <img id={"active_car"} src={used_car_info.image_url} onClick={props.handler}
-                             alt={""}/>
+                if (used_car_info != null) {
+                    return (
+                        <div className={"select-car"}>
+                            <img id={"active_car"} src={used_car_info.image_url} onClick={props.handler}
+                                 alt={""}/>
 
-                        <div>Pasirinktas automobilis</div>
-                    </div>
-                );
+                            <div>Pasirinktas automobilis</div>
+                        </div>
+                    );
+                } else return null;
             } else {
                 return null;
             }
@@ -395,7 +414,7 @@ class HomePage extends React.Component {
         }
 
         function UserTask(props) {
-            let task = props.props;
+            let task = props.props.task;
             if (task != null) {
                 return (
                     <div className={"user-task"}>
@@ -433,7 +452,8 @@ class HomePage extends React.Component {
         let abilities = this.state.user_abilities != null ?
             <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/> : null;
 
-        let user_task = <UserTask props={this.state.current_task} state={this.state}/>;
+        let user_task = this.state.current_task != null ?
+            <UserTask props={this.state.current_task} state={this.state}/> : null;
 
         if (this.state.race) {
             return <Race/>;

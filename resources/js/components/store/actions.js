@@ -5,7 +5,14 @@ import {
     ADD_CARS,
     ADD_CAR_INFO,
     ADD_CAR_SHOP,
-    ADD_ENGINE_SHOP, ADD_TURBO_SHOP, ADD_TIRES_SHOP, ADD_BRAKES_SHOP, ADD_NITROUS_SHOP, CLEAR_CAR_INFO, CLEAR_USER_CARS
+    ADD_ENGINE_SHOP,
+    ADD_TURBO_SHOP,
+    ADD_TIRES_SHOP,
+    ADD_BRAKES_SHOP,
+    ADD_NITROUS_SHOP,
+    CLEAR_CAR_INFO,
+    CLEAR_USER_CARS,
+    ADD_ACTIVE_CAR, ADD_TASK
 } from "./action_types";
 
 export function addToken(payload) {
@@ -20,12 +27,20 @@ export function addAbilities(payload) {
     return {type: ADD_ABILITIES, payload};
 }
 
+export function addTask(payload) {
+    return {type: ADD_TASK, payload};
+}
+
 export function addCars(payload) {
     return {type: ADD_CARS, payload};
 }
 
 export function addCarInfo(payload) {
     return {type: ADD_CAR_INFO, payload};
+}
+
+export function addActiveCar(payload) {
+    return {type: ADD_ACTIVE_CAR, payload};
 }
 
 export function addCarShop(payload) {
