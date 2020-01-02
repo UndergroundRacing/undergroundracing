@@ -251,11 +251,16 @@ class HomePage extends React.Component {
                             'Accept': 'application/json',
                             'Authorization': auth + token
                         }
-                    });
+                    }).then(response => {
+                        let id = car.id;
+                        this.props.addActiveCar({id});
+                        this.setState({
+                            select_car: false,
+                            used_car: {
+                                used_car_id: car.id
+                            }
 
-                    this.setState({
-                        select_car: false,
-                        used_car: car.id
+                        });
                     });
                 }
             })
@@ -341,9 +346,17 @@ class HomePage extends React.Component {
 
         function ActiveCar(props) {
 
-            if (props.props != null && props.car_data != null && props.used_car.used_car_id != null) {
+            let used_car_id = null;
 
-                let used_car = props.used_car.used_car_id;
+            if (props.used_car.used_car_id != null) {
+                used_car_id = props.used_car.used_car_id;
+            } else if (props.used_car.id != null) {
+                used_car_id = props.used_car.id;
+            }
+
+            if (props.props != null && props.car_data != null && used_car_id != null) {
+
+                let used_car = used_car_id;
                 let cars = props.props.cars;
                 let car_data = props.car_data;
                 let used_car_info = null;
@@ -436,7 +449,21 @@ class HomePage extends React.Component {
         let user_xp = this.state.user_data != null ? this.state.user_data.user.experience : " ";
         let next_lvl = this.state.user_data != null ? this.state.user_data.user.next_level_exp : "";
 
-        let task_complete = this.state.current_task != null && this.state.current_task.races_count == this.state.current_task.required_races ? true : false;
+
+        let task_progress = null;
+
+        try {
+            if (this.state.current_task.task != null) {
+                task_progress = this.state.current_task.task;
+            }
+
+        } catch {
+            if (this.state.current_task != null) {
+                task_progress = this.state.current_task;
+            }
+        }
+
+        let task_complete = task_progress != null && task_progress.races_count == task_progress.required_races ? true : false;
 
         let taskButton = task_complete && this.state.task_prize_received != true ?
             <button className={"task-btn"} id={"task"} onClick={this.handleTask}>Atsiimti</button> :
@@ -445,7 +472,7 @@ class HomePage extends React.Component {
         let selectCar = this.state.select_car ?
             <CarSelect props={this.state.user_car_info} handler={this.selectCar.bind(this)}/> : null;
 
-        let activeCar = this.state.used_car !== "" ?
+        let activeCar = this.state.used_car !== "" && this.state.select_car == false ?
             <ActiveCar props={this.state.user_cars} car_data={this.state.user_car_info} used_car={this.state.used_car}
                        handler={this.selectCar.bind(this)}/> : null;
 
