@@ -335,4 +335,9 @@ class Garage_Vechile extends Model
     public function getGarageVechileById($id){
         return Garage_Vechile::find($id);
     }
+
+    public function GetVechileInUseParts($id){
+        $new_vechile = Garage_Vechile::find($id);
+        return unserialize($new_vechile->parts);
+    }
 }
