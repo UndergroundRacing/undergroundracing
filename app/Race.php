@@ -63,9 +63,25 @@ class Race extends Model
             ->where('level','<',$maxLevel)
             ->where('id','!=', $id)
             ->get();
-
         $offset = rand(0,count($users)-1);
-        return $users[$offset];
+        $data = [
+          'user' => $users[$offset],
+          'car_in_use' =>$this->GetOpponentCarInUse($users[$offset]['id'])
+        ];
+        return $data;
+    }
+
+    public function GetOpponentCarInUse($user_id){
+        $garage = new Garage();
+        $gar = $garage->GetGarageByUserId($user_id);
+        $part = new Parts();
+            $req = [
+                'part_type' => 6,
+                'garage_part_id' => $gar['car_in_use_id']
+            ];
+            $car_in_use = $part->GetPartSpecificationInGarage($req);
+
+        return $car_in_use;
     }
 
     public function CalculatePrize($user_id){
