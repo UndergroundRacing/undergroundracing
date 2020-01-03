@@ -3,13 +3,14 @@ import '../css/styles.css';
 import '../css/race.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFlagCheckered, faLevelUpAlt} from "@fortawesome/free-solid-svg-icons";
-
+import {connect} from "react-redux";
 import UserPhoto from '../img/user_photo.jpg';
 import DefaultUser from '../img/default_user.jpg';
 import EVO9 from '../img/Evo9.png';
 import R34 from '../img/R34.png';
 import Engine from "../icons/Engine.svg";
 import Power from "../icons/Power.svg";
+import {getPlayer} from "../store/actions";
 import Torque from "../icons/Torque.svg";
 import Weight from "../icons/Weight.svg";
 
@@ -17,49 +18,64 @@ class Race extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({});
-
         this.handleRaceEnd = this.handleRaceEnd.bind(this);
     }
 
+
     handleRaceEnd(event){
+        
+        this.props.getPlayer(this.props.token);
+        event.preventDefault();
         window.location.reload();
+    }
+
+    checkIfWinner(){
+        let status = '';
+        if(this.props.race.status == 1)
+        {
+             status = "Laimeta";
+        }
+        else{
+            status = "Pralaimėta";
+        }
+
+        return (
+            <div>
+                <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>{status}<FontAwesomeIcon icon={faFlagCheckered}/></span>
+            </div>
+            
+        ); 
     }
 
     render() {
 
-        let winner = <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>Laimėtojas<FontAwesomeIcon icon={faFlagCheckered}/></span>;
+        //let winner = <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>Laimėtojas<FontAwesomeIcon icon={faFlagCheckered}/></span>;
 
         return (<div>
             <div className={"race"}>
             <span className={"racer winner"}>
-                {winner}
+                {this.checkIfWinner()}
                 <div className={"racer-info"}>
                     <img src={UserPhoto} alt={"user-photo"}/>
-                    <span>The Stig</span>
-                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> 99</span>
+                    <span>{this.props.user.user.username}</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.props.user.user.level}</span>
                 </div>
 
                 <div className={"racer-car"}>
-                    <img src={R34} alt={"R34"}/>
+                    <img src={this.props.race.car_in_use.firstRacer.image_url} alt={"R34"}/>
                     <span className={"car-stats"}>
-                        <div>Nissan Skyline GT-R R34</div>
-                        <div><img src={Engine} alt={"Engine"}/> 2.6 RB26DETT</div>
-                        <div><img src={Power} alt={"Power"}/> 327 HP</div>
-                        <div><img src={Torque} alt={"Torque"}/> 289 LB-FT</div>
-                        <div><img src={Weight} alt={"Weight"}/> 1560KG</div>
+                        <div>{this.props.race.car_in_use.firstRacer.title}</div>
+                        <div><img src={Engine} alt={"Engine"}/> {this.props.race.specifications.firstRacerSpecifications.liter} L</div>
+                        <div><img src={Power} alt={"Power"}/> {this.props.race.specifications.firstRacerSpecifications.power} HP</div>
+                        <div><img src={Weight} alt={"Weight"}/> {this.props.race.specifications.firstRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
 
                 <table className={"race-results"}>
                     <thead>
                     <tr>
-                        <td><span>0-100 KM/H</span></td>
-                        <td>5.1 s</td>
-                    </tr>
-
-                    <tr>
                         <td><span>1/4 mile</span></td>
-                        <td>13.50 s</td>
+                        <td>{this.props.race.times.firstRacer}</td>
                     </tr>
                     </thead>
                 </table>
@@ -69,31 +85,25 @@ class Race extends React.Component {
                 <span className={"racer"}>
                 <div className={"racer-info"}>
                     <img src={DefaultUser} alt={"user-photo"}/>
-                    <span>Racer</span>
-                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> 45</span>
+                    <span>{this.props.race.opponent_info.username}</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.props.race.opponent_info.level}</span>
                 </div>
 
                 <div className={"racer-car"}>
-                    <img src={EVO9} alt={"EVO9"}/>
+                    <img src={this.props.race.car_in_use.secondRacer.image_url}  alt={"EVO9"}/>
                     <span className={"car-stats"}>
-                        <div>Mitsubishi Lancer Evolution IX</div>
-                        <div><img src={Engine} alt={"Engine"}/> 2.0 4G63</div>
-                        <div><img src={Power} alt={"Power"}/> 280 HP</div>
-                        <div><img src={Torque} alt={"Torque"}/> 295 LB-FT</div>
-                        <div><img src={Weight} alt={"Weight"}/> 1465KG</div>
+                        <div>{this.props.race.car_in_use.firstRacer.title}</div>
+                        <div><img src={Engine} alt={"Engine"}/> {this.props.race.specifications.secondRacerSpecifications.liter} L</div>
+                        <div><img src={Power} alt={"Power"}/> {this.props.race.specifications.secondRacerSpecifications.power} HP</div>
+                        <div><img src={Weight} alt={"Weight"}/> {this.props.race.specifications.secondRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
 
                 <table className={"race-results"}>
                     <thead>
                     <tr>
-                        <td><span>0-100 KM/H</span></td>
-                        <td>5.3 s</td>
-                    </tr>
-
-                    <tr>
                         <td><span>1/4 mile</span></td>
-                        <td>13.81 s</td>
+                        <td>{this.props.race.times.secondRacer}</td>
                     </tr>
                     </thead>
                 </table>
@@ -108,4 +118,12 @@ class Race extends React.Component {
 
 }
 
-export default Race;
+const mapStateToProps = state => {
+    return {
+        user: state.user_info,
+        token: state.token,
+        race: state.race,
+    };
+};
+const RaceComponent = connect(mapStateToProps,{getPlayer})(Race);
+export default RaceComponent;

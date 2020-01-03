@@ -70,7 +70,7 @@ class Parts extends Model
         }
     }
 
-    public function GetPartSpecificationInGarage(Request $request){
+    public function GetPartSpecificationInGarage($request){
         switch ($request['part_type']) {
             case 1:
                 $garage_part = Garage_Engine::find($request['garage_part_id']);

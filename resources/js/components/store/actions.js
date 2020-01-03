@@ -1,4 +1,4 @@
-import {ADD_PARTS,ADD_TOKEN, ADD_USER, ADD_ABILITIES, ADD_CARS, ADD_CAR_INFO, ADD_CAR_SHOP,ADMIN_LOGIN,GET_USER,ADD_PART, GET_ALL_PARTS} from "./action_types";
+import {RACE_ACTION,ADD_PARTS,ADD_TOKEN, ADD_USER, ADD_ABILITIES, ADD_CARS, ADD_CAR_INFO, ADD_CAR_SHOP,ADMIN_LOGIN,GET_USER,ADD_PART, GET_ALL_PARTS} from "./action_types";
 import Apis from '../apis/Apis';
 
 export function addToken(payload) {
@@ -113,4 +113,33 @@ export const addParts = (token,data,endpoint) => async dispatch => {
     });
 };
 
+export const raceAction = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    const response = await Apis.post('/doRaceAction',data,{
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
 
+    dispatch({
+        type: RACE_ACTION,
+        payload: response.data.success
+    });
+};
+
+export const getPlayer = token => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    
+    const response = await Apis.post('/getUser',null,{
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+    
+    dispatch({
+        type: ADD_USER,
+        payload: {user: response.data.success}
+    });
+};

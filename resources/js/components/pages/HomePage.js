@@ -9,7 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addAbilities, addUser} from "../store/actions";
+import {addAbilities, addUser, raceAction} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -24,7 +24,8 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
         addUser: user => dispatch(addUser(user)),
-        addAbilities: abilities => dispatch(addAbilities(abilities))
+        addAbilities: abilities => dispatch(addAbilities(abilities)),
+        raceAction: (token,data) => dispatch(raceAction(token,data))
     };
 }
 
@@ -46,19 +47,20 @@ class HomePage extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleRace = this.handleRace.bind(this);
         this.selectCar = this.selectCar.bind(this);
         this.buyAbility = this.buyAbility.bind(this);
         this.handleTask = this.handleTask.bind(this);
     }
 
     componentDidMount() {
+        console.log(this.props);
         this.setState({
             user_data: this.props.user,
             user_abilities: this.props.abilities,
             user_cars: this.props.cars,
             user_car_info: this.props.car_info
         });
-
         let auth = "Bearer ";
         let token = this.props.token;
 
@@ -90,6 +92,16 @@ class HomePage extends React.Component {
 
 
         }
+    }
+
+    handleRace(event){
+        let data = {
+            first_racer: this.props.user.user.id,
+        }
+        this.props.raceAction(this.props.token, data);
+        this.setState({
+            race: true
+        });
     }
 
     handleClick(event) {
@@ -482,7 +494,7 @@ class HomePage extends React.Component {
                         <div className={"select-race"}>
                             <div>Lenktynių ilgis</div>
                             <span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>
-                            <button id={"race"} onClick={this.handleClick}>Lenktyniauti</button>
+                            <button id={"race"} onClick={this.handleRace}>Lenktyniauti</button>
                         </div>
                     </div>
                     {selectCar}
