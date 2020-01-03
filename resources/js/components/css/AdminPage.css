@@ -1,0 +1,17 @@
+div.admin-actions{
+    margin: 30px auto 0 auto;
+}
+
+span.admin-action{
+    margin: 0 10px 20px 0;
+}
+
+.admin_add_action {
+    text-align: center;
+    margin-top: 20px;
+}
+
+span.add-action-label {
+    font-size: 20px;
+    color: white;
+}

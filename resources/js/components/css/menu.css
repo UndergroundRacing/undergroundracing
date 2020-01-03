@@ -42,10 +42,9 @@
         font-size: large;
     }
 
-    .user-mini-info i {
+    .user-mini-info svg {
         color: red;
-        padding-left: 15px;
-        padding-right: 15px;
+        margin: 0 15px;
     }
 }
 
