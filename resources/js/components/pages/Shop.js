@@ -13,6 +13,7 @@ import Acceleration from '../icons/Acceleration.svg';
 import Weight from '../icons/Weight.svg';
 import axios from "axios";
 import {
+    addUser,
     addBrakesShop, addCarInfo,
     addCars,
     addCarShop,
@@ -45,7 +46,8 @@ function mapDispatchToProps(dispatch) {
         addCars: cars => dispatch(addCars(cars)),
         addCarInfo: car_info => dispatch(addCarInfo(car_info)),
         clearUserCars: () => dispatch(clearUserCars()),
-        clearUserCarInfo: () => dispatch(clearUserCarInfo())
+        clearUserCarInfo: () => dispatch(clearUserCarInfo()),
+        addUser: user => dispatch(addUser(user))
     };
 }
 
@@ -245,6 +247,18 @@ class Shop extends React.Component {
         ).then(response => {
             this.props.clearUserCars({});
             this.props.clearUserCarInfo({});
+
+            axios.post("http://127.0.0.1:8000/api/v1/getUser", [], {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': auth + token
+                }
+            }).then(response => {
+                let user = response.data.success;
+                this.props.addUser({user});
+
+                console.log("Updated user info", this.props.user);
+            });
 
             axios.get("http://127.0.0.1:8000/api/v1/getAllVechiles/" + this.props.user.user.id, {
                 headers: {
