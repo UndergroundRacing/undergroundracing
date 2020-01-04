@@ -22,7 +22,7 @@ class Report extends Model
           'parts_count' => $this->GetPartsCount($id),
           'races_count' => $this->GetRacesCount($id),
           'races_win_cout' => $this->GetWonRacesCount($id),
-          'win_percent' => $this->GetWonRacesPercent($id)
+          'win_percent' => round($this->GetWonRacesPercent($id),2)
         ];
     }
 
