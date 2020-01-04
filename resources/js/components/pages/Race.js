@@ -17,11 +17,21 @@ import Weight from "../icons/Weight.svg";
 class Race extends React.Component {
     constructor(props) {
         super(props);
-        this.state = ({});
+        this.state = ({
+            race:this.props.race,
+        });
         this.handleRaceEnd = this.handleRaceEnd.bind(this);
     }
 
-
+    componentDidUpdate(){
+        console.log(this.state);
+    }
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            race: nextProps.race
+        });
+        console.log(this.state);
+    }
     handleRaceEnd(event){
         
         this.props.getPlayer(this.props.token);
@@ -31,7 +41,7 @@ class Race extends React.Component {
 
     checkIfWinner(){
         let status = '';
-        if(this.props.race.status == 1)
+        if(this.state.race.status == 1)
         {
              status = "Laimeta";
         }
@@ -65,9 +75,9 @@ class Race extends React.Component {
                     <img src={this.props.race.car_in_use.firstRacer.image_url} alt={"R34"}/>
                     <span className={"car-stats"}>
                         <div>{this.props.race.car_in_use.firstRacer.title}</div>
-                        <div><img src={Engine} alt={"Engine"}/> {this.props.race.specifications.firstRacerSpecifications.liter} L</div>
-                        <div><img src={Power} alt={"Power"}/> {this.props.race.specifications.firstRacerSpecifications.power} HP</div>
-                        <div><img src={Weight} alt={"Weight"}/> {this.props.race.specifications.firstRacerSpecifications.weight} KG</div>
+                        <div><img src={Engine} alt={"Engine"}/> {this.state.race.specifications.firstRacerSpecifications.liter} L</div>
+                        <div><img src={Power} alt={"Power"}/> {this.state.race.specifications.firstRacerSpecifications.power} HP</div>
+                        <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.firstRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
 
@@ -86,16 +96,16 @@ class Race extends React.Component {
                 <div className={"racer-info"}>
                     <img src={DefaultUser} alt={"user-photo"}/>
                     <span>{this.props.race.opponent_info.username}</span>
-                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.props.race.opponent_info.level}</span>
+                    <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.state.race.opponent_info.level}</span>
                 </div>
 
                 <div className={"racer-car"}>
                     <img src={this.props.race.car_in_use.secondRacer.image_url}  alt={"EVO9"}/>
                     <span className={"car-stats"}>
                         <div>{this.props.race.car_in_use.firstRacer.title}</div>
-                        <div><img src={Engine} alt={"Engine"}/> {this.props.race.specifications.secondRacerSpecifications.liter} L</div>
-                        <div><img src={Power} alt={"Power"}/> {this.props.race.specifications.secondRacerSpecifications.power} HP</div>
-                        <div><img src={Weight} alt={"Weight"}/> {this.props.race.specifications.secondRacerSpecifications.weight} KG</div>
+                        <div><img src={Engine} alt={"Engine"}/> {this.state.race.specifications.secondRacerSpecifications.liter} L</div>
+                        <div><img src={Power} alt={"Power"}/> {this.state.race.specifications.secondRacerSpecifications.power} HP</div>
+                        <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.secondRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
 
