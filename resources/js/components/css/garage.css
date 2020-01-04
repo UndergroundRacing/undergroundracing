@@ -1,128 +1,417 @@
-/* GARAGE PAGE */
+/* Extra small devices (phones, 320px and down) */
+@media only screen and (max-width: 320px) {
+    /* GARAGE PAGE */
+    .garage {
+        position: absolute;
+        top: 265px;
+        bottom: 0;
+        text-align: center;
+        color: white;
+        overflow-y: scroll;
+        width: 100%;
+    }
 
-.garage {
-    position: absolute;
-    top: 110px;
-    bottom: 0;
-    text-align: center;
-    color: white;
-    overflow-y: scroll;
-    width: 100%;
+    .garage-content {
+        margin: 10px;
+    }
+
+    .garage::-webkit-scrollbar {
+        display: none;
+    }
+
+    .garage-item {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+        );
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        border: solid white;
+        border-radius: 20px;
+        vertical-align: middle;
+    }
+
+    .garage-item td {
+        width: 50%;
+    }
+
+    .garage-item span {
+        display: block;
+        width: 100%;
+        font-size: medium;
+    }
+
+    .garage-item img {
+        width: 150px;
+        height: auto;
+    }
+
+    .garage-item:hover {
+        border-color: red;
+        cursor: pointer;
+    }
+
+    .car-upgrade {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+        color: white;
+        text-align: center;
+    }
+
+    .car-info {
+        display: table;
+    }
+
+    .car-info img {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .car-info table {
+        display: block;
+        vertical-align: middle;
+    }
+
+    .car-parts {
+        display: block;
+    }
+
+    .car-parts span {
+        display: block;
+        font-size: x-large;
+    }
+
+    .car-parts table, .car-parts thead {
+        width: 100%;
+        display: block;
+    }
+
+    .car-parts td {
+        width: 20%;
+        display: inline-block;
+        font-size: xx-small;
+        min-height: 100px;
+    }
+
+    .car-parts table tr {
+        display: block;
+    }
+
+    .car-parts img {
+        width: 100%;
+        height: auto;
+    }
+
+    .parts-swap img {
+        width: 100px;
+        height: auto;
+    }
+
+    .car-parts img:hover, .parts-swap img:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .parts-swap {
+        overflow-x: scroll;
+        border-top: solid 1px white;
+    }
+
+    .parts-swap table {
+        font-size: medium;
+    }
+
+    .parts-swap button {
+        color: red;
+        background: none;
+        border: none;
+        display: block;
+        float: left;
+        font-size: x-large;
+    }
+
+    .parts-swap button:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        background: none;
+    }
 }
 
-.garage-content {
-    width: 80%;
-    margin: auto;
+/* Smaller devices (320px and up) */
+@media only screen and (min-width: 320px) {
+    /* GARAGE PAGE */
+    .garage {
+        position: absolute;
+        top: 265px;
+        bottom: 0;
+        text-align: center;
+        color: white;
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+    .garage-content {
+        margin: 10px;
+    }
+
+    .garage::-webkit-scrollbar {
+        display: none;
+    }
+
+    .garage-item {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+        );
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        border: solid white;
+        border-radius: 20px;
+        vertical-align: middle;
+    }
+
+    .garage-item td {
+        width: 50%;
+    }
+
+    .garage-item span {
+        display: block;
+        width: 100%;
+        font-size: medium;
+    }
+
+    .garage-item img {
+        width: 150px;
+        height: auto;
+    }
+
+    .garage-item:hover {
+        border-color: red;
+        cursor: pointer;
+    }
+
+    .car-upgrade {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+        color: white;
+        text-align: center;
+    }
+
+    .car-info {
+        display: table;
+    }
+
+    .car-info img {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .car-info table {
+        display: block;
+        vertical-align: middle;
+    }
+
+    .car-parts {
+        display: block;
+    }
+
+    .car-parts span {
+        display: block;
+        font-size: x-large;
+    }
+
+    .car-parts table, .car-parts thead {
+        width: 100%;
+        display: block;
+    }
+
+    .car-parts td {
+        width: 20%;
+        display: inline-block;
+        font-size: xx-small;
+        min-height: 100px;
+    }
+
+    .car-parts table tr {
+        display: block;
+    }
+
+    .car-parts img {
+        width: 100%;
+        height: auto;
+    }
+
+    .parts-swap img {
+        width: 100px;
+        height: auto;
+    }
+
+    .car-parts img:hover, .parts-swap img:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .parts-swap {
+        overflow-x: scroll;
+        border-top: solid 1px white;
+    }
+
+    .parts-swap table {
+        font-size: medium;
+    }
+
+    .parts-swap button {
+        color: red;
+        background: none;
+        border: none;
+        display: block;
+        float: left;
+        font-size: x-large;
+    }
+
+    .parts-swap button:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        background: none;
+    }
 }
 
-.garage::-webkit-scrollbar {
-    display: none;
+@media only screen and (min-width: 480px) {
+    .garage {
+        top: 180px;
+    }
 }
 
-.garage-item {
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.6)
-    );
-    display: inline-block;
-    width: 30%;
-    margin: 10px;
-    padding: 10px;
-    border: solid white;
-    border-radius: 20px;
-    vertical-align: middle;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .garage {
+        top: 180px;
+    }
+
+    .garage-item {
+        width: 45%;
+        margin: 5px;
+    }
+
+    .garage-item img {
+        height: 60px;
+        width: auto;
+    }
+
+    .garage-item span {
+        font-size: small;
+    }
+
+    .car-upgrade {
+        width: 85%;
+        margin: 10px auto;
+    }
+
+    .car-parts td {
+        font-size: medium;
+        min-height: 200px;
+    }
+
 }
 
-.garage-item td {
-    width: 65%;
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .garage {
+        top: 120px;
+    }
+
+    .garage-item img {
+        height: 85px;
+    }
+
+    .garage-item span {
+        font-size: medium;
+    }
+
+    .car-info img {
+        display: table-cell;
+    }
+
+    .car-info table {
+        display: table-cell;
+    }
+
 }
 
-.garage-item span {
-    display: block;
-    width: 100%;
-    font-size: x-large;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .garage-item {
+        width: 45%;
+    }
+
+    .garage-item td {
+        width: 50%;
+    }
+
+    .garage-item span {
+        font-size: large;
+    }
+
+    .garage-item img {
+        height: 100px;
+        width: auto;
+    }
+
+    .car-parts td {
+        vertical-aling: top;
+    }
+
+    .parts-swap img{
+        width: 130px;
+        height: auto;
+    }
 }
 
-.garage-item img {
-    height: 150px;
-    width: auto;
+/* Large devices (laptops/desktops, 1200px and up) */
+@media only screen and (min-width: 1367px) {
+    .garage-item {
+        width: 25%;
+    }
+
+    .garage-item img{
+        height: 125px;
+    }
+
+    .garage-item span{
+        font-size: x-large;
+    }
+
+    .car-upgrade {
+        width: 60%;
+        margin: 10px auto;
+    }
+
+    .car-parts img{
+        width: 150px;
+        height: auto;
+    }
+
 }
 
-.garage-item:hover {
-    border-color: red;
-    cursor: pointer;
-}
 
-.car-upgrade {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    margin: 15px auto auto;
-    width: 70%;
-    padding: 15px;
-    border-radius: 20px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    color: white;
-    text-align: center;
-}
 
-.car-info {
-    display: table;
-}
 
-.car-info img {
-    display: table-cell;
-    padding: 5px;
-}
-
-.car-info table {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.car-parts {
-    display: block;
-}
-
-.car-parts span {
-    display: block;
-    font-size: x-large;
-}
-
-.car-parts table {
-    width: 100%;
-}
-
-.car-parts img, .parts-swap img {
-    width: 150px;
-    height: auto;
-}
-
-.car-parts img:hover, .parts-swap img:hover {
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-.parts-swap {
-    overflow-x: scroll;
-    border-top: solid 1px white;
-}
-
-.parts-swap table {
-    font-size: medium;
-}
-
-.parts-swap button {
-    color: red;
-    background: none;
-    border: none;
-    display: block;
-    float: left;
-    font-size: x-large;
-}
-
-.parts-swap button:hover {
-    cursor: pointer;
-    opacity: 0.5;
-    background: none;
-}
