@@ -22,6 +22,7 @@ Route::prefix('v1')->group(function () {
     Route::post('login', 'Api\AuthController@login');
     Route::post('adminLogin', 'Api\AuthController@AdminLogin');
     Route::post('register', 'Api\AuthController@register');
+    Route::post('changePassword', 'Api\AuthController@ChangePassword');
     Route::post('adminRegister', 'Api\AuthController@AdminRegister');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getUser', 'Api\AuthController@getUser');

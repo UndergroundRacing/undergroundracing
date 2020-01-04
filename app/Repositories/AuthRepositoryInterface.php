@@ -17,4 +17,6 @@ interface AuthRepositoryInterface
     public function AdminLogin();
 
     public function AdminRegister(Request $request);
+
+    public function ChangePassword(Request $request);
 }
