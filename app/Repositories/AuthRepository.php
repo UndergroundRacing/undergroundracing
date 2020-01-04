@@ -109,4 +109,23 @@ class AuthRepository implements AuthRepositoryInterface
         return response()->json(['success' => $success], $this->successStatus);
         return $created_user;
     }
+
+    public function ChangePassword(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+                'n_password' => 'required',
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+            $user = Auth::user();
+            $user->password =bcrypt($request['n_password']);
+            $user->save();
+            $success['token'] = $user->createToken('AppName')->accessToken;
+            return response()->json(['success' => $success], $this->successStatus);
+        }
+    }
 }

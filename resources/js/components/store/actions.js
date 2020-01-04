@@ -12,9 +12,16 @@ import {
     ADD_NITROUS_SHOP,
     CLEAR_CAR_INFO,
     CLEAR_USER_CARS,
-    ADD_ACTIVE_CAR, ADD_TASK
+    ADD_ACTIVE_CAR,
+    ADD_TASK,
+    RACE_ACTION,
+    ADD_PARTS,
+    ADMIN_LOGIN,
+    GET_USER,
+    ADD_PART,
+    GET_ALL_PARTS
 } from "./action_types";
-import {ADMIN_LOGIN,GET_USER,ADD_PART, GET_ALL_PARTS} from "./action_types";
+
 import Apis from '../apis/Apis';
 
 export function addToken(payload) {
@@ -76,14 +83,15 @@ export function clearUserCars(payload) {
 export function clearUserCarInfo(payload) {
     return {type: CLEAR_CAR_INFO, payload};
 }
-export const adminLogin = (email,password) => async dispatch => {
+
+export const adminLogin = (email, password) => async dispatch => {
 
     var data = JSON.stringify({
         email: email,
         password: password
     });
 
-    const response = await Apis.post('/adminLogin',data,{
+    const response = await Apis.post('/adminLogin', data, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -99,7 +107,7 @@ export const adminLogin = (email,password) => async dispatch => {
 export const getUser = token => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
-    const response = await Apis.post('/getUser',null,{
+    const response = await Apis.post('/getUser', null, {
         headers: {
             'Accept': 'application/json',
             'Authorization': auth
@@ -112,12 +120,12 @@ export const getUser = token => async dispatch => {
     });
 };
 
-export const addPart = (title,token) => async dispatch => {
+export const addPart = (title, token) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var data = {
         title: title
     };
-    const response = await Apis.post('/addPart',data,{
+    const response = await Apis.post('/addPart', data, {
         headers: {
             'Accept': 'application/json',
             'Authorization': auth
@@ -132,7 +140,7 @@ export const addPart = (title,token) => async dispatch => {
 
 export const getAllParts = (token) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
-    const response = await Apis.get('/getAllParts',{
+    const response = await Apis.get('/getAllParts', {
         headers: {
             'Accept': 'application/json',
             'Authorization': auth
@@ -146,9 +154,9 @@ export const getAllParts = (token) => async dispatch => {
 };
 
 
-export const addParts = (token,data,endpoint) => async dispatch => {
+export const addParts = (token, data, endpoint) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
-    const response = await Apis.post(endpoint,data,{
+    const response = await Apis.post(endpoint, data, {
         headers: {
             'Accept': 'application/json',
             'Authorization': auth
@@ -161,4 +169,33 @@ export const addParts = (token,data,endpoint) => async dispatch => {
     });
 };
 
+export const raceAction = (token, data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    const response = await Apis.post('/doRaceAction', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
 
+    dispatch({
+        type: RACE_ACTION,
+        payload: response.data.success
+    });
+};
+
+export const getPlayer = token => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/getUser', null, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: ADD_USER,
+        payload: {user: response.data.success}
+    });
+};

@@ -9,7 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addAbilities, addActiveCar, addTask, addUser} from "../store/actions";
+import {addAbilities, addActiveCar, addTask, addUser, raceAction} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -28,7 +28,8 @@ function mapDispatchToProps(dispatch) {
         addUser: user => dispatch(addUser(user)),
         addAbilities: abilities => dispatch(addAbilities(abilities)),
         addActiveCar: active_car => dispatch(addActiveCar(active_car)),
-        addTask: task => dispatch(addTask(task))
+        addTask: task => dispatch(addTask(task)),
+        raceAction: (token,data) => dispatch(raceAction(token,data))
     };
 }
 
@@ -50,6 +51,7 @@ class HomePage extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleRace = this.handleRace.bind(this);
         this.selectCar = this.selectCar.bind(this);
         this.buyAbility = this.buyAbility.bind(this);
         this.handleTask = this.handleTask.bind(this);
@@ -108,6 +110,16 @@ class HomePage extends React.Component {
                 })
             }
         }
+    }
+
+    handleRace(event){
+        let data = {
+            first_racer: this.props.user.user.id,
+        }
+        this.props.raceAction(this.props.token, data);
+        this.setState({
+            race: true
+        });
     }
 
     handleClick(event) {
@@ -529,7 +541,7 @@ class HomePage extends React.Component {
                         <div className={"select-race"}>
                             <div>Lenktynių ilgis</div>
                             <span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>
-                            <button id={"race"} onClick={this.handleClick}>Lenktyniauti</button>
+                            <button id={"race"} onClick={this.handleRace}>Lenktyniauti</button>
                         </div>
                     </div>
                     {selectCar}

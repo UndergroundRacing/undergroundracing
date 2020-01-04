@@ -22,6 +22,7 @@ Route::prefix('v1')->group(function () {
     Route::post('login', 'Api\AuthController@login');
     Route::post('adminLogin', 'Api\AuthController@AdminLogin');
     Route::post('register', 'Api\AuthController@register');
+    Route::post('changePassword', 'Api\AuthController@ChangePassword');
     Route::post('adminRegister', 'Api\AuthController@AdminRegister');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getUser', 'Api\AuthController@getUser');
@@ -79,5 +80,6 @@ Route::prefix('v1')->group(function () {
         Route::post('addTask','Api\TaskController@AddTask');
         Route::post('getTaskReward','Api\TaskController@GetRewards');
         Route::get('getTaskByUserId/{id}','Api\TaskController@GetTaskByUserId');
+        Route::get('getUserReport/{id}','Api\ReportController@GetReportByUserId');
     });
 });

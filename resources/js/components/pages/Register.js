@@ -4,7 +4,8 @@ import '../css/login_register.css';
 import axios from 'axios';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from "@fortawesome/free-solid-svg-icons";
-
+import {connect} from "react-redux";
+import {addToken} from "../store/actions";
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -85,6 +86,8 @@ class Register extends React.Component {
                 .then((response) => {
                     const token = JSON.parse(response.request.response).success.token;
                     this.props.addToken({token});
+
+                    console.log('success');
                     this.props.history.push('/Home');
 
                 })
@@ -147,6 +150,6 @@ class Register extends React.Component {
         </div>);
     }
 }
-
-export default Register;
+const RegisterComponent = connect(null, {addToken})(Register);
+export default RegisterComponent;
 

@@ -12,9 +12,10 @@ import {
     ADD_NITROUS_SHOP,
     CLEAR_CAR_INFO,
     CLEAR_USER_CARS,
-    ADD_ACTIVE_CAR, ADD_TASK
+    ADD_ACTIVE_CAR, ADD_TASK,
+    ADMIN_LOGIN, GET_USER, ADD_PART, GET_ALL_PARTS, ADD_PARTS,
+    RACE_ACTION, ADD_WHEELS
 } from "./action_types";
-import {ADD_WHEELS, ADMIN_LOGIN, GET_USER, ADD_PART, GET_ALL_PARTS, ADD_PARTS} from "./action_types";
 
 const initialState = {
     token: "",
@@ -40,7 +41,8 @@ const initialState = {
         tires: null,
         brakes: null,
         nitrous: null
-    }
+    },
+    race:null
 };
 
 function rootReducer(state = initialState, action) {
@@ -126,8 +128,13 @@ function rootReducer(state = initialState, action) {
             return {...state, allParts: action.payload};
         case ADD_PARTS:
             return {...state, added_part: action.payload};
+            return {...state, added_part: action.payload};
+        case RACE_ACTION:
+            return {...state, race: action.payload};
         default:
             return state;
     }
 }
+
+
 export default rootReducer;

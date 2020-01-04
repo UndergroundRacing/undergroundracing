@@ -25,8 +25,6 @@ class RacesRepository implements RacesRepositoryInterface
         $validator = Validator::make($request->all(),
             [
                 'first_racer' => 'required',
-                'second_racer' => 'required'
-
             ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
