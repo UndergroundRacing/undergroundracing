@@ -24,7 +24,7 @@ class AddEngine extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props.adminToken);
+        console.log(this.props);
         this.props.getAllParts(this.props.adminToken);
     }
 

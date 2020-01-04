@@ -78,5 +78,6 @@ Route::prefix('v1')->group(function () {
         Route::post('addTask','Api\TaskController@AddTask');
         Route::post('getTaskReward','Api\TaskController@GetRewards');
         Route::get('getTaskByUserId/{id}','Api\TaskController@GetTaskByUserId');
+        Route::get('getUserReport/{id}','Api\ReportController@GetReportByUserId');
     });
 });
