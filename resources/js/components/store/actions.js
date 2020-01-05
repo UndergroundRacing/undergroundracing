@@ -34,7 +34,8 @@ import {
     MESSAGE_CONTACTS,
     GET_MESSAGES,
     REGISTER_USER_TO_TOURNAMENT ,
-    CHECK_IF_USER_REGISTERED
+    CHECK_IF_USER_REGISTERED,
+    ADD_USER_TASK
 } from "./action_types";
 
 import Apis from '../apis/Apis';
@@ -448,5 +449,21 @@ export const getMessages = (token,data) => async dispatch => {
     dispatch({
         type: GET_MESSAGES,
         payload: response.data.success
+    });
+};
+
+export const addUserTask = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/addTask', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: ADD_USER_TASK,
+        payload: {task: response.data.success}
     });
 };

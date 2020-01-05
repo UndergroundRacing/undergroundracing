@@ -43,27 +43,29 @@ class Race extends React.Component {
 
     checkIfWinner(){
         let status = '';
-        if(this.state.race.status == 1)
-        {
-             status = "Laimeta";
-        }
-        else{
-            status = "Pralaimėta";
+        if(this.state.race != null){
+            if(this.state.race.status == 1)
+            {
+                 status = "Laimeta";
+            }
+            else{
+                status = "Pralaimėta";
+            }
+    
+            return (
+                <div>
+                    <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>{status}<FontAwesomeIcon icon={faFlagCheckered}/></span>
+                </div>
+                
+            ); 
         }
 
-        return (
-            <div>
-                <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>{status}<FontAwesomeIcon icon={faFlagCheckered}/></span>
-            </div>
-            
-        ); 
     }
 
-    render() {
-
-        //let winner = <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>Laimėtojas<FontAwesomeIcon icon={faFlagCheckered}/></span>;
-
-        return (<div>
+    renderRace(){
+        if(this.state.race != null){
+            return(
+            <div>
             <div className={"race"}>
             <span className={"racer winner"}>
                 {this.checkIfWinner()}
@@ -72,7 +74,7 @@ class Race extends React.Component {
                     <span>{this.props.user.user.username}</span>
                     <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.props.user.user.level}</span>
                 </div>
-
+    
                 <div className={"racer-car"}>
                     <img src={this.state.race.car_in_use.firstRacer.image_url} alt={"R34"}/>
                     <span className={"car-stats"}>
@@ -82,7 +84,7 @@ class Race extends React.Component {
                         <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.firstRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
-
+    
                 <table className={"race-results"}>
                     <thead>
                     <tr>
@@ -91,16 +93,16 @@ class Race extends React.Component {
                     </tr>
                     </thead>
                 </table>
-
+    
             </span>
-
+    
                 <span className={"racer"}>
                 <div className={"racer-info"}>
                     <img src={DefaultUser} alt={"user-photo"}/>
                     <span>{this.state.race.opponent_info.username}</span>
                     <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.state.race.opponent_info.level}</span>
                 </div>
-
+    
                 <div className={"racer-car"}>
                     <img src={this.state.race.car_in_use.secondRacer.image_url}  alt={"EVO9"}/>
                     <span className={"car-stats"}>
@@ -110,7 +112,7 @@ class Race extends React.Component {
                         <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.secondRacerSpecifications.weight} KG</div>
                     </span>
                 </div>
-
+    
                 <table className={"race-results"}>
                     <thead>
                     <tr>
@@ -119,11 +121,21 @@ class Race extends React.Component {
                     </tr>
                     </thead>
                 </table>
-
+    
             </span>
-
+    
             </div>
             <button className={"race-btn"} onClick={this.handleRaceEnd}>Tęsti</button>
+            </div>);
+        }
+      
+    }
+    render() {
+
+        //let winner = <span className={"winner-tag"}><FontAwesomeIcon icon={faFlagCheckered}/>Laimėtojas<FontAwesomeIcon icon={faFlagCheckered}/></span>;
+
+        return (<div>
+            {this.renderRace()}
         </div>);
     }
 
