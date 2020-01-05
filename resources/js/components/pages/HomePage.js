@@ -117,8 +117,22 @@ class HomePage extends React.Component {
             first_racer: this.props.user.user.id,
         }
         this.props.raceAction(this.props.token, data);
-        this.setState({
-            race: true
+
+        let auth = "Bearer ";
+        let token = this.props.token;
+
+        axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': auth + token
+            }
+        }).then((response) => {
+            let task = response.data.success;
+            this.props.addTask({task});
+            this.setState({
+                current_task: task,
+                race: true
+            })
         });
     }
 
