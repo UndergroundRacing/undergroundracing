@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/styles.css';
 import '../css/shop.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCar, faWrench} from "@fortawesome/free-solid-svg-icons";
+import {faCar, faWrench, faBolt, faFlask, faWeightHanging, faLevelUpAlt} from "@fortawesome/free-solid-svg-icons";
 
 import Engine from '../icons/Engine.svg';
 import Power from '../icons/Power.svg';
@@ -351,28 +351,33 @@ class Shop extends React.Component {
         }
 
         function LoadItem(props) {
+            let power_icon = props.props.power != null && props.props.power != 0 ?
+                <FontAwesomeIcon icon={faBolt} style={{color: "red"}}/> : null;
+            let power = props.props.power != null && props.props.power != 0 ? props.props.power + "HP/" + parseInt(0.745699872 * props.props.power) + " KW" : null;
+
+            let capacity_icon = props.props.capacity != null ?
+                <FontAwesomeIcon icon={faFlask} style={{color: "red"}}/> : null;
+            let capacity = props.props.capacity != null ? props.props.capacity : null;
+
+            let level_icon = props.props.level != null ?
+                <FontAwesomeIcon icon={faLevelUpAlt} style={{color: "red"}}/> : null;
+            let level = props.props.level != null ? props.props.level : null;
+
+            let weight_icon = props.props.weight != null ?
+                <FontAwesomeIcon icon={faWeightHanging} style={{color: "red"}}/> : null;
+            let weight = props.props.weight != null ? props.props.weight + " KG" : null;
+
+
             return (<div className={"item-info"}>
                 <span className={"item-title"}>{props.props.title}</span>
                 <img id={"item-img"} src={props.props.image_url} alt={""}/>
                 <table>
                     <thead>
                     <tr>
-                        <td><img src={Engine} alt={"Engine"}/></td>
-                        <td>2.6L RB26DETT I6</td>
-                        <td><img src={Power} alt={"Power"}/></td>
-                        <td>327HP / 244KW</td>
-                        <td><img src={Torque} alt={"Torque"}/></td>
-                        <td>289LB-FT / 392Nm</td>
-                        <td><img src={Drivetrain} alt={"Drivetrain"}/></td>
-                        <td>4WD</td>
-                    </tr>
-                    <tr>
-                        <td><img src={Speed} alt={"Speed"}/></td>
-                        <td>265 KM/H</td>
-                        <td><img src={Acceleration} alt={"Acceleration"}/></td>
-                        <td>4.8 s</td>
-                        <td><img src={Weight} alt={"Weight"}/></td>
-                        <td>1560 Kg</td>
+                        <td>{level_icon} {level}</td>
+                        <td>{capacity_icon} {capacity}</td>
+                        <td>{power_icon} {power}</td>
+                        <td>{weight_icon} {weight}</td>
                     </tr>
                     </thead>
                 </table>
