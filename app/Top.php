@@ -23,11 +23,17 @@ class Top extends Model
         foreach($users as $user){
             $return_data["users"]{$i} = $user;
             $i++;
+            if($i==10){
+                break;
+            }
         }
         $i=0;
         foreach($clubs as $club){
             $return_data["clubs"]{$i} = $club;
             $i++;
+            if($i == 10){
+                break;
+            }
         }
         return $return_data;
     }
