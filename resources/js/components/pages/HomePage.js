@@ -9,7 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addAbilities, addActiveCar, addTask, addUser, raceAction} from "../store/actions";
+import {addAbilities, addActiveCar, addTask, addUser, raceAction,registerToUsersTournament,checkIfUserRegisteredToTournament} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -19,7 +19,9 @@ const mapStateToProps = state => {
         cars: state.user_cars,
         car_info: state.user_car_info,
         active_car: state.active_car,
-        user_task: state.user_task
+        user_task: state.user_task,
+        tournament:state.tournament,
+        user_tournament_status:state.user_tournament_status
     };
 };
 
@@ -29,7 +31,9 @@ function mapDispatchToProps(dispatch) {
         addAbilities: abilities => dispatch(addAbilities(abilities)),
         addActiveCar: active_car => dispatch(addActiveCar(active_car)),
         addTask: task => dispatch(addTask(task)),
-        raceAction: (token,data) => dispatch(raceAction(token,data))
+        raceAction: (token,data) => dispatch(raceAction(token,data)),
+        registerToUsersTournament:(token,data) => dispatch(registerToUsersTournament(token,data)),
+        checkIfUserRegisteredToTournament: (token,id) => dispatch(checkIfUserRegisteredToTournament(token,id))
     };
 }
 
@@ -55,6 +59,7 @@ class HomePage extends React.Component {
         this.selectCar = this.selectCar.bind(this);
         this.buyAbility = this.buyAbility.bind(this);
         this.handleTask = this.handleTask.bind(this);
+        this.handleTournament = this.handleTournament.bind(this);
     }
 
     componentDidMount() {
@@ -72,6 +77,7 @@ class HomePage extends React.Component {
         let used_car_id = null;
 
         if (this.props.user != null) {
+            this.props.checkIfUserRegisteredToTournament(this.props.token,this.props.user.user.id);
             if (this.props.user_task == null) {
                 axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
                     headers: {
@@ -112,6 +118,19 @@ class HomePage extends React.Component {
         }
     }
 
+    componentDidUpdate(){
+        console.log('Update!');
+        console.log(this.props);
+    }
+    
+    handleTournament(event){
+        let data = {
+            'user_id' :this.props.user.user.id
+        };
+            
+        this.props.registerToUsersTournament(this.props.token,data);
+        window.location.reload();
+    }
     handleRace(event){
         let data = {
             first_racer: this.props.user.user.id,
@@ -219,6 +238,12 @@ class HomePage extends React.Component {
         });
 
 
+    }
+
+     renderTournamentButton(){
+        if( this.props.user_tournament_status == 0)
+            return  <button id={"tournament"} onClick={this.handleTournament}>Dalyvauti turnyrre</button> 
+         else return <span>Dalyvaujate turnyre</span>;
     }
 
     selectCar(event) {
@@ -438,6 +463,8 @@ class HomePage extends React.Component {
             }
         }
 
+       
+
         function UserTask(props) {
             let task = props.props.task;
             if (task != null) {
@@ -474,7 +501,7 @@ class HomePage extends React.Component {
                 task_progress = this.state.current_task;
             }
         }
-
+        
         let task_complete = task_progress != null && task_progress.races_count == task_progress.required_races ? true : false;
 
         let taskButton = task_complete && this.state.task_prize_received != true ?
@@ -537,11 +564,12 @@ class HomePage extends React.Component {
                     <div className={"race-options"}>
 
                         {activeCar}
-
+                    {this.state.user_data != null ? this.state.user_data.user.name : " "}
                         <div className={"select-race"}>
                             <div>Lenktynių ilgis</div>
                             <span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>
                             <button id={"race"} onClick={this.handleRace}>Lenktyniauti</button>
+                            {this.renderTournamentButton()}
                         </div>
                     </div>
                     {selectCar}

@@ -32,7 +32,9 @@ import {
     INVITE_TO_CLUB,
     SEND_MESSAGE,
     MESSAGE_CONTACTS,
-    GET_MESSAGES
+    GET_MESSAGES,
+    REGISTER_USER_TO_TOURNAMENT ,
+    CHECK_IF_USER_REGISTERED
 } from "./action_types";
 
 import Apis from '../apis/Apis';
@@ -247,6 +249,22 @@ export const getClub = (token,userId) => async dispatch => {
     });
 };
 
+export const checkIfUserRegisteredToTournament = (token,userId) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    var endpoint = "/checkIfUserRegisteredToTournament/" + userId;
+    const response = await Apis.get(endpoint, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: CHECK_IF_USER_REGISTERED,
+        payload: response.data.success
+    });
+};
+
 export const getClubInvitations = (token,userId) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var endpoint = "/getClubInvitations/" + userId;
@@ -357,6 +375,22 @@ export const sendMessage = (token,data) => async dispatch => {
 
     dispatch({
         type: SEND_MESSAGE,
+        payload: response.data
+    });
+};
+
+export const registerToUsersTournament = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/registerToTournament', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: REGISTER_USER_TO_TOURNAMENT,
         payload: response.data
     });
 };
