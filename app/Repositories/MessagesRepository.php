@@ -52,4 +52,8 @@ class MessagesRepository implements MessagesRepositoryInterface
     {
         // TODO: Implement RemoveMessages() method.
     }
+
+    public function GetUserContacts($user_id){
+        return response()->json(['success' => $this->messages->GetUserMessagesContacts($user_id)],$this->successStatus);
+    }
 }

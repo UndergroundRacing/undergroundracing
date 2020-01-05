@@ -21,4 +21,8 @@ class MessagesController extends Controller
     public function GetMessages(Request $request){
         return $this->messageRepository->GetMessages($request);
     }
+
+    public function GetUserContacts($user_id){
+        return $this->messageRepository->GetUserContacts($user_id);
+    }
 }

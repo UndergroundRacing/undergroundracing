@@ -79,7 +79,7 @@ class ClubTournament_Club extends Model
         }
     }
 
-    private function CheckIfClubIsRegistered($club_id){
+    public function CheckIfClubIsRegistered($club_id){
 
         $tournament = $this->tournament->GetTodayTournament();
         $tournamentUsers = ClubTournament_Club::where('club_id',$club_id)->where('tournament_id',$tournament['id'])->get();
@@ -88,4 +88,5 @@ class ClubTournament_Club extends Model
         }
         return true;
     }
+
 }

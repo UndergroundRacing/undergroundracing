@@ -12,4 +12,5 @@ interface MessagesRepositoryInterface
 
     public function RemoveMessages(Request $request);
 
+    public function GetUserContacts($user_id);
 }

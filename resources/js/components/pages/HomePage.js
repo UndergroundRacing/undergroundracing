@@ -9,7 +9,7 @@ import UserPhoto from '../img/default_user.jpg';
 
 import Race from '../pages/Race';
 import {connect} from "react-redux";
-import {addAbilities, addActiveCar, addTask, addUser} from "../store/actions";
+import {addAbilities, addActiveCar, addTask, addUser, raceAction,registerToUsersTournament,checkIfUserRegisteredToTournament,addUserTask} from "../store/actions";
 
 const mapStateToProps = state => {
     return {
@@ -19,7 +19,9 @@ const mapStateToProps = state => {
         cars: state.user_cars,
         car_info: state.user_car_info,
         active_car: state.active_car,
-        user_task: state.user_task
+        user_task: state.user_task,
+        tournament:state.tournament,
+        user_tournament_status:state.user_tournament_status
     };
 };
 
@@ -28,7 +30,11 @@ function mapDispatchToProps(dispatch) {
         addUser: user => dispatch(addUser(user)),
         addAbilities: abilities => dispatch(addAbilities(abilities)),
         addActiveCar: active_car => dispatch(addActiveCar(active_car)),
-        addTask: task => dispatch(addTask(task))
+        addTask: task => dispatch(addTask(task)),
+        raceAction: (token,data) => dispatch(raceAction(token,data)),
+        registerToUsersTournament:(token,data) => dispatch(registerToUsersTournament(token,data)),
+        checkIfUserRegisteredToTournament: (token,id) => dispatch(checkIfUserRegisteredToTournament(token,id)),
+        addUserTask:(token,data) => dispatch(addUserTask(token,data))
     };
 }
 
@@ -50,9 +56,12 @@ class HomePage extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleRace = this.handleRace.bind(this);
         this.selectCar = this.selectCar.bind(this);
         this.buyAbility = this.buyAbility.bind(this);
         this.handleTask = this.handleTask.bind(this);
+        this.handleTournament = this.handleTournament.bind(this);
+        this.createUserTask = this.createUserTask.bind(this);
     }
 
     componentDidMount() {
@@ -70,6 +79,7 @@ class HomePage extends React.Component {
         let used_car_id = null;
 
         if (this.props.user != null) {
+            this.props.checkIfUserRegisteredToTournament(this.props.token,this.props.user.user.id);
             if (this.props.user_task == null) {
                 axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
                     headers: {
@@ -109,6 +119,39 @@ class HomePage extends React.Component {
             }
         }
     }
+    
+    handleTournament(event){
+        let data = {
+            'user_id' :this.props.user.user.id
+        };
+            
+        this.props.registerToUsersTournament(this.props.token,data);
+        window.location.reload();
+    }
+
+    handleRace(event){
+        let data = {
+            first_racer: this.props.user.user.id,
+        }
+        this.props.raceAction(this.props.token, data);
+
+        let auth = "Bearer ";
+        let token = this.props.token;
+
+        axios.get("http://127.0.0.1:8000/api/v1/getTaskByUserId/" + this.props.user.user.id, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': auth + token
+            }
+        }).then((response) => {
+            let task = response.data.success;
+            this.props.addTask({task});
+            this.setState({
+                current_task: task,
+                race: true
+            })
+        });
+    }
 
     handleClick(event) {
         switch (event.target.id) {
@@ -128,6 +171,7 @@ class HomePage extends React.Component {
                 });
         }
     }
+
 
     buyAbility(event) {
         let ability = "";
@@ -193,20 +237,42 @@ class HomePage extends React.Component {
     handleTask(event) {
         let auth = 'Bearer ';
         let token = this.props.token.toString();
-
+        console.log('task_id');
+        console.log(this.state.current_task.task.id);
         axios.post("http://127.0.0.1:8000/api/v1/getTaskReward", {
             user_id: this.state.user_data.user.id,
-            task_id: this.state.current_task.id
+            task_id: this.state.current_task.task.id
         }, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': auth + token
             }
         }).then(response => {
-            this.setState({task_prize_received: true});
+            this.setState({
+                task_prize_received: true,
+                current_task: null
+            });
         });
 
 
+    }
+
+     renderTournamentButton(){
+        if( this.props.user_tournament_status == 0)
+            return  <button id={"tournament"} onClick={this.handleTournament}>Dalyvauti turnyrre</button> 
+         else return <span>Dalyvaujate turnyre</span>;
+    }
+
+    createUserTask(event){
+        let data = {
+            'user_id' : this.props.user.user.id
+        };
+
+        this.props.addUserTask(this.props.token,data);
+        this.setState({
+            current_task: null
+        });
+        window.location.reload();
     }
 
     selectCar(event) {
@@ -426,12 +492,14 @@ class HomePage extends React.Component {
             }
         }
 
+       
+
         function UserTask(props) {
             let task = props.props.task;
             if (task != null) {
                 return (
                     <div className={"user-task"}>
-                        <span className={"task-title"}>Lenktyniavimas</span>
+                        <span className={"task-title"}>Užduotis</span>
                         <span className={"task-info"}>Laimėk {task.required_races} k.</span>
                         <ProgressBar className={"task-progress"}
                                      now={task.races_count / task.required_races * 100}/>{task.races_count + '/' + task.required_races}
@@ -439,8 +507,9 @@ class HomePage extends React.Component {
                         {taskButton}
                     </div>
                 );
-            } else return null;
+            } else return (null);
         }
+
 
         let user_name = this.state.user_data != null ? this.state.user_data.user.name : " ";
         let user_level = this.state.user_data != null ? this.state.user_data.user.level + " lygis" : " ";
@@ -462,7 +531,7 @@ class HomePage extends React.Component {
                 task_progress = this.state.current_task;
             }
         }
-
+        
         let task_complete = task_progress != null && task_progress.races_count == task_progress.required_races ? true : false;
 
         let taskButton = task_complete && this.state.task_prize_received != true ?
@@ -479,8 +548,8 @@ class HomePage extends React.Component {
         let abilities = this.state.user_abilities != null ?
             <UserAbilities props={this.state.user_abilities} handler={this.buyAbility}/> : null;
 
-        let user_task = this.state.current_task != null ?
-            <UserTask props={this.state.current_task} state={this.state}/> : null;
+        let user_task = this.state.current_task != null && this.state.task_prize_received != null?
+            <UserTask props={this.state.current_task} state={this.state}/> :  <button className={"task-btn"} onClick={this.createUserTask}>Gauti užduotį</button>;
 
         if (this.state.race) {
             return <Race/>;
@@ -525,11 +594,12 @@ class HomePage extends React.Component {
                     <div className={"race-options"}>
 
                         {activeCar}
-
+                    {this.state.user_data != null ? this.state.user_data.user.name : " "}
                         <div className={"select-race"}>
                             <div>Lenktynių ilgis</div>
                             <span id={"1/4"} style={{color: "red"}} onClick={this.handleClick}>1/4 mylios</span>
-                            <button id={"race"} onClick={this.handleClick}>Lenktyniauti</button>
+                            <button id={"race"} onClick={this.handleRace}>Lenktyniauti</button>
+                            {this.renderTournamentButton()}
                         </div>
                     </div>
                     {selectCar}

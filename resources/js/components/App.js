@@ -6,9 +6,12 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import About from "./pages/About";
+import Race from "./pages/Race";
+import Top from "./pages/Top";
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 import AddEngine from './pages/Admin/ActionPages/AddEngine';
+import ForgotPass from './pages/ForgotPass';
 import AddNos from './pages/Admin/ActionPages/AddNos';
 import AddPart from './pages/Admin/ActionPages/AddPart';
 import AddStops from './pages/Admin/ActionPages/AddStops';
@@ -25,12 +28,15 @@ function App() {
                     <Switch>
                         <Route exact path={'/'} component={Main}/>
                         <Route path={'/Login'} component={Login}/>
-
+                        <Route path={'/ChangePassword'} component={ForgotPass}/>
                         <Route path={'/Register'} component={Register}/>
                         <Route path={'/About'} component={About}/>
                         <Route path={'/Home'} component={Menu}/>
                         <Route path={'/Shop'} component={Menu}/>
+                        <Route path={'/Club'} component={Menu}/>
+                        <Route path={'/Top'} component={Menu}/>
                         <Route path={'/Garage'} component={Menu}/>
+                        <Route path={'/UserPage'} component={Menu}/>
                         <Route path={'/Chat'} component={Menu}/>
                         <Route path={'/Summary'} component={Menu}/>
                         <Route path={'/AdminLogin'} component={AdminLogin}/>

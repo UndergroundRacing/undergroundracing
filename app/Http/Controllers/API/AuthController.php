@@ -41,4 +41,9 @@ class AuthController extends Controller
     public function getUser() {
         return $this->authRepository->getUser();
     }
+
+    public function ChangePassword(Request $request){
+        return $this->authRepository->ChangePassword($request);
+    }
+
 }

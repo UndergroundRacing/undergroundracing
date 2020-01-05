@@ -70,7 +70,6 @@ interface GarageRepositoryInterface
 
     public function GetAllParts();
 
-
     public function GetCarAllSpecifications($vech_id);
 
 }

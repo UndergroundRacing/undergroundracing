@@ -27,7 +27,8 @@ class Login extends React.Component {
             login: true,
             forgot_pass: false,
             return: false,
-            register: false
+            register: false,
+            warning: null
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -86,13 +87,26 @@ class Login extends React.Component {
 
             })
             .catch((error) => {
-                console.log(error.message);
+                let data = JSON.parse(error.response.config.data);
+
+                if (data.email == "") {
+                    this.setState({
+                        warning: "Įveskite el. pašto adresą"
+                    });
+                } else if (data.password == "") {
+                    this.setState({
+                        warning: "Įveskite slaptažodį"
+                    });
+                }
             });
 
         event.preventDefault();
     }
 
     render() {
+
+        let warning_msg = this.state.warning != null ?
+            <span className={"form-warn"}>{this.state.warning}</span> : null;
 
         if (window.location.pathname === 'Login?') {
             this.props.history.push('/Home');
@@ -116,6 +130,7 @@ class Login extends React.Component {
                         </label>
 
                         <button type="submit">Prisijungti</button>
+                        {warning_msg}
                     </form>
                     <div className={"form-menu"}>
                         <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio priminimas</span>

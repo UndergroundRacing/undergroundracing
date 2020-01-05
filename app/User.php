@@ -62,7 +62,7 @@ class User extends Authenticatable
             'experience' => 0,
             'cash' => 0,
             'credits' => 0,
-            'next_level_exp' => $this->NextLevelExp(2),
+            'next_level_exp' => $this->NextLevelExp(1,2),
             'cups' => 0,
             'abilities' => serialize($abilities),
             'role' => 1,
@@ -209,8 +209,8 @@ class User extends Authenticatable
         return -1;
     }
 
-    public function NextLevelExp($level){
-        return (200 * pow($level,2)) - (200 * $level);
+    public function NextLevelExp($cur_level,$level){
+        return ((200 * pow($level,2)) - (200 * $level)) + ((200 * pow($cur_level,2)) - (200 * $cur_level));
     }
 
     public function CheckForLevelUp($user){
@@ -223,7 +223,7 @@ class User extends Authenticatable
         if($user != null){
             $user->level += 1;
             $nextLevel = $user->level + 1;
-            $user->next_level_exp = $this->NextLevelExp($nextLevel);
+            $user->next_level_exp = $this->NextLevelExp($user->level,$nextLevel);
             $user->save();
             return $user;
         }
