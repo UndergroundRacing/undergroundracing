@@ -15,7 +15,6 @@ class Main extends React.Component {
             main: true,
             login: false,
             register: false,
-            about: false
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -27,9 +26,6 @@ class Main extends React.Component {
                 break;
             case "register":
                 this.props.history.push('/Register');
-                break;
-            case "about":
-                this.props.history.push('/About');
                 break;
             default:
                this.props.history.push('/');
@@ -47,7 +43,6 @@ class Main extends React.Component {
                     <div className="main-menu">
                         <button id={"login"} onClick={this.handleClick.bind(this)}>Prisijungti</button>
                         <button id={"register"} onClick={this.handleClick.bind(this)}>Registruotis</button>
-                        <button id={"about"} onClick={this.handleClick.bind(this)}>Apie žaidimą</button>
                     </div>
                 </div>
             );
@@ -55,8 +50,6 @@ class Main extends React.Component {
             return <Login/>;
         } else if (window.location.pathname === '/Register') {
             return <Register/>;
-        } else if (window.location.pathname === '/About') {
-            return <About/>;
         }
     };
 
