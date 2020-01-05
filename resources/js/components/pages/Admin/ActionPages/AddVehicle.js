@@ -115,7 +115,7 @@ class AddVehicle extends React.Component {
             <div className={"row"}>
                 <div className={"col-sm-12"}>
                     <div className={"admin_add_action"}>
-                        <span className={"add-action-label"}>Prideti automobili</span>
+                        <span className={"add-action-label"}>Pridėti automobilį</span>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={"form-group"}>
                                 <label htmlFor="title">Pavadinimas</label>

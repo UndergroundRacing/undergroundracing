@@ -53,6 +53,9 @@ class Report extends Model
     public function GetWonRacesPercent($id){
         $allRaces = $this->GetRacesCount($id);
         $wonRaces = $this->GetWonRacesCount($id);
+        if($allRaces ==0){
+            return 0;
+        }
         return (100 * $wonRaces) / $allRaces;
     }
 }
