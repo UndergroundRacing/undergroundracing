@@ -108,7 +108,7 @@ class AddNos extends React.Component {
                         <span className={"add-action-label"}>Prideti NOS</span>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={"form-group"}>
-                                   
+                                <label htmlFor="weight">Pavadinimas</label>
                                     <input type="text" className={"form-control"} id="title" value={this.state.title} onChange={this.handleChange} placeholder="Pavadinimas"/>
                                 </div>
                                 <div className={"form-group"}>

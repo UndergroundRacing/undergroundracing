@@ -105,10 +105,10 @@ class AddWheels extends React.Component {
             <div className={"row"}>
                 <div className={"col-sm-12"}>
                     <div className={"admin_add_action"}>
-                        <span className={"add-action-label"}>Prideti ratus</span>
+                        <span className={"add-action-label"}>Pridėti ratus</span>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={"form-group"}>
-                                   
+                                <label htmlFor="weight">Pavadinimas</label>
                                     <input type="text" className={"form-control"} id="title" value={this.state.title} onChange={this.handleChange} placeholder="Pavadinimas"/>
                                 </div>
                                 <div className={"form-group"}>

@@ -115,10 +115,10 @@ class AddEngine extends React.Component {
             <div className={"row"}>
                 <div className={"col-sm-12"}>
                     <div className={"admin_add_action"}>
-                        <span className={"add-action-label"}>Add Engine</span>
+                        <span className={"add-action-label"}>Pridėti variklį</span>
                             <form onSubmit={this.handleSubmit}>
                                 <div className={"form-group"}>
-                                   
+                                <label htmlFor="weight">Pavadinimas</label>
                                     <input type="text" className={"form-control"} id="title" value={this.state.title} onChange={this.handleChange} placeholder="Pavadinimas"/>
                                 </div>
                                 <div className={"form-group"}>
@@ -127,7 +127,7 @@ class AddEngine extends React.Component {
                                 </div>
                                 <div className={"form-group"}>
                                     <label htmlFor="power">Galia</label>
-                                    <input type="text" className={"form-control"} id="power" value={this.state.power} onChange={this.handleChange} placeholder="Svoris"/>
+                                    <input type="text" className={"form-control"} id="power" value={this.state.power} onChange={this.handleChange} placeholder="Galia"/>
                                 </div>
                                 <div className={"form-group"}>
                                     <label htmlFor="capacity">Litražas</label>
