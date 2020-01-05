@@ -70,7 +70,6 @@ class ForgotPass extends React.Component {
         console.log(this.props.change_password);
         if(this.props.change_password !=null){
             if(this.props.change_password.success !=null){
-                console.log('labas');
                 this.props.addToken(this.props.change_password.success);
                 this.props.history.push('/Home');
             }
@@ -86,7 +85,7 @@ class ForgotPass extends React.Component {
             }
         }
     }
-    
+
     render() {
         if (this.state.forgot) {
             return (<div className={"log-reg"}>

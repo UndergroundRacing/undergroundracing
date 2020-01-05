@@ -18,7 +18,8 @@ class Register extends React.Component {
             user_name: "",
             password: "",
             repeat_pass: "",
-            pass_match: null
+            pass_match: null,
+            warning: null
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -95,9 +96,33 @@ class Register extends React.Component {
 
                 })
                 .catch((error) => {
-                    console.log(error.message);
-                });
+                        let data = JSON.parse(error.response.config.data);
+
+                        if (data.email == "") {
+                            this.setState({
+                                warning: "Įveskite el. pašto adresą"
+                            });
+                        } else if (data.name == "") {
+                            this.setState({
+                                warning: "Įveskite savo vardą"
+                            })
+                        } else if (data.username == "") {
+                            this.setState({
+                                warning: "Įveskite vartotojo vardą"
+                            });
+                        } else if (data.password == "") {
+                            this.setState({
+                                warning: "Įveskite slaptažodį"
+                            });
+                        } else if (data.c_password == "") {
+                            this.setState({
+                                warning: "Pakartokite slaptažodį"
+                            });
+                        }
+                    }
+                );
         }
+
         event.preventDefault();
     }
 
@@ -105,6 +130,9 @@ class Register extends React.Component {
 
         let warning_msg = this.state.pass_match === false ?
             <span className={"form-warn"}>Slaptažodžiai turi sutapti</span> : null;
+
+        let validation_msg = this.state.warning != null ?
+            <span className={"form-warn"}>{this.state.warning}</span> : null;
 
         return (<div className={"log-reg"}>
 
@@ -144,7 +172,7 @@ class Register extends React.Component {
                     </label>
 
                     <button type="submit">Registruotis</button>
-
+                    {validation_msg}
                     {warning_msg}
                 </form>
                 <div className={"form-menu"}>

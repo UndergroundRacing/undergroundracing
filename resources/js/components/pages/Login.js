@@ -27,7 +27,8 @@ class Login extends React.Component {
             login: true,
             forgot_pass: false,
             return: false,
-            register: false
+            register: false,
+            warning: null
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ class Login extends React.Component {
     handleClick(event) {
         switch (event.currentTarget.id) {
             case "forgot_pass":
-                this.props.history.push('/ChangePassword');
+
                 break;
             case "home":
                 this.props.history.push('/');
@@ -86,46 +87,60 @@ class Login extends React.Component {
 
             })
             .catch((error) => {
-                console.log(error.message);
+                let data = JSON.parse(error.response.config.data);
+
+                if (data.email == "") {
+                    this.setState({
+                        warning: "Įveskite el. pašto adresą"
+                    });
+                } else if (data.password == "") {
+                    this.setState({
+                        warning: "Įveskite slaptažodį"
+                    });
+                }
             });
 
         event.preventDefault();
     }
 
-
     render() {
 
+        let warning_msg = this.state.warning != null ?
+            <span className={"form-warn"}>{this.state.warning}</span> : null;
 
-        return (<div className={"log-reg"}>
+        if (window.location.pathname === 'Login?') {
+            this.props.history.push('/Home');
+        } else {
+            return (<div className={"log-reg"}>
 
-            <div className={"user-form"}>
-                <div className={"logo"}>Underground Streets</div>
+                <div className={"user-form"}>
+                    <div className={"logo"}>Underground Streets</div>
 
+                    <form onSubmit={this.handleSubmit}>
+                        <div className={"form-title"}>Prisijungimas</div>
+                        <label>
+                            El. paštas
+                            <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
+                        </label>
 
-                <form onSubmit={this.handleSubmit}>
-                    <div className={"form-title"}>Prisijungimas</div>
-                    <label>
-                        El. paštas
-                        <input type={"text"} id={"email"} required pattern={".+@.+\\..+"} title={"El. pašto adrese turi būti simbolis @ ir domeno vardas, pvz. pastas@pastas.lt"}
-                               value={this.state.email} onChange={this.handleChange}/>
-                    </label>
-
-                    <label>
-                        Slaptažodis
-                        <input type="password" id={"password"} value={this.state.password}
-                               onChange={this.handleChange}/>
-                    </label>
+                        <label>
+                            Slaptažodis
+                            <input type="password" id={"password"} value={this.state.password}
+                                   onChange={this.handleChange}/>
+                        </label>
 
                         <button type="submit">Prisijungti</button>
+                        {warning_msg}
                     </form>
                     <div className={"form-menu"}>
-                        <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio keitimas</span>
+                        <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio priminimas</span>
                         <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
                         <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
                     </div>
                 </div>
 
-        </div>);
+            </div>);
+        }
     }
 }
 
