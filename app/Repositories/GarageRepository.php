@@ -184,9 +184,9 @@ class GarageRepository implements GarageRepositoryInterface
 
     public function GetAllPartsByType($part_type)
     {
-        if($part_type != null) {
+        if ($part_type != null) {
             $parts = new Parts();
-             return response()->json(['success' => $parts->GetAllPartsByType($part_type)], $this->successStatus);
+            return response()->json(['success' => $parts->GetAllPartsByType($part_type)], $this->successStatus);
         }
 
         return response()->json(['error' => 'part_type is required'], 401);
@@ -585,19 +585,21 @@ class GarageRepository implements GarageRepositoryInterface
         return response()->json(['success' => $garage->RemoveNosFromVechile($request)], $this->successStatus);
     }
 
-    public function GetCarInUseByUserId($user_id){
-        if($user_id != null){
+    public function GetCarInUseByUserId($user_id)
+    {
+        if ($user_id != null) {
             $garage = new Garage();
             return response()->json(['success' => $garage->GetCarInUseByUserId($user_id)], $this->successStatus);
         }
-        return response()->json(['error'=> 'User id is required'],401);
+        return response()->json(['error' => 'User id is required'], 401);
     }
 
-    public function GetAllParts(){
+    public function GetAllParts()
+    {
         $parts = new  Parts();
         return response()->json(['success' => $parts->getAllParts()], $this->successStatus);
-	}
-		
+    }
+
     public function GetCarAllSpecifications($vech_id)
     {
         $garage = new Garage();

@@ -19,7 +19,20 @@ import {
     ADMIN_LOGIN,
     GET_USER,
     ADD_PART,
-    GET_ALL_PARTS
+    GET_ALL_PARTS,
+    CREATE_CLUB,
+    GET_CLUB,
+    DESTROY_CLUB,
+    REGISTER_CLUB_TO_TOURNAMENT,
+    REMOVE_USER_FROM_CLUB,
+    GET_CLUB_INVITATIONS,
+    JOIN_CLUB,
+    GET_TOPS,
+    SEARCH_USER,
+    INVITE_TO_CLUB,
+    SEND_MESSAGE,
+    MESSAGE_CONTACTS,
+    GET_MESSAGES
 } from "./action_types";
 
 import Apis from '../apis/Apis';
@@ -27,6 +40,8 @@ import Apis from '../apis/Apis';
 export function addToken(payload) {
     return {type: ADD_TOKEN, payload};
 }
+
+
 
 export function addUser(payload) {
     return {type: ADD_USER, payload};
@@ -197,5 +212,207 @@ export const getPlayer = token => async dispatch => {
     dispatch({
         type: ADD_USER,
         payload: {user: response.data.success}
+    });
+};
+
+export const createClub = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/createClub', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: CREATE_CLUB,
+        payload: response.data
+    });
+};
+
+export const getClub = (token,userId) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    var endpoint = "/getClubByUserId/" + userId;
+    const response = await Apis.get(endpoint, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: GET_CLUB,
+        payload: response.data
+    });
+};
+
+export const getClubInvitations = (token,userId) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    var endpoint = "/getClubInvitations/" + userId;
+    const response = await Apis.get(endpoint, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: GET_CLUB_INVITATIONS,
+        payload: response.data
+    });
+};
+
+export const deleteClub = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/destroyClub', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: DESTROY_CLUB,
+        payload: response.data
+    });
+};
+
+export const registerClubToTournament = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/registerClubToTournament', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: REGISTER_CLUB_TO_TOURNAMENT,
+        payload: response.data
+    });
+};
+
+export const removeUserFromClub = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/leaveClub', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: REMOVE_USER_FROM_CLUB,
+        payload: response.data
+    });
+};
+
+
+export const joinClub = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/addUserToClub', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: JOIN_CLUB,
+        payload: response.data
+    });
+};
+
+export const inviteUserToClub = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/inviteUserToClub', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: INVITE_TO_CLUB,
+        payload: response.data
+    });
+};
+
+
+export const sendMessage = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/sendMessage', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: SEND_MESSAGE,
+        payload: response.data
+    });
+};
+
+export const getTops = (token) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    var endpoint = "/getTops";
+    const response = await Apis.get(endpoint, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: GET_TOPS,
+        payload: response.data.success
+    });
+};
+
+
+export const getMessagesContacts = (token,userId) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+    var endpoint = "/getMessagesContacts/" + userId;
+    const response = await Apis.get(endpoint, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: MESSAGE_CONTACTS,
+        payload: response.data.success
+    });
+};
+
+export const addUserToSearch = id =>async dispatch => {
+    dispatch({
+        type: SEARCH_USER,
+        payload: id
+    });
+}
+
+export const getMessages = (token,data) => async dispatch => {
+    var auth = 'Bearer ' + token.toString();
+
+    const response = await Apis.post('/getMessages', data, {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': auth
+        }
+    });
+
+    dispatch({
+        type: GET_MESSAGES,
+        payload: response.data.success
     });
 };

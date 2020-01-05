@@ -31,8 +31,7 @@ class Race extends Model
      */
     public function CreateRace($request){
         $secondRacer = $this->SearchOponent($request["first_racer"]);
-
-        $winner = $this->DoRaceAction($request['first_racer'],$secondRacer["id"]);
+        $winner = $this->DoRaceAction($request['first_racer'],$secondRacer["user"]["id"]);
         if($winner['winnerId'] === $request['first_racer']){
             $prize = $this->CalculatePrize($winner['winnerId']);
             if($this->task->GetUserInProgressTask($request["first_racer"]) != null){
@@ -52,7 +51,7 @@ class Race extends Model
 
         $input = [
           'first_racer' => $request['first_racer'],
-            'second_racer' => $secondRacer["id"],
+            'second_racer' => $secondRacer["user"]["id"],
             'winner_id' => $winner['winnerId'],
             'prize' => $prize['prize'],
             'experience' => $prize['experience']

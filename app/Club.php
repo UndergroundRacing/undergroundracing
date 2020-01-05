@@ -35,6 +35,7 @@ class Club extends Model
                 $user_obj = $user->GetUser($request['owner_id']);
                 $user_obj->club_id = $club->id;
                 $user_obj->save();
+                $user->MinusUserCash($request['owner_id'],10000);
                 return ['success' => $club];
             }
             else{
@@ -96,7 +97,8 @@ class Club extends Model
         $club = $this->GetClub($request['club_id']);
         if($club->owner_id == $request['user_id']){
             $this->UnasignClubMembers($request['club_id']);
-            $club->delete();
+            $this->RemoveTournaments($request['club_id']);
+            Club::destroy($request['club_id']);
             return ['success' => 'club deleted'];
         }
         return ['error' => 'Only owners can delete club'];
@@ -109,5 +111,33 @@ class Club extends Model
             $user->update(['club_id' => null]);
         }
         return $users;
+    }
+
+    public function RemoveTournaments($club_id){
+        $tournaments = ClubTournament_Club::where('club_id',$club_id)->get();
+
+        foreach($tournaments as $tournament){
+            ClubTournament_Club::destroy($tournament->id);
+        }
+    }
+
+    public function GetClubByUserId($user_id){
+        $registered = 0;
+        $user = new User();
+        $user_obj = $user->GetUser($user_id);
+        $club = Club::find($user_obj->club_id);
+        $usersInClub = $this->GetClubMembers($user_obj->club_id);
+        $usersCount = $this->UsersInClub($user_obj->club_id);
+        $tournament = new ClubTournament_Club();
+        if($tournament->CheckIfClubIsRegistered($user_obj->club_id)){
+            $registered = 1;
+        }
+        $ret = [
+            "club" => $club,
+            "users" => $usersInClub,
+            "usersCount" => $usersCount,
+            "isRegisteredToTournament" => $registered
+        ];
+        return $ret;
     }
 }

@@ -14,7 +14,20 @@ import {
     CLEAR_USER_CARS,
     ADD_ACTIVE_CAR, ADD_TASK,
     ADMIN_LOGIN, GET_USER, ADD_PART, GET_ALL_PARTS, ADD_PARTS,
-    RACE_ACTION, ADD_WHEELS
+    RACE_ACTION, ADD_WHEELS,
+    CREATE_CLUB,
+    GET_CLUB,
+    DESTROY_CLUB,
+    REGISTER_CLUB_TO_TOURNAMENT,
+    REMOVE_USER_FROM_CLUB,
+    GET_CLUB_INVITATIONS,
+    JOIN_CLUB,
+    GET_TOPS,
+    SEARCH_USER,
+    INVITE_TO_CLUB,
+    SEND_MESSAGE,
+    MESSAGE_CONTACTS,
+    GET_MESSAGES
 } from "./action_types";
 
 const initialState = {
@@ -42,7 +55,17 @@ const initialState = {
         brakes: null,
         nitrous: null
     },
-    race:null
+    race:null,
+    club:null,
+    user_remove_club:null,
+    club_tournament:null,
+    club_invitations:null,
+    tops:null,
+    userToSearch : '',
+    invitation_to_club : null,
+    sended_message: null,
+    message_contacts:null,
+    messages:null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -128,9 +151,34 @@ function rootReducer(state = initialState, action) {
             return {...state, allParts: action.payload};
         case ADD_PARTS:
             return {...state, added_part: action.payload};
-            return {...state, added_part: action.payload};
         case RACE_ACTION:
             return {...state, race: action.payload};
+        case CREATE_CLUB:
+            return {...state, club: action.payload};
+        case GET_CLUB:
+            return {...state, club: action.payload};
+        case DESTROY_CLUB:
+            return {...state, club: action.payload};
+        case REGISTER_CLUB_TO_TOURNAMENT:
+            return {...state, club_tournament: action.payload};
+        case REMOVE_USER_FROM_CLUB:
+            return {...state, user_remove_club: action.payload};
+        case GET_CLUB_INVITATIONS:
+            return {...state, club_invitations: action.payload};
+        case JOIN_CLUB:
+            return {...state, club: action.payload};
+        case GET_TOPS:
+            return {...state, tops: action.payload};
+        case SEARCH_USER:
+            return {...state, userToSearch: action.payload};
+        case INVITE_TO_CLUB:
+            return {...state, invitation_to_club: action.payload};
+        case SEND_MESSAGE:
+            return {...state, sended_message: action.payload};
+        case MESSAGE_CONTACTS:
+            return {...state, message_contacts: action.payload};
+        case GET_MESSAGES:
+            return {...state, messages: action.payload};
         default:
             return state;
     }

@@ -15,4 +15,10 @@ interface ClubRepositoryInterface
     public function DestroyClub(Request $request);
 
     public function RegisterToTournament(Request $request);
+
+    public function InviteToClub(Request $request);
+
+    public function GetClub($user_id);
+
+    public function GetUserClubInvitations($user_id);
 }

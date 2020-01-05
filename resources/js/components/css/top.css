@@ -1,0 +1,14 @@
+span.top-heading {
+    color: white;
+    font-size: 16px;
+}
+
+.title {
+    text-align: center;
+}
+
+.user-btn{
+    border: none;
+    background: none;
+    color: white;
+}

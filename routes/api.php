@@ -59,11 +59,14 @@ Route::prefix('v1')->group(function () {
         Route::post('buyPartFromMarket','Api\MarketController@BuyPartFromMarket');
         Route::post('cancelSellingPart','Api\MarketController@CancelSellingPart');
         Route::post('createClub','Api\ClubController@CreateClub');
+        Route::get('getClubByUserId/{user_id}','Api\ClubController@GetClubByUserId');
         Route::post('addUserToClub','Api\ClubController@AddUserToClub');
         Route::post('leaveClub','Api\ClubController@LeaveClub');
         Route::post('destroyClub','Api\ClubController@DestroyClub');
+        Route::get('getClubInvitations/{user_id}','Api\ClubController@GetUserClubInvitations');
         Route::post('sendMessage','Api\MessagesController@SendMessage');
         Route::post('getMessages','Api\MessagesController@GetMessages');
+        Route::get('getMessagesContacts/{user_id}','Api\MessagesController@GetUserContacts');
         Route::post('doRaceAction','Api\RacesController@DoRaceAction');
         Route::get('searchOpponent/{user_id}','Api\RacesController@SearchOpponent');
         Route::get('getLastRace/{user_id}','Api\RacesController@GetLastRace');
@@ -79,7 +82,9 @@ Route::prefix('v1')->group(function () {
         Route::post('buyFromSystemMarket','Api\MarketController@BuyFromSystemMarket');
         Route::post('addTask','Api\TaskController@AddTask');
         Route::post('getTaskReward','Api\TaskController@GetRewards');
+        Route::post('inviteUserToClub','Api\ClubController@InviteToClub');
         Route::get('getTaskByUserId/{id}','Api\TaskController@GetTaskByUserId');
         Route::get('getUserReport/{id}','Api\ReportController@GetReportByUserId');
+        Route::get('getTops','Api\TopController@GetTops');
     });
 });
