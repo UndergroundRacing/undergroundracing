@@ -6,17 +6,18 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import UserPage from "./UserPage";
 import {connect} from "react-redux";
-import {getMessagesContacts,getMessages} from "../store/actions";
+import {getMessagesContacts,getMessages,sendMessage} from "../store/actions";
 class Chat extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = ({
-            target_user: "",
-            message: "",
-            select_user: ""
+            message:"",
+            user_selected : ''
         });
         this.handleClick = this.handleClick.bind(this);
+        this.handleSendMessage = this.handleSendMessage.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleClick(event){
@@ -25,6 +26,35 @@ class Chat extends React.Component {
             'receiver_id' : event.target.value
         };
         this.props.getMessages(this.props.token,data);
+        this.setState({
+            user_selected: event.target.value
+        });
+    }
+
+    handleChange(event){
+        this.setState({
+            message: event.target.value
+        });
+    }
+
+    handleSendMessage(){
+        let data = {
+            'sender_id': this.props.user.user.id,
+            'receiver_id' : this.state.user_selected,
+            'message' :this.state.message
+        };
+        this.props.sendMessage(this.props.token,data);
+
+        let dat = {
+            'sender_id': this.props.user.user.id,
+            'receiver_id' : this.state.user_selected,
+        };
+        this.props.getMessages(this.props.token,dat);
+        this.setState({
+            user_selected: event.target.value,
+            message:""
+        });
+        //window.location.reload();
     }
 
     componentDidMount(){
@@ -51,7 +81,7 @@ class Chat extends React.Component {
         if(this.props.messages !=null){
             const listItems =  Object.values(this.props.messages).map((msg) =>
                 <div className={"message m-received"}>
-                    <span className={"received"}>{msg.message} </span>
+                    <span className={"received"}>{msg.sender_username} : {msg.message} </span>
                 </div>
         );
         return listItems;
@@ -68,8 +98,8 @@ class Chat extends React.Component {
                 <span className={"messages"}>
                 {this.renderMessages()}
                 <div className={"send-message"}>
-                    <input type={"text"} placeholder={"Žinutė"}/>
-                    <FontAwesomeIcon icon={faPaperPlane}/>
+                    <input type={"text"} id="message" placeholder={"Žinutė"} value={this.state.message} onChange={this.handleChange}/>
+                    <FontAwesomeIcon icon={faPaperPlane} onClick={this.handleSendMessage}/>
                     
                 </div>
                 </span>
@@ -86,5 +116,5 @@ const mapStateToProps = state => {
     };
 };
 
-const ChatComp = connect(mapStateToProps,{getMessagesContacts,getMessages})(Chat);
+const ChatComp = connect(mapStateToProps,{getMessagesContacts,getMessages,sendMessage})(Chat);
 export default ChatComp;

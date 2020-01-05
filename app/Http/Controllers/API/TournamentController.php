@@ -21,4 +21,8 @@ class TournamentController extends Controller
     public function RegisterToTournament(Request $request){
        return $this->tournamentRepository->RegisterToTournament($request);
     }
+
+    public function CheckIfUserIsRegistered($user_id){
+        return $this->tournamentRepository->CheckIfUserIsRegistered($user_id);
+    }
 }

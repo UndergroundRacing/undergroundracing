@@ -74,7 +74,7 @@ class ClubInfo extends React.Component {
     renderButtons(){
         if(this.props.user.user.id == this.props.clubs.club.owner_id){
             var registerBtn =  <button id="registerToTournament" className={"submit"} onClick={this.registerToTournament}>Registruoti į turnyrą</button>;
-            var registeredMsg = <span className={"registered"}>Jus uzsiregine!</span>
+            var registeredMsg = <span className={"registered"}>Užregistruota į klubų turnyrą!</span>
             var showRegBtn= this.props.clubs.club.isRegisteredToTournament != 0 ? registerBtn : registeredMsg;
             return(
                 <div>

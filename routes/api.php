@@ -72,6 +72,7 @@ Route::prefix('v1')->group(function () {
         Route::get('getLastRace/{user_id}','Api\RacesController@GetLastRace');
         Route::post('registerToTournament','Api\TournamentController@RegisterToTournament');
         Route::post('registerClubToTournament','Api\ClubController@RegisterClubToTournament');
+        Route::get('checkIfUserRegisteredToTournament/{user_id}','Api\TournamentController@CheckIfUserIsRegistered');
         Route::post('getPartSpecificationById','Api\GarageController@GetPartSpecificationById');
         Route::get('getAllParts','Api\GarageController@GetAllParts');
         Route::get('getAllPartsByType/{part_type}','Api\GarageController@GetAllPartsByType');

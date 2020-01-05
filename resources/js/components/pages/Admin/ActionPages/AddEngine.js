@@ -27,10 +27,6 @@ class AddEngine extends React.Component {
         console.log(this.props);
         this.props.getAllParts(this.props.adminToken);
     }
-
-    componentDidUpdate(){
-        
-    }
     
 
     handleChange(event) {
@@ -104,10 +100,13 @@ class AddEngine extends React.Component {
     }
 
      getSelect() {
-        const listItems =  this.props.allParts.map((part) =>
+         if(this.props.allParts != null){
+            const listItems =  this.props.allParts.map((part) =>
             <option key={part.id} value={part.id}>{part.title}</option>
         );
         return listItems;
+         }
+
     }
 
     render() {

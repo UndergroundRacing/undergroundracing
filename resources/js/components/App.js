@@ -11,6 +11,7 @@ import Top from "./pages/Top";
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 import AddEngine from './pages/Admin/ActionPages/AddEngine';
+import ForgotPass from './pages/ForgotPass';
 import AddNos from './pages/Admin/ActionPages/AddNos';
 import AddPart from './pages/Admin/ActionPages/AddPart';
 import AddStops from './pages/Admin/ActionPages/AddStops';
@@ -27,7 +28,7 @@ function App() {
                     <Switch>
                         <Route exact path={'/'} component={Main}/>
                         <Route path={'/Login'} component={Login}/>
-
+                        <Route path={'/ChangePassword'} component={ForgotPass}/>
                         <Route path={'/Register'} component={Register}/>
                         <Route path={'/About'} component={About}/>
                         <Route path={'/Home'} component={Menu}/>

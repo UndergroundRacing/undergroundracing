@@ -39,4 +39,8 @@ class TournamentRepository implements TournamentRepositoryInterface
         return response()->json($this->tournamentUser->RegisterToTournament($request),$this->successStatus);
 
     }
+
+    public function CheckIfUserIsRegistered($user_id){
+        return response()->json(['success' => $this->tournamentUser->CheckIfUserIsRegisteredToTournament($user_id)],$this->successStatus);
+    }
 }

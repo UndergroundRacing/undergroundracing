@@ -84,7 +84,7 @@ class Tournament_User extends Model
         }
     }
 
-    private function CheckIfUserIsRegistered($user_id){
+    public function CheckIfUserIsRegistered($user_id){
 
         $tournament = $this->tournament->GetTodayTournament();
         $tournamentUsers = Tournament_User::where('user_id',$user_id)->where('tournament_id',$tournament['id'])->get();
@@ -92,6 +92,16 @@ class Tournament_User extends Model
             return false;
         }
         return true;
+    }
+
+    public function CheckIfUserIsRegisteredToTournament($user_id){
+
+        $tournament = $this->tournament->GetTodayTournament();
+        $tournamentUsers = Tournament_User::where('user_id',$user_id)->where('tournament_id',$tournament['id'])->get();
+        if(count($tournamentUsers) > 0) {
+            return 1;
+        }
+        return 0;
     }
 
 }

@@ -101,10 +101,12 @@ class AddVehicle extends React.Component {
     }
 
      getSelect() {
+        if(this.props.allParts != null){
         const listItems =  this.props.allParts.map((part) =>
             <option key={part.id} value={part.id}>{part.title}</option>
         );
         return listItems;
+        }
     }
 
     render() {

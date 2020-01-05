@@ -37,7 +37,7 @@ class Login extends React.Component {
     handleClick(event) {
         switch (event.currentTarget.id) {
             case "forgot_pass":
-
+                this.props.history.push('/ChangePassword');
                 break;
             case "home":
                 this.props.history.push('/');
@@ -116,14 +116,14 @@ class Login extends React.Component {
                                onChange={this.handleChange}/>
                     </label>
 
-                    <button type="submit">Prisijungti</button>
-                </form>
-                <div className={"form-menu"}>
-                    <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio keitimas</span>
-                    <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
-                    <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
+                        <button type="submit">Prisijungti</button>
+                    </form>
+                    <div className={"form-menu"}>
+                        <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio keitimas</span>
+                        <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
+                        <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
+                    </div>
                 </div>
-            </div>
 
         </div>);
     }

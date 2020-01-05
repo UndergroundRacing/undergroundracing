@@ -127,5 +127,8 @@ class AuthRepository implements AuthRepositoryInterface
             $success['token'] = $user->createToken('AppName')->accessToken;
             return response()->json(['success' => $success], $this->successStatus);
         }
+        else{
+            return response()->json(['error' => 'Email or old password is incorect'], $this->successStatus);
+        }
     }
 }

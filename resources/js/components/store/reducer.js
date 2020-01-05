@@ -27,7 +27,11 @@ import {
     INVITE_TO_CLUB,
     SEND_MESSAGE,
     MESSAGE_CONTACTS,
-    GET_MESSAGES
+    GET_MESSAGES,
+    REGISTER_USER_TO_TOURNAMENT,
+    CHECK_IF_USER_REGISTERED,
+    ADD_USER_TASK,
+    CHANGE_PASSWORD
 } from "./action_types";
 
 const initialState = {
@@ -66,6 +70,9 @@ const initialState = {
     sended_message: null,
     message_contacts:null,
     messages:null,
+    tournament:null,
+    user_tournament_status: 0,
+    change_password:null
 };
 
 function rootReducer(state = initialState, action) {
@@ -179,6 +186,14 @@ function rootReducer(state = initialState, action) {
             return {...state, message_contacts: action.payload};
         case GET_MESSAGES:
             return {...state, messages: action.payload};
+        case REGISTER_USER_TO_TOURNAMENT:
+            return {...state, tournament: action.payload};
+        case CHECK_IF_USER_REGISTERED:
+            return {...state, user_tournament_status: action.payload};
+        case ADD_USER_TASK:
+            return {...state, user_task: action.payload};
+        case CHANGE_PASSWORD:
+             return {...state, change_password: action.payload};
         default:
             return state;
     }
