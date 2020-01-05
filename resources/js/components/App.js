@@ -35,6 +35,7 @@ function App() {
                         <Route path={'/Club'} component={Menu}/>
                         <Route path={'/Top'} component={Menu}/>
                         <Route path={'/Garage'} component={Menu}/>
+                        <Route path={'/UserPage'} component={Menu}/>
                         <Route path={'/Chat'} component={Menu}/>
                         <Route path={'/Summary'} component={Menu}/>
                         <Route path={'/AdminLogin'} component={AdminLogin}/>

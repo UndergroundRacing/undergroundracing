@@ -66,6 +66,7 @@ Route::prefix('v1')->group(function () {
         Route::get('getClubInvitations/{user_id}','Api\ClubController@GetUserClubInvitations');
         Route::post('sendMessage','Api\MessagesController@SendMessage');
         Route::post('getMessages','Api\MessagesController@GetMessages');
+        Route::get('getMessagesContacts/{user_id}','Api\MessagesController@GetUserContacts');
         Route::post('doRaceAction','Api\RacesController@DoRaceAction');
         Route::get('searchOpponent/{user_id}','Api\RacesController@SearchOpponent');
         Route::get('getLastRace/{user_id}','Api\RacesController@GetLastRace');

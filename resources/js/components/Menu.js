@@ -17,6 +17,7 @@ import HomePage from "./pages/HomePage";
 import Shop from "./pages/Shop";
 import Garage from "./pages/Garage";
 import Chat from "./pages/Chat";
+import UserPage from "./pages/UserPage";
 import Top from "./pages/Top";
 import Summary from "./pages/Summary";
 import Club from "./pages/Club";
@@ -169,6 +170,9 @@ class Menu extends React.Component {
                 return <Garage/>;
             } else if (location === "/Club") {
                 return <Club/>;
+            }
+            else if (location === "/UserPage") {
+                return <UserPage/>;
             }
             else if (location === "/Top") {
                 return <Top/>;

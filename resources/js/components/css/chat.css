@@ -115,3 +115,8 @@
     outline: none;
 }
 
+button.contact-btn {
+    background: none;
+    border: none;
+    color: white;
+}

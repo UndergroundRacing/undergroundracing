@@ -6,3 +6,9 @@ span.top-heading {
 .title {
     text-align: center;
 }
+
+.user-btn{
+    border: none;
+    background: none;
+    color: white;
+}

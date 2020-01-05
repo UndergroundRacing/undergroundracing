@@ -15,36 +15,41 @@ class Club extends React.Component {
         super(props);
     }
 
-    renderPage(){
-        if(this.props.clubs.club == null){
-            return(
-                <div>
-                    <NoClub/>
-                </div>
-            );
-        }
-        else{
-            return(
-                <div>
-                    <ClubInfo/>
-                </div>
-            );
-        }
-    }
-
     componentDidMount(){
         this.props.getClub(this.props.token,this.props.user.user.id);
     }
 
     componentDidUpdate(){
+        console.log('updated');
         console.log(this.props);
     }
 
+    renderPage(){
+
+        if(this.props.clubs !=null){
+            if(this.props.clubs.club == null){
+                return(
+                    <div>
+                        <NoClub/>
+                    </div>
+                );
+            }
+            else{
+                return(
+                    <div>
+                        <ClubInfo/>
+                    </div>
+                );
+        }
+        }
+           
+        
+    }
     render() {
         return (<div className={"container"}>
                <div className={"row"}>
                     <div className={"col-lg-12"}>
-                     {this.renderPage()}
+                   {this.renderPage()}
                     </div>
                </div>
         </div>);

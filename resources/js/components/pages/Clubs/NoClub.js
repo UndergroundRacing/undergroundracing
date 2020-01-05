@@ -38,13 +38,16 @@ class NoClub extends React.Component {
     }
 
     renderClubInvitations(){
-        const listItems =  this.props.club_invitations.map((club) =>
-        <tr>
-            <td>{club.club_name}</td>
-            <td><button className={"join-club"} onClick={this.joinClub} value={club.club_id}>Istoti</button></td>
-        </tr>
-    );
-    return listItems;
+        if(this.props.club_invitations !=null){
+            const listItems =  this.props.club_invitations.map((club) =>
+            <tr>
+                <td>{club.club_name}</td>
+                <td><button className={"join-club"} onClick={this.joinClub} value={club.club_id}>Istoti</button></td>
+            </tr>
+        );
+        return listItems;
+        }
+
     }
 
     renderHasNoClub(){

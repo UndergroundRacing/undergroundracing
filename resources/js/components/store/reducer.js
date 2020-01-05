@@ -22,7 +22,12 @@ import {
     REMOVE_USER_FROM_CLUB,
     GET_CLUB_INVITATIONS,
     JOIN_CLUB,
-    GET_TOPS
+    GET_TOPS,
+    SEARCH_USER,
+    INVITE_TO_CLUB,
+    SEND_MESSAGE,
+    MESSAGE_CONTACTS,
+    GET_MESSAGES
 } from "./action_types";
 
 const initialState = {
@@ -55,7 +60,12 @@ const initialState = {
     user_remove_club:null,
     club_tournament:null,
     club_invitations:null,
-    tops:null
+    tops:null,
+    userToSearch : '',
+    invitation_to_club : null,
+    sended_message: null,
+    message_contacts:null,
+    messages:null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -159,6 +169,16 @@ function rootReducer(state = initialState, action) {
             return {...state, club: action.payload};
         case GET_TOPS:
             return {...state, tops: action.payload};
+        case SEARCH_USER:
+            return {...state, userToSearch: action.payload};
+        case INVITE_TO_CLUB:
+            return {...state, invitation_to_club: action.payload};
+        case SEND_MESSAGE:
+            return {...state, sended_message: action.payload};
+        case MESSAGE_CONTACTS:
+            return {...state, message_contacts: action.payload};
+        case GET_MESSAGES:
+            return {...state, messages: action.payload};
         default:
             return state;
     }

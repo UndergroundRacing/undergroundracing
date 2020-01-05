@@ -2,13 +2,17 @@ import React from "react";
 import '../css/styles.css';
 import '../css/top.css';
 import {connect} from "react-redux";
-import {getTops} from "../store/actions";
+import UserPage from "./UserPage";
+import {getTops,addUserToSearch} from "../store/actions";
 
 class Top extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = ({});
+        this.state=({
+            showUser: 0
+        });
+        this.handleClickOnUser= this.handleClickOnUser.bind(this);
     }
 
     componentDidMount(){
@@ -16,8 +20,12 @@ class Top extends React.Component {
         this.props.getTops(this.props.token);
     }
 
-    componentDidUpdate(){
-
+    handleClickOnUser(id){
+        console.log(id.target.value);
+        this.props.addUserToSearch(id.target.value);
+        this.setState({
+            showUser : 1
+        });
     }
 
     renderUsersTop(){
@@ -26,7 +34,7 @@ class Top extends React.Component {
             const listItems =  Object.values(this.props.tops.users).map((user) =>
             <tr>
                 <td>{i++}</td>
-                <td>{user.username}</td>
+                <td><button value={user.id} className={"user-btn"} onClick={this.handleClickOnUser}>{user.username}</button></td>
                 <td>{user.experience}</td>
                 <td>{user.level}</td>
                 <td>{user.cups}</td>
@@ -52,9 +60,17 @@ class Top extends React.Component {
         }
 
     }
+
+    renderUserPage(){
+        if(this.state.showUser == 1){
+          return <UserPage/>
+        }
+    }
     render() {
 
         return (
+            <div>
+            {this.renderUserPage()}
             <div className={"container"}>
                 <div className={"row"}>
                     <div className={"col-lg-6"}>
@@ -99,6 +115,7 @@ class Top extends React.Component {
                     </div>  
                 </div>
             </div>
+            </div>
         );
     }
 }
@@ -111,5 +128,5 @@ const mapStateToProps = state => {
     };
 };
 
-const TopComponent = connect(mapStateToProps,{getTops})(Top);
+const TopComponent = connect(mapStateToProps,{getTops,addUserToSearch})(Top);
 export default TopComponent;

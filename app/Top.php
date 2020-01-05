@@ -16,11 +16,19 @@ class Top extends Model
     }
 
     public function GetTops(){
-        $users = User::all()->sortByDesc('experience')->take(10);
+        $users = User::all()->sortByDesc('experience');
         $clubs = Club::all()->sortByDesc('points')->take(10);
-        return [
-            'users' => $users,
-            'clubs' => $clubs
-        ];
+        $return_data = [];
+        $i = 0;
+        foreach($users as $user){
+            $return_data["users"]{$i} = $user;
+            $i++;
+        }
+        $i=0;
+        foreach($clubs as $club){
+            $return_data["clubs"]{$i} = $club;
+            $i++;
+        }
+        return $return_data;
     }
 }
