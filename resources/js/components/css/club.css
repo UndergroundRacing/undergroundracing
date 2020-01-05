@@ -1,0 +1,41 @@
+div.club {
+    text-align: center;
+    margin-top:20px;
+}
+
+span.club-name {
+    font-size: 20px;
+    color: white;
+}
+
+table.table-club {
+    color: #fff;
+    margin-top:40px;
+}
+
+span.club-members-count {
+    color: white;
+}
+
+span.club-points {
+    color: white;
+}
+
+.row.club-wrapper {
+    margin-top: 20px;
+}
+
+.create-club {
+    text-align: center;
+    color: white;
+}
+
+.no-club {
+    color: white;
+    text-align: center;
+}
+
+span.registered {
+    color: white;
+    padding-right: 30px;
+}

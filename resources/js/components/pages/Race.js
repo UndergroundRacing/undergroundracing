@@ -26,12 +26,14 @@ class Race extends React.Component {
     componentDidUpdate(){
         console.log(this.state);
     }
+    
     componentWillReceiveProps(nextProps){
         this.setState({
             race: nextProps.race
         });
         console.log(this.state);
     }
+
     handleRaceEnd(event){
         
         this.props.getPlayer(this.props.token);
@@ -72,9 +74,9 @@ class Race extends React.Component {
                 </div>
 
                 <div className={"racer-car"}>
-                    <img src={this.props.race.car_in_use.firstRacer.image_url} alt={"R34"}/>
+                    <img src={this.state.race.car_in_use.firstRacer.image_url} alt={"R34"}/>
                     <span className={"car-stats"}>
-                        <div>{this.props.race.car_in_use.firstRacer.title}</div>
+                        <div>{this.state.race.car_in_use.firstRacer.title}</div>
                         <div><img src={Engine} alt={"Engine"}/> {this.state.race.specifications.firstRacerSpecifications.liter} L</div>
                         <div><img src={Power} alt={"Power"}/> {this.state.race.specifications.firstRacerSpecifications.power} HP</div>
                         <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.firstRacerSpecifications.weight} KG</div>
@@ -85,7 +87,7 @@ class Race extends React.Component {
                     <thead>
                     <tr>
                         <td><span>1/4 mile</span></td>
-                        <td>{this.props.race.times.firstRacer}</td>
+                        <td>{this.state.race.times.firstRacer}</td>
                     </tr>
                     </thead>
                 </table>
@@ -95,14 +97,14 @@ class Race extends React.Component {
                 <span className={"racer"}>
                 <div className={"racer-info"}>
                     <img src={DefaultUser} alt={"user-photo"}/>
-                    <span>{this.props.race.opponent_info.username}</span>
+                    <span>{this.state.race.opponent_info.username}</span>
                     <span><FontAwesomeIcon icon={faLevelUpAlt}/> {this.state.race.opponent_info.level}</span>
                 </div>
 
                 <div className={"racer-car"}>
-                    <img src={this.props.race.car_in_use.secondRacer.image_url}  alt={"EVO9"}/>
+                    <img src={this.state.race.car_in_use.secondRacer.image_url}  alt={"EVO9"}/>
                     <span className={"car-stats"}>
-                        <div>{this.props.race.car_in_use.firstRacer.title}</div>
+                        <div>{this.state.race.car_in_use.firstRacer.title}</div>
                         <div><img src={Engine} alt={"Engine"}/> {this.state.race.specifications.secondRacerSpecifications.liter} L</div>
                         <div><img src={Power} alt={"Power"}/> {this.state.race.specifications.secondRacerSpecifications.power} HP</div>
                         <div><img src={Weight} alt={"Weight"}/> {this.state.race.specifications.secondRacerSpecifications.weight} KG</div>
@@ -113,7 +115,7 @@ class Race extends React.Component {
                     <thead>
                     <tr>
                         <td><span>1/4 mile</span></td>
-                        <td>{this.props.race.times.secondRacer}</td>
+                        <td>{this.state.race.times.secondRacer}</td>
                     </tr>
                     </thead>
                 </table>

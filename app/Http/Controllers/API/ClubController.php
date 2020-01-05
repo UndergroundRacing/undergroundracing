@@ -34,4 +34,16 @@ class ClubController extends Controller
     public function RegisterClubToTournament(Request $request){
         return $this->clubRepository->RegisterToTournament($request);
     }
+
+    public function InviteToClub(Request $request){
+        return $this->clubRepository->InviteToClub($request);
+    }
+
+    public function GetClubByUserId($user_id){
+        return $this->clubRepository->GetClub($user_id);
+    }
+
+    public function GetUserClubInvitations($user_id){
+        return $this->clubRepository->GetUserClubInvitations($user_id);
+    }
 }

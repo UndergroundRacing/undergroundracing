@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\Club;
+use App\Club_Invitations;
 use App\ClubTournament_Club;
 use App\User;
 use App\Garage;
@@ -85,5 +86,29 @@ class ClubRepository implements ClubRepositoryInterface
         }
 
         return response()->json($this->clubTournament->RegisterToTournament($request),$this->successStatus);
+    }
+
+    public function InviteToClub(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'club_id' => 'required',
+                'user_id' => 'required'
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        $club_inv = new Club_Invitations();
+        return response()->json($club_inv->Invite($request),$this->successStatus);
+
+    }
+
+    public function GetUserClubInvitations($user_id){
+        $club_inv = new Club_Invitations();
+        return response()->json($club_inv->GetUserInvitations($user_id),$this->successStatus);
+    }
+
+    public function GetClub($user_id)
+    {
+        return response()->json($this->club->GetClubByUserId($user_id),$this->successStatus);
     }
 }
