@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {connect} from "react-redux";
 import {addToken} from "../store/actions";
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -63,6 +64,8 @@ class Register extends React.Component {
     }
 
     handleSubmit(event) {
+
+
         let pass = this.state.pass;
         let c_pass = this.state.repeat_pass;
 
@@ -112,7 +115,9 @@ class Register extends React.Component {
                     <div className={"form-title"}>Registracija</div>
                     <label>
                         El. paštas
-                        <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
+                        <input required pattern={".+@.+\\..+"}
+                               title={"El. pašto adrese turi būti simbolis @ ir domeno vardas, pvz. pastas@pastas.lt"}
+                               id={"email"} value={this.state.email} onChange={this.handleChange}/>
                     </label>
 
                     <label>
@@ -150,6 +155,7 @@ class Register extends React.Component {
         </div>);
     }
 }
+
 const RegisterComponent = connect(null, {addToken})(Register);
 export default RegisterComponent;
 

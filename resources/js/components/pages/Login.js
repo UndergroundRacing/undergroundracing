@@ -92,40 +92,40 @@ class Login extends React.Component {
         event.preventDefault();
     }
 
+
     render() {
 
-        if (window.location.pathname === 'Login?') {
-            this.props.history.push('/Home');
-        } else {
-            return (<div className={"log-reg"}>
 
-                <div className={"user-form"}>
-                    <div className={"logo"}>Underground Streets</div>
+        return (<div className={"log-reg"}>
 
-                    <form onSubmit={this.handleSubmit}>
-                        <div className={"form-title"}>Prisijungimas</div>
-                        <label>
-                            El. paštas
-                            <input type="email" id={"email"} value={this.state.email} onChange={this.handleChange}/>
-                        </label>
+            <div className={"user-form"}>
+                <div className={"logo"}>Underground Streets</div>
 
-                        <label>
-                            Slaptažodis
-                            <input type="password" id={"password"} value={this.state.password}
-                                   onChange={this.handleChange}/>
-                        </label>
 
-                        <button type="submit">Prisijungti</button>
-                    </form>
-                    <div className={"form-menu"}>
-                        <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio priminimas</span>
-                        <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
-                        <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
-                    </div>
+                <form onSubmit={this.handleSubmit}>
+                    <div className={"form-title"}>Prisijungimas</div>
+                    <label>
+                        El. paštas
+                        <input type={"text"} id={"email"} required pattern={".+@.+\\..+"} title={"El. pašto adrese turi būti simbolis @ ir domeno vardas, pvz. pastas@pastas.lt"}
+                               value={this.state.email} onChange={this.handleChange}/>
+                    </label>
+
+                    <label>
+                        Slaptažodis
+                        <input type="password" id={"password"} value={this.state.password}
+                               onChange={this.handleChange}/>
+                    </label>
+
+                    <button type="submit">Prisijungti</button>
+                </form>
+                <div className={"form-menu"}>
+                    <span id={"forgot_pass"} onClick={this.handleClick}>Slaptažodžio keitimas</span>
+                    <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
+                    <FontAwesomeIcon icon={faUserPlus} id={"register"} onClick={this.handleClick}/>
                 </div>
+            </div>
 
-            </div>);
-        }
+        </div>);
     }
 }
 
