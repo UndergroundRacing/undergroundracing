@@ -35,7 +35,8 @@ import {
     GET_MESSAGES,
     REGISTER_USER_TO_TOURNAMENT ,
     CHECK_IF_USER_REGISTERED,
-    ADD_USER_TASK
+    ADD_USER_TASK,
+    CHANGE_PASSWORD
 } from "./action_types";
 
 import Apis from '../apis/Apis';
@@ -465,5 +466,18 @@ export const addUserTask = (token,data) => async dispatch => {
     dispatch({
         type: ADD_USER_TASK,
         payload: {task: response.data.success}
+    });
+};
+
+export const changePassword = (data) => async dispatch => {
+    const response = await Apis.post('/changePassword', data, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    dispatch({
+        type: CHANGE_PASSWORD,
+        payload: response.data
     });
 };
