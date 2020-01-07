@@ -89,6 +89,8 @@ class Login extends React.Component {
             .catch((error) => {
                 let data = JSON.parse(error.response.config.data);
 
+                let unauthorised = error.response.data.error;
+
                 if (data.email == "") {
                     this.setState({
                         warning: "Įveskite el. pašto adresą"
@@ -97,7 +99,10 @@ class Login extends React.Component {
                     this.setState({
                         warning: "Įveskite slaptažodį"
                     });
-                }
+                } else if(data.password != "" && data.email != "" && unauthorised == "Unauthorised")
+                    this.setState({
+                        warning: "Neteisingas el. pašto adresas arba slaptažodis"
+                    })
             });
 
         event.preventDefault();
