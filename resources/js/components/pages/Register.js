@@ -66,12 +66,10 @@ class Register extends React.Component {
 
     handleSubmit(event) {
 
-
-        let pass = this.state.pass;
+        let pass = this.state.password;
         let c_pass = this.state.repeat_pass;
 
-        if (c_pass.localeCompare(pass)) {
-            console.log("Passwords match, submitting registration form");
+        if (c_pass == pass && pass.length > 5) {
             this.setState({pass_match: true});
 
             var data = JSON.stringify({
@@ -91,12 +89,13 @@ class Register extends React.Component {
                     const token = JSON.parse(response.request.response).success.token;
                     this.props.addToken({token});
 
-                    console.log('success');
                     this.props.history.push('/Home');
 
                 })
                 .catch((error) => {
                         let data = JSON.parse(error.response.config.data);
+
+                        let error_msg = error.response.data.message;
 
                         if (data.email == "") {
                             this.setState({
@@ -118,18 +117,31 @@ class Register extends React.Component {
                             this.setState({
                                 warning: "Pakartokite slaptažodį"
                             });
+                        } else if (error_msg.includes('users_email_unique')) {
+                            this.setState({
+                                warning: "Toks el. pašto adresas jau užregistruotas"
+                            });
+                        } else if (error_msg.includes('users_username_unique')) {
+                            this.setState({
+                                warning: "Toks vartotojo vardas jau egzistuoja"
+                            });
                         }
                     }
                 );
+        } else if (pass.length < 6) {
+            this.setState({
+                warning: "Slaptažodžio ilgis turi būti bent 6 simboliai"
+            })
+        } else {
+            this.setState({
+               warning: "Slaptažodžiai turi sutapti"
+            });
         }
 
         event.preventDefault();
     }
 
     render() {
-
-        let warning_msg = this.state.pass_match === false ?
-            <span className={"form-warn"}>Slaptažodžiai turi sutapti</span> : null;
 
         let validation_msg = this.state.warning != null ?
             <span className={"form-warn"}>{this.state.warning}</span> : null;
@@ -173,7 +185,6 @@ class Register extends React.Component {
 
                     <button type="submit">Registruotis</button>
                     {validation_msg}
-                    {warning_msg}
                 </form>
                 <div className={"form-menu"}>
                     <FontAwesomeIcon icon={faHome} id={"home"} onClick={this.handleClick}/>
