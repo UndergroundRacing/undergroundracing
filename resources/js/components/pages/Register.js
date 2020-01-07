@@ -69,7 +69,18 @@ class Register extends React.Component {
         let pass = this.state.password;
         let c_pass = this.state.repeat_pass;
 
-        if (c_pass == pass && pass.length > 5) {
+        let passed_regex = null;
+
+        if (/[A-Z]+[0-9]*/.test(pass)) {
+            passed_regex = true;
+        } else {
+            passed_regex = false;
+            this.setState({
+                warning: "Slaptažodį turi sudaryti bent 1 skaičius ir 1 didžioji raidė"
+            })
+        }
+
+        if (c_pass == pass && pass.length > 5 && passed_regex) {
             this.setState({pass_match: true});
 
             var data = JSON.stringify({
@@ -132,9 +143,9 @@ class Register extends React.Component {
             this.setState({
                 warning: "Slaptažodžio ilgis turi būti bent 6 simboliai"
             })
-        } else {
+        } else if (pass != c_pass) {
             this.setState({
-               warning: "Slaptažodžiai turi sutapti"
+                warning: "Slaptažodžiai turi sutapti"
             });
         }
 
