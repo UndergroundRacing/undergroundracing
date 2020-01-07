@@ -31,7 +31,7 @@ import {
     REGISTER_USER_TO_TOURNAMENT,
     CHECK_IF_USER_REGISTERED,
     ADD_USER_TASK,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD, CLEAR_STORE
 } from "./action_types";
 
 const initialState = {
@@ -59,20 +59,20 @@ const initialState = {
         brakes: null,
         nitrous: null
     },
-    race:null,
-    club:null,
-    user_remove_club:null,
-    club_tournament:null,
-    club_invitations:null,
-    tops:null,
-    userToSearch : '',
-    invitation_to_club : null,
+    race: null,
+    club: null,
+    user_remove_club: null,
+    club_tournament: null,
+    club_invitations: null,
+    tops: null,
+    userToSearch: '',
+    invitation_to_club: null,
     sended_message: null,
-    message_contacts:null,
-    messages:null,
-    tournament:null,
+    message_contacts: null,
+    messages: null,
+    tournament: null,
     user_tournament_status: 0,
-    change_password:null
+    change_password: null
 };
 
 function rootReducer(state = initialState, action) {
@@ -94,6 +94,17 @@ function rootReducer(state = initialState, action) {
             return {...state, user_car_info: state.user_car_info.concat(action.payload)};
         case CLEAR_CAR_INFO:
             return {...state, user_car_info: []};
+        case CLEAR_STORE:
+            return {
+                ...state,
+                token: "",
+                user_info: null,
+                user_abilities: null,
+                user_task: null,
+                user_cars: null,
+                user_car_info: [],
+                active_car: null
+            };
         case ADD_ACTIVE_CAR:
             return {...state, active_car: action.payload};
         case ADD_CAR_SHOP:
@@ -193,7 +204,7 @@ function rootReducer(state = initialState, action) {
         case ADD_USER_TASK:
             return {...state, user_task: action.payload};
         case CHANGE_PASSWORD:
-             return {...state, change_password: action.payload};
+            return {...state, change_password: action.payload};
         default:
             return state;
     }

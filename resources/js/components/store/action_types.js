@@ -14,6 +14,7 @@ export const ADD_NITROUS_SHOP = "ADD_NITROUS_SHOP";
 
 export const CLEAR_USER_CARS = "CLEAR_USER_CARS";
 export const CLEAR_CAR_INFO = "CLEAR_CAR_INFO";
+export const CLEAR_STORE = "CLEAR_STORE";
 
 export const ADMIN_LOGIN = "ADMIN_LOGIN";
 export const GET_USER = "GET_USER";

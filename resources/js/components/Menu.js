@@ -21,7 +21,7 @@ import UserPage from "./pages/UserPage";
 import Top from "./pages/Top";
 import Summary from "./pages/Summary";
 import Club from "./pages/Club";
-import {addUser, addAbilities, addCars, addCarInfo} from "./store/actions";
+import {addUser, addAbilities, addCars, addCarInfo, clearStore} from "./store/actions";
 import {connect} from "react-redux";
 import axios from "axios";
 
@@ -40,7 +40,8 @@ function mapDispatchToProps(dispatch) {
         addUser: user => dispatch(addUser(user)),
         addAbilities: abilities => dispatch(addAbilities(abilities)),
         addCars: cars => dispatch(addCars(cars)),
-        addCarInfo: car_info => dispatch(addCarInfo(car_info))
+        addCarInfo: car_info => dispatch(addCarInfo(car_info)),
+        clearStore: store => dispatch(clearStore(store))
     };
 }
 
@@ -151,7 +152,18 @@ class Menu extends React.Component {
             case "settings":
                 break;
             case "logout":
-                this.props.history.push('/');
+                let auth = "Bearer ";
+                let token = this.props.token;
+                axios.post("http://127.0.0.1:8000/api/v1/logout", [], {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': auth + token
+                    }
+                }).then((response) => {
+                        this.props.clearStore({});
+                        this.props.history.push('/');
+                    }
+                );
                 break;
             default:
                 this.props.history.push('/Home');
@@ -170,11 +182,9 @@ class Menu extends React.Component {
                 return <Garage/>;
             } else if (location === "/Club") {
                 return <Club/>;
-            }
-            else if (location === "/UserPage") {
+            } else if (location === "/UserPage") {
                 return <UserPage/>;
-            }
-            else if (location === "/Top") {
+            } else if (location === "/Top") {
                 return <Top/>;
             } else if (location === "/Chat") {
                 return <Chat/>
@@ -219,7 +229,7 @@ class Menu extends React.Component {
         let clubBtn = window.location.pathname === "/Club" ?
             <li id={"club"} onClick={this.handleClick} style={{color: "red"}}>Klubas</li> :
             <li id={"club"} onClick={this.handleClick}>Klubas</li>;
-        
+
         let topBtn = window.location.pathname === "/Top" ?
             <li id={"top"} onClick={this.handleClick} style={{color: "red"}}>Reitingai</li> :
             <li id={"top"} onClick={this.handleClick}>Reitingai</li>;

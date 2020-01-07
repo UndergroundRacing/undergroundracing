@@ -33,10 +33,10 @@ import {
     SEND_MESSAGE,
     MESSAGE_CONTACTS,
     GET_MESSAGES,
-    REGISTER_USER_TO_TOURNAMENT ,
+    REGISTER_USER_TO_TOURNAMENT,
     CHECK_IF_USER_REGISTERED,
     ADD_USER_TASK,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD, CLEAR_STORE
 } from "./action_types";
 
 import Apis from '../apis/Apis';
@@ -44,7 +44,6 @@ import Apis from '../apis/Apis';
 export function addToken(payload) {
     return {type: ADD_TOKEN, payload};
 }
-
 
 
 export function addUser(payload) {
@@ -101,6 +100,10 @@ export function clearUserCars(payload) {
 
 export function clearUserCarInfo(payload) {
     return {type: CLEAR_CAR_INFO, payload};
+}
+
+export function clearStore(payload) {
+    return {type: CLEAR_STORE, payload};
 }
 
 export const adminLogin = (email, password) => async dispatch => {
@@ -219,7 +222,7 @@ export const getPlayer = token => async dispatch => {
     });
 };
 
-export const createClub = (token,data) => async dispatch => {
+export const createClub = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/createClub', data, {
@@ -235,7 +238,7 @@ export const createClub = (token,data) => async dispatch => {
     });
 };
 
-export const getClub = (token,userId) => async dispatch => {
+export const getClub = (token, userId) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var endpoint = "/getClubByUserId/" + userId;
     const response = await Apis.get(endpoint, {
@@ -251,7 +254,7 @@ export const getClub = (token,userId) => async dispatch => {
     });
 };
 
-export const checkIfUserRegisteredToTournament = (token,userId) => async dispatch => {
+export const checkIfUserRegisteredToTournament = (token, userId) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var endpoint = "/checkIfUserRegisteredToTournament/" + userId;
     const response = await Apis.get(endpoint, {
@@ -267,7 +270,7 @@ export const checkIfUserRegisteredToTournament = (token,userId) => async dispatc
     });
 };
 
-export const getClubInvitations = (token,userId) => async dispatch => {
+export const getClubInvitations = (token, userId) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var endpoint = "/getClubInvitations/" + userId;
     const response = await Apis.get(endpoint, {
@@ -283,7 +286,7 @@ export const getClubInvitations = (token,userId) => async dispatch => {
     });
 };
 
-export const deleteClub = (token,data) => async dispatch => {
+export const deleteClub = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/destroyClub', data, {
@@ -299,7 +302,7 @@ export const deleteClub = (token,data) => async dispatch => {
     });
 };
 
-export const registerClubToTournament = (token,data) => async dispatch => {
+export const registerClubToTournament = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/registerClubToTournament', data, {
@@ -315,7 +318,7 @@ export const registerClubToTournament = (token,data) => async dispatch => {
     });
 };
 
-export const removeUserFromClub = (token,data) => async dispatch => {
+export const removeUserFromClub = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/leaveClub', data, {
@@ -332,7 +335,7 @@ export const removeUserFromClub = (token,data) => async dispatch => {
 };
 
 
-export const joinClub = (token,data) => async dispatch => {
+export const joinClub = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/addUserToClub', data, {
@@ -348,7 +351,7 @@ export const joinClub = (token,data) => async dispatch => {
     });
 };
 
-export const inviteUserToClub = (token,data) => async dispatch => {
+export const inviteUserToClub = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/inviteUserToClub', data, {
@@ -365,7 +368,7 @@ export const inviteUserToClub = (token,data) => async dispatch => {
 };
 
 
-export const sendMessage = (token,data) => async dispatch => {
+export const sendMessage = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/sendMessage', data, {
@@ -381,7 +384,7 @@ export const sendMessage = (token,data) => async dispatch => {
     });
 };
 
-export const registerToUsersTournament = (token,data) => async dispatch => {
+export const registerToUsersTournament = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/registerToTournament', data, {
@@ -414,7 +417,7 @@ export const getTops = (token) => async dispatch => {
 };
 
 
-export const getMessagesContacts = (token,userId) => async dispatch => {
+export const getMessagesContacts = (token, userId) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
     var endpoint = "/getMessagesContacts/" + userId;
     const response = await Apis.get(endpoint, {
@@ -430,14 +433,14 @@ export const getMessagesContacts = (token,userId) => async dispatch => {
     });
 };
 
-export const addUserToSearch = id =>async dispatch => {
+export const addUserToSearch = id => async dispatch => {
     dispatch({
         type: SEARCH_USER,
         payload: id
     });
 }
 
-export const getMessages = (token,data) => async dispatch => {
+export const getMessages = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/getMessages', data, {
@@ -453,7 +456,7 @@ export const getMessages = (token,data) => async dispatch => {
     });
 };
 
-export const addUserTask = (token,data) => async dispatch => {
+export const addUserTask = (token, data) => async dispatch => {
     var auth = 'Bearer ' + token.toString();
 
     const response = await Apis.post('/addTask', data, {
